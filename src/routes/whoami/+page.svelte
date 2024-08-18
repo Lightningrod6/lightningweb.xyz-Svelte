@@ -11,4 +11,5 @@
     })
 </script>
 
+<!-- svelte-ignore a11y-missing-content -->
 <h1 class="about-me-thing"></h1>

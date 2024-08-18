@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
     import { onMount } from 'svelte';
     import { gsap } from 'gsap';
     import { TextPlugin } from 'gsap/TextPlugin';
@@ -109,4 +109,6 @@
     <button on:click={playCoolAnimation} class="cool-button"></button>
     <button on:click={goBack} class="cool-button2">Go Back</button>
 </div>
+<!-- svelte-ignore a11y-missing-content -->
+<!-- svelte-ignore a11y-invalid-attribute -->
 <a href='#' on:click={aClicked}><h2 class="about-me"></h2></a>
