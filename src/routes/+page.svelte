@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { onMount } from 'svelte';
     import { gsap } from 'gsap';
     import { TextPlugin } from 'gsap/TextPlugin';
