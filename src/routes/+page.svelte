@@ -1,114 +1,195 @@
-<script>
+<script lang="ts">
     import { onMount } from 'svelte';
-    import { gsap } from 'gsap';
-    import { TextPlugin } from 'gsap/TextPlugin';
+    import { gsap } from "gsap";
+    import { TextPlugin } from 'gsap/all';
     import Icon from '@iconify/svelte';
+    
 
     gsap.registerPlugin(TextPlugin);
-
-    onMount(() => {
-        console.log('mounted');
-        var tl = gsap.timeline();
-        tl.to('.testinglmao', { duration: 1, text: "Lightning Web" })
-        tl.to('.testinglmao', { duration: 1, y: "-350px"})
-        tl.to('.about-me', { duration: 1, text: "Who Am I" })
-    });
     var tl = gsap.timeline();
-
-    function playCoolAnimation() {
-            tl.to('body', { duration: 3, backgroundColor: 'white' })
-            tl.to('.cool-button', { duration: 2, backgroundColor: "white" }, "-=2.5")
-            tl.to('.cool-button2', { duration: 2, backgroundColor: "white" }, "-=2.5")
-            tl.to('.testinglmao', { duration: 2, color: "black" }, "-=2")
-            tl.to('.testinglmao', { duration: 2, text: "Lightning Web: Made in Svelte" }, "-=1")
-        }
-    function goBack() {
-        tl.to('body', { duration: 3, backgroundColor: "#303030"})
-        tl.to('.cool-button', { duration: 2, backgroundColor: "#303030" }, "-=3")
-        tl.to('.cool-button2', { duration: 2, backgroundColor: "#303030" }, "-=3")
-        tl.to('.testinglmao', { duration: 2, color: "white" }, "-=2")
-        tl.to('.testinglmao', { duration: 2, text: "Lightning Web" }, "-=1")
+    function IntroAnimation() {
+                tl.to('.cool-header', {
+            duration: 1,
+            text: 'Lightning Web',
+        });
+        tl.to('.cool-header', {
+            duration: 1,
+            y: "-390px",
+        });
+        tl.to('.projects-redirect', {
+            duration: 1,
+            text: 'Projects'
+        })
     }
-
+    onMount(() => {
+        IntroAnimation();
+    });
     function aClicked() {
-        gsap.to('.testinglmao', { duration: 1, text: ''})
-        gsap.to('.about-me', { duration: 1, text: ''})
-        setTimeout(() => {
-            window.location.href = '/whoami'
-        }, 1000)
-    }
+        gsap.to('.cool-header', {
+            duration: 1,
+            text: ''
+        })
+
+        gsap.to('.projects-redirect', {
+            duration: 1,
+            text: ''
+        })
+            tl.to('.projects', {
+                duration: 1,
+                y: "-390px",
+            });
+            tl.to('.project-header', {
+                duration: 1,
+                text: 'Bot-Bot'
+            });
+            tl.to('.bot-bot', {
+                duration: 1,
+                text: 'Multi-purpose Discord bot'
+            });
+            tl.to('.go-back', {
+                duration: 1,
+                text: 'Go back'
+            }, '-=2')
+        }
+
+        function botBot() {
+            gsap.to('.project-header, .bot-bot', {
+                duration: 1,
+                text: ''
+            });
+            tl.to('.bot-bot-head', {
+                duration: 1,
+                text: 'Bot-Bot',
+                delay: 1
+                
+            })
+            .to('.bot-bot-head', {
+                duration: 1,
+                text: 'Bot-Bot: Multi-purpose Discord bot',
+                delay: 1
+            })
+            .to('.bot-bot-head', {
+                duration: 1,
+                y: "-390px",
+            })
+            .to('.bot-bot-link', {
+                duration: 1,
+                text: 'Check it out!'
+            })
+
+        }
+
+        function goBack() {
+            gsap.to('.project-header', {
+                duration: 1,
+                text: ''
+            });
+            gsap.to('.bot-bot', {
+                duration: 1,
+                text: ''
+            })
+
+            gsap.to('.bot-bot-head', {
+                duration: 1,
+                text: ''
+            })
+            gsap.to('.bot-bot-link', {
+                duration: 1,
+                text: ''
+            })
+            
+            gsap.to('.go-back', {
+                duration: 1,
+                text: ''
+            }).then(() => {
+                IntroAnimation();
+            })
+        }
+        function RedirectAnimationBotBot() {
+            gsap.to('.bot-bot-head', {
+                duration: 1,
+                text: ''
+            })
+            gsap.to('.bot-bot-link', {
+                duration: 1,
+                text: ''
+            })
+
+            gsap.to('.go-back', {
+                duration: 1,
+                text: ''
+            })
+
+            tl.to('body', {
+                duration: 1,
+                background: 'black'
+            })
+            gsap.fromTo('body', {
+                duration: 1,
+                backgroundImage: 'url(src/img/coolpicture.png)',
+                backgroundSize: 'cover',
+                backgroundPositionX: '1000px',
+                backgroundPositionY: '0px',
+            }, {
+                duration: 1,
+                backgroundPositionX: '0px',
+                backgroundRepeat: 'no-repeat'
+            })
 
 
-    
+            tl.to('.redirection', {
+                duration: 1,
+                text: 'Redirecting...'
+            }).then(() => {
+                setInterval(() => {
+                    window.location.href = 'https://top.gg/bot/609076611609788427/';
+                }, 2000)
+            })
+
+        }
+
 </script>
 
 <style>
-        .container {
-        position: relative;
+    .cool-header {
+        margin-top: 400px;
     }
 
-    .cool-button {
-        position: absolute;
-        top: 0;
+    .bot-bot-head {
+        margin-top: 800px;
         left: 0;
-        border: none;
-        background-color: #303030;
-        color: white;
-        padding: 10px 20px;
-        font-size: 20px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border-radius: 4px;
-        font-family: "Changa", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
-        
-    }
-
-    .cool-button2 {
-        position: absolute;
-        top: 0;
         right: 0;
-        border: none;
-        background-color: #303030;
-        color: #303030;
-        padding: 10px 20px;
-        font-size: 20px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border-radius: 4px;
-        font-family: "Changa", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
     }
 
-    h2 {
-        text-align: center;
-        color: white;
-        font-family: "Changa", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-size: 35px;
-        font-style: normal;
-        
+    .snap-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
-
-    .testinglmao {
-        padding-top: 25%;
+    .go-back {
+        bottom: 0;
+        position: absolute;
     }
-
-
     
 </style>
 
 
-<div class="container">
-    <h1 class="testinglmao">Header</h1>
-    <button on:click={playCoolAnimation} class="cool-button"></button>
-    <button on:click={goBack} class="cool-button2">Go Back</button>
+
+<h1 class="text-center text-3xl cool-header"></h1>
+<div class="i-dont-know">
+    <a href="#" on:click={aClicked}><h1 class="text-2xl projects-redirect text-center"></h1></a>
 </div>
-<!-- svelte-ignore a11y-missing-content -->
-<!-- svelte-ignore a11y-invalid-attribute -->
-<a href='#' on:click={aClicked}><h2 class="about-me"></h2></a>
+
+<div class="projects">
+    <h1 class="text-center text-3xl project-header"></h1>
+    <div class="discord-bot">
+        <a href="#" on:click={botBot}><h1 class="text-2xl text-center bot-bot"></h1></a>
+        <div class="discord-bot-long">
+            <h1 class="text-3xl text-center bot-bot-head"></h1>
+            <a href="#" on:click={RedirectAnimationBotBot}><h3 class="text-center text-2xl bot-bot-link"></h3></a>
+            <h1 class="text-center text-2xl redirection"><Icon icon="line-md:loading-loop" width="24" height="24"  style="color: white" /></h1>
+        </div>
+    </div>
+    <a href="#" on:click={goBack}><h3 class="absolute top-0 text-left go-back text-xl"></h3></a> <!-- Add 'absolute' and 'bottom-0' classes here -->
+</div>
