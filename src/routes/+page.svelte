@@ -188,7 +188,7 @@
         <div class="discord-bot-long">
             <h1 class="text-3xl text-center bot-bot-head"></h1>
             <a href="#" on:click={RedirectAnimationBotBot}><h3 class="text-center text-2xl bot-bot-link"></h3></a>
-            <h1 class="text-center text-2xl redirection"><Icon icon="line-md:loading-loop" width="24" height="24"  style="color: white" /></h1>
+            <h1 class="text-center text-2xl redirection"></h1>
         </div>
     </div>
     <a href="#" on:click={goBack}><h3 class="absolute top-0 text-left go-back text-xl"></h3></a> <!-- Add 'absolute' and 'bottom-0' classes here -->
