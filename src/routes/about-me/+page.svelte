@@ -2,7 +2,7 @@
     import { gsap } from 'gsap';
     import { TextPlugin, ScrollTrigger } from 'gsap/all'
     import { onMount } from 'svelte';
-    import { Card } from 'flowbite-svelte';
+    import * as Card from '$lib/components/ui/card';
     import Icon from '@iconify/svelte';
    
 
@@ -140,6 +140,6 @@
     </div>
     <div class="description-3">
       <h2 class="text-2xl mb-4 font-semibold header-thing">My Interests</h2>
-      <p class="mb-4 text-white">While I do have an interest in coding, I also favor in meterology and the research of the weather and how it works</p>
+      <p class="mb-4 text-white">While I do have an interest in coding, I also favor in meterology and the research of the weather and how it works. I am also a big fan of AI and different ai products.</p>
     </div>
 </div>

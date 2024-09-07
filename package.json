@@ -27,9 +27,12 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"clsx": "^2.1.1",
 		"flowbite": "^2.5.1",
 		"flowbite-svelte": "^0.46.15",
 		"gsap": "^3.12.5",
-		"lucide-svelte": "^0.435.0"
+		"lucide-svelte": "^0.435.0",
+		"tailwind-merge": "^2.5.2",
+		"tailwind-variants": "^0.2.1"
 	}
 }
