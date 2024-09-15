@@ -1,65 +1,53 @@
-<script lang='ts'>
-    import { Card } from 'flowbite-svelte';
-    import { gsap } from 'gsap'
-    import { TextPlugin } from 'gsap/all';
+<script lang="ts">
     import { onMount } from 'svelte';
+    import { gsap } from "gsap";
+    import { TextPlugin } from 'gsap/all';
+    import Icon from '@iconify/svelte';
+    
 
-    var tl = gsap.timeline();
     gsap.registerPlugin(TextPlugin);
-
+    var tl = gsap.timeline();
     function IntroAnimation() {
-        tl.to('.projects-header', {
+                tl.to('.cool-header', {
             duration: 1,
-            text: 'Projects',
+            text: 'Lightning Web',
         });
-
-        tl.from('.bot-bot-card, .wynncraft-search-card', {
-            duration: 0.8,
-            y: 50,
-            opacity: 0,
-            stagger: 0.2,
-            ease: 'power2.out',
-        }, '-=0.5'); // Start slightly before the previous animation ends
+        tl.to('.cool-header', {
+            duration: 1,
+            y: "-390px",
+        });
+        tl.to('.projects-redirect', {
+            duration: 1,
+            text: 'Projects'
+        })
+        tl.to('.about-me-redirect', {
+            duration: 1,
+            text: 'About Me'
+        })
     }
-
     onMount(() => {
         IntroAnimation();
-    })
+    });
 </script>
 
 <style>
-    .bot-bot-card {
-        padding-top: 400px;
+    .cool-header {
+        margin-top: 400px;
     }
-    .page-container {
+
+    .redirects {
         display: flex;
-        flex-direction: column;
-        min-height: 100vh;
+        justify-content: center;
+        gap: 2rem; /* Adds space between the items */
     }
-    .content {
-        flex: 1;
-    }
-    .go-back-button {
-        padding: 1rem;
-    }
+    
 </style>
 
-<div class="page-container">
-    <div class="content">
-        <h1 class="text-center projects-header text-3xl"></h1>
-        <div class="projects bg-center flex justify-center items-center min-h-screen ">
-            <Card href="https://top.gg/bot/609076611609788427" class="bg-gray-700 bot-bot-card m-4 hover:bg-gray-600 transition-colors duration-300 ease-in-out">
-                <h3 class="bot-bot-header text-white text-2xl text-center">Bot-Bot</h3>
-                <p class="text-white">Multipurpose moderation bot with a global economy</p>
-            </Card>
-            <Card class="bg-gray-700 wynncraft-search-card m-4" size="xs">
-                <h3 class="text-white text-2xl text-center wynncraft-header">Wynncraft Player Lookup</h3>
-                <p class="text-white">Search for players and guilds on the Wynncraft Minecraft server</p>
-            </Card>
-        </div>
-    </div>
 
-    <h3 class="go-back-button text-left absolute bottom-0">
-        <a href="/">Go Back</a>
-    </h3>
+
+<h1 class="text-center text-3xl cool-header"></h1>
+
+<div class="redirects">
+    <a href="/projects"><h3 class="text-white text-center projects-redirect text-2xl"></h3></a>
+    <a href="/about-me"><h3 class="text-white text-center about-me-redirect text-2xl"></h3></a>
 </div>

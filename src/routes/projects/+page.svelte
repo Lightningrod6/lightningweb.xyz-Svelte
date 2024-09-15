@@ -3,63 +3,74 @@
     import { gsap } from 'gsap'
     import { TextPlugin } from 'gsap/all';
     import { onMount } from 'svelte';
-
-    var tl = gsap.timeline();
+   
     gsap.registerPlugin(TextPlugin);
-
-    function IntroAnimation() {
-        tl.to('.projects-header', {
-            duration: 1,
-            text: 'Projects',
-        });
-
-        tl.from('.bot-bot-card, .wynncraft-search-card', {
-            duration: 0.8,
-            y: 50,
-            opacity: 0,
-            stagger: 0.2,
-            ease: 'power2.out',
-        }, '-=0.5'); // Start slightly before the previous animation ends
+   
+    function introAnimation() {
+      const tl = gsap.timeline();
+      tl.to('.projects-header', {
+        duration: 1,
+        text: 'Projects',
+      });
+      tl.from('.project-card', {
+        duration: 0.8,
+        y: 50,
+        opacity: 0,
+        stagger: 0.2,
+        ease: 'power2.out',
+      }, '-=0.5');
     }
-
+   
     onMount(() => {
-        IntroAnimation();
-    })
-</script>
-
-<style>
-    .bot-bot-card {
-        padding-top: 400px;
-    }
+      introAnimation();
+    });
+   </script>
+   
+   <style>
     .page-container {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
     .content {
-        flex: 1;
+      flex: 1;
+      padding: 2rem 0;
+    }
+    .projects {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .project-card {
+      width: 300px;
     }
     .go-back-button {
-        padding: 1rem;
+      padding: 1rem;
     }
-</style>
-
-<div class="page-container">
-    <div class="content">
-        <h1 class="text-center projects-header text-3xl"></h1>
-        <div class="projects bg-center flex justify-center items-center min-h-screen">
-            <Card href="https://top.gg/bot/609076611609788427" class="bg-gray-700 bot-bot-card m-4 hover:bg-gray-600 transition-colors duration-300 ease-in-out">
-                <h3 class="bot-bot-header text-white text-2xl text-center">Bot-Bot</h3>
-                <p class="text-white">Multipurpose moderation bot with a global economy</p>
-            </Card>
-            <Card class="bg-gray-700 wynncraft-search-card m-4" size="xs">
-                <h3 class="text-white text-2xl text-center wynncraft-header">Wynncraft Player Lookup</h3>
-                <p class="text-white">Search for players and guilds on the Wynncraft Minecraft server</p>
-            </Card>
-        </div>
-    </div>
-
-    <h3 class="go-back-button text-left">
-        <a href="/">Go Back</a>
-    </h3>
-</div>
+   </style>
+   
+   <div class="page-container">
+     <div class="content">
+       <h1 class="projects-header text-3xl mb-8 text-center"></h1>
+       <div class="projects m-10">
+         <Card href="https://top.gg/bot/609076611609788427" class="project-card bg-gray-700 hover:bg-gray-600 transition-colors duration-300 ease-in-out">
+           <h3 class="text-white text-2xl text-center mb-2">Bot-Bot</h3>
+           <p class="text-white">Multipurpose moderation bot with a global economy</p>
+         </Card>
+         <Card href="#" class="project-card bg-gray-700 hover:bg-gray-600 transition-colors duration-300 ease-in-out">
+           <h3 class="text-white text-2xl text-center mb-2">Wynncraft Player Lookup</h3>
+           <p class="text-white">Search for players and guilds on the Wynncraft Minecraft server</p>
+         </Card>
+         <Card href="https://api.lightningweb.xyz" class="project-card bg-gray-700 hover:bg-gray-600 transition-colors duration-300 ease-in-out">
+           <h3 class="text-white text-2xl text-center mb-2">LightningWeb API</h3>
+           <p class="text-white">An API containing multiple generative AIs and a chat API using llama 3!</p>
+         </Card>
+       </div>
+     </div>
+     <div class="go-back-button">
+       <a href="/" class="text-white hover:text-gray-300">Go Back</a>
+     </div>
+   </div>
