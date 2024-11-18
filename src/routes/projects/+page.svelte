@@ -58,11 +58,7 @@
        <div class="projects m-10">
          <Card href="https://top.gg/bot/609076611609788427" class="project-card bg-gray-700 hover:bg-gray-600 transition-colors duration-300 ease-in-out">
            <h3 class="text-white text-2xl text-center mb-2">Bot-Bot</h3>
-           <p class="text-white text-center">Multipurpose moderation bot with a global economy</p>
-         </Card>
-         <Card href="#" class="project-card bg-gray-700 hover:bg-gray-600 transition-colors duration-300 ease-in-out">
-           <h3 class="text-white text-2xl text-center mb-2">Wynncraft Player Lookup</h3>
-           <p class="text-white text-center">Search for players and guilds on the Wynncraft Minecraft server</p>
+           <p class="text-white text-center">Rewritten into a powerful moderation discord bot. Now with a dashboard</p>
          </Card>
          <Card href="https://api.lightningweb.xyz" class="project-card bg-gray-700 hover:bg-gray-600 transition-colors duration-300 ease-in-out">
            <h3 class="text-white text-2xl text-center mb-2">LightningWeb API</h3>
