@@ -41,7 +41,13 @@
     }
 </style>
 
-<h1 class="text-3xl text-center comm-header"></h1>
-<h1 class="text-3xl text-center sub-comm-header"></h1>
-
-<p class="text-white text-center description">What I want Lightning Web to be is a community for anyone to join, learn and explore. You can find out more in our <a href="https://discord.gg/u2YBbHjJRh" class="text-blue-500 hover:text-blue-700">discord community</a></p>
+<div class="container flex flex-col min-h-screen">
+    <div class="flex-1 p-2">
+        <h1 class="text-3xl text-center comm-header"></h1>
+        <h1 class="text-3xl text-center sub-comm-header"></h1>
+        <p class="text-white text-center description">What I want Lightning Web to be is a community for anyone to join, learn and explore. You can find out more in our <a href="https://discord.gg/u2YBbHjJRh" class="text-blue-500 hover:text-blue-700">discord community</a></p>
+    </div>
+    <div class="p-1">
+        <a href="/" class="text-white hover:text-gray-300">Go Back</a>
+    </div>
+</div>

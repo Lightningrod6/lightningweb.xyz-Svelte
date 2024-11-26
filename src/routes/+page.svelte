@@ -26,6 +26,16 @@
                     text: ''
                 })
 
+            tl.to('.contribution-redirect', {
+                    duration: 1,
+                    text: ''
+                })
+
+            tl.to('.community-redirect', {
+                    duration: 1,
+                    text: ''
+                })
+
             tl.to("body", {
                 backgroundColor: "black"
             })
@@ -74,6 +84,11 @@
             duration: 1,
             text: 'Contributions'
         })
+
+        tl.to('.community-redirect', {
+            duration: 1,
+            text: 'More than Lightning Web'
+        })
     }
     onMount(() => {
         IntroAnimation();
@@ -102,6 +117,7 @@
     <a href="/projects"><h3 class="text-white text-center projects-redirect text-2xl"></h3></a>
     <a href="/about-me"><h3 class="text-white text-center about-me-redirect text-2xl"></h3></a>
     <a href="/contributions"><h3 class="text-white text-center contribution-redirect text-2xl"></h3></a>
+    <a href="/community"><h3 class="text-white text-center text-2xl community-redirect"></h3></a>
 </div>
 
 <div class="old">
@@ -109,4 +125,4 @@
     <h3 class="directory text-2xl text-center" style="opacity: 0;"><a href="/projects">Directory</a></h3>
 </div>
 
-<a href="" on:click={easterEgg}></a>
+<a href="" on:click={easterEgg} class="text-gray-700">b</a>

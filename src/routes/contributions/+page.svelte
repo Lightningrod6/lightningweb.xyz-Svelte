@@ -13,6 +13,14 @@
             duration: 1,
             text: 'Contributions',
         });
+
+        tl.from('.project-card', {
+            duration: 0.8,
+            y: 50,
+            opacity: 0,
+            stagger: 0.2,
+            ease: 'power2.out',
+        }, '-=0.5');
     }
 
     onMount(() => {
@@ -24,13 +32,13 @@
 
 
 <div class="container flex flex-col min-h-screen">
-    <div class="flex-1 p-2">
+    <div class="flex-1 p-2 space-y-4">
         <h1 class="text-3xl text-center cont-header"></h1>
         <div class="flex flex-wrap justify-center gap-1 max-w-[400px] m-auto">
         <Card href="https://www.nexusmods.com/bladeandsorcery/mods/11048" class="project-card bg-gray-700 hover:bg-gray-600 transition-colors duration-300 ease-in-out max-w[30px]">
             <h1 class="text-white text-2xl text-center">B&S Audible Lore Mod</h1>
             <h3 class="text-white text-lg text-center mb-2">Made by: HuJohner</h3>
-            <p class="text-white text-center">A Blade & Sorcery mod that adds voice overs to the lore. I participated in it as a voice actor for a character called "General Geratan"</p>
+            <p class="text-white text-center">A Blade & Sorcery mod that adds voice overs to the lore. I participated in it as a voice actor for a character called "General Geratan" with 5 voice lines recorded</p>
         </Card>
         </div>
     </div>
