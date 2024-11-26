@@ -70,6 +70,10 @@
             duration: 1,
             text: 'About Me'
         })
+        tl.to('.contribution-redirect', {
+            duration: 1,
+            text: 'Contributions'
+        })
     }
     onMount(() => {
         IntroAnimation();
@@ -97,6 +101,7 @@
 <div class="redirects">
     <a href="/projects"><h3 class="text-white text-center projects-redirect text-2xl"></h3></a>
     <a href="/about-me"><h3 class="text-white text-center about-me-redirect text-2xl"></h3></a>
+    <a href="/contributions"><h3 class="text-white text-center contribution-redirect text-2xl"></h3></a>
 </div>
 
 <div class="old">
