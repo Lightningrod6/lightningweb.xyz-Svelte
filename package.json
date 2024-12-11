@@ -32,6 +32,7 @@
 		"flowbite-svelte": "^0.46.15",
 		"gsap": "^3.12.5",
 		"lucide-svelte": "^0.435.0",
+		"socket.io": "^4.8.1",
 		"tailwind-merge": "^2.5.2",
 		"tailwind-variants": "^0.2.1"
 	}
