@@ -64,10 +64,7 @@
            <h3 class="text-white text-2xl text-center mb-2">LightningWeb API</h3>
            <p class="text-white text-center">An API containing multiple generative AIs and a chat API using llama 3!</p>
          </Card>
-         <Card href="https://pypi.org/project/deepinfra-api-wrapper/" class="project-card bg-gray-700 hover:bg-gray-600 transition-colors duration-300 ease-in-out">
-           <h3 class="text-white text-2xl text-center mb-2">DeepInfra API Wrapper</h3>
-           <p class="text-white text-center">API Wrapper for the widely used generative ai api website Deepinfra</p>
-          </Card>
+
        </div>
      </div>
      <div class="go-back-button">
