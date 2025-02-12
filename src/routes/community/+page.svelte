@@ -9,15 +9,15 @@
 
     function intro() {
         tl.to('.comm-header', {
-            duration: 1,
+            duration: 0.2,
             text: 'Lightning Web'
         })
         tl.to('.sub-comm-header', {
-            duration: 2,
+            duration: 0.5,
             text: 'More than just a portfolio'
         })
         tl.to('.comm-header, .sub-comm-header', {
-            duration: 1,
+            duration: 0.4,
             y: -400
         })
 

@@ -10,7 +10,7 @@
         var tl = gsap.timeline();
 
         tl.to('.cont-header', {
-            duration: 1,
+            duration: 0.4,
             text: 'Contributions',
         });
 

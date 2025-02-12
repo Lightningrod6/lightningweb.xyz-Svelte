@@ -11,12 +11,12 @@
 
     function intro() {
       tl.to('.about-me-header', {
-        duration: 1,
+        duration: 0.5,
         text: 'About Me',
       });
 
       tl.fromTo('.description-1', {
-        duration: 1,
+        duration: 0.5,
         y: 100,
       }, {
         y: 0,
@@ -33,12 +33,12 @@
         var tl = gsap.timeline();
         if (description == 2) {
             tl.to('.description-1', {
-              duration: 1,
+              duration: 0.5,
               x: -100,
               opacity: 0,
           });
           tl.fromTo('.description-2', {
-              duration: 1,
+              duration: 0.3,
               x: 100,
               opacity: 0,
           }, {
@@ -47,12 +47,12 @@
           });
         } else if(description == 3) {
             tl.to('.description-2', {
-              duration: 1,
+              duration: 0.3,
               x: -100,
               opacity: 0,
           });
           tl.fromTo('.description-3', {
-              duration: 1,
+              duration: 0.3,
               x: 100,
               opacity: 0,
           }, {

@@ -14,25 +14,25 @@
             let loopanimat = gsap.timeline()
             console.log("Easter Egg was found!")
             tl.to('.cool-header', {
-                    duration: 1,
+                    duration: 0.2,
                     text: ''
                 })
             tl.to('.projects-redirect', {
-                    duration: 1,
+                    duration: 0.2,
                     text: ''
                 })
             tl.to('.about-me-redirect', {
-                    duration: 1,
+                    duration: 0.2,
                     text: ''
                 })
 
             tl.to('.contribution-redirect', {
-                    duration: 1,
+                    duration: 0.2,
                     text: ''
                 })
 
             tl.to('.community-redirect', {
-                    duration: 1,
+                    duration: 0.2,
                     text: ''
                 })
 
@@ -40,17 +40,17 @@
                 backgroundColor: "black"
             })
             tl.to('.cool-header', {
-                    duration: 1,
+                    duration: 0.2,
                     text: 'Lightning Web',
                     fontFamily: 'Josefin Sans, sans-serif'
             })
             tl.to(".old-thing-lol", {
-                duration: 1,
+                duration: 0.2,
                 text: "Lightning is a",
                 fontFamily: 'Josefin Sans, sans-serif'
             })
             tl.to('.old-thing-lol', {
-                duration: 1,
+                duration: 0.2,
                 text: "Lightning is a developer",
                 fontFamily: 'Josefin Sans, sans-serif'
             }, "-=1")
@@ -65,28 +65,30 @@
         }
     function IntroAnimation() {
             tl.to('.cool-header', {
-            duration: 1,
+            duration: 0.4,
             text: 'Lightning Web',
+            ease: ''
         });
         tl.to('.cool-header', {
-            duration: 1,
+            duration: 0.8,
             y: "-390px",
+            ease: "sine.out"
         });
         tl.to('.projects-redirect', {
-            duration: 1,
+            duration: 0.3,
             text: 'Projects'
         })
         tl.to('.about-me-redirect', {
-            duration: 1,
+            duration: 0.3,
             text: 'About Me'
         })
         tl.to('.contribution-redirect', {
-            duration: 1,
+            duration: 0.4,
             text: 'Contributions'
         })
 
         tl.to('.community-redirect', {
-            duration: 1,
+            duration: 0.5,
             text: 'More than Lightning Web'
         })
     }
@@ -114,7 +116,7 @@
 <h1 class="text-center text-3xl cool-header"></h1>
 
 <div class="redirects">
-    <a href="/projects"><h3 class="text-white text-center projects-redirect text-2xl"></h3></a>
+    <a href="/projects" ><h3 class="text-white text-center projects-redirect text-2xl"></h3></a>
     <a href="/about-me"><h3 class="text-white text-center about-me-redirect text-2xl"></h3></a>
     <a href="/contributions"><h3 class="text-white text-center contribution-redirect text-2xl"></h3></a>
     <a href="/community"><h3 class="text-white text-center text-2xl community-redirect"></h3></a>

@@ -9,11 +9,11 @@
     function introAnimation() {
       const tl = gsap.timeline();
       tl.to('.projects-header', {
-        duration: 1,
+        duration: 0.2,
         text: 'Projects',
       });
       tl.from('.project-card', {
-        duration: 0.8,
+        duration: 0.2,
         y: 50,
         opacity: 0,
         stagger: 0.2,
