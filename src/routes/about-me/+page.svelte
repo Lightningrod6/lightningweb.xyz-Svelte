@@ -11,7 +11,7 @@
 			year: '2022',
 			title: 'ADHDmaxxing',
 			body: 'While I was attending GPTC, I was more into learning about programming instead of paying attention in class. I learned a lot at a cost.'
-		}
+		},
 		{
 			year: '2023',
 			title: 'Portfolio without Projects',
