@@ -179,34 +179,32 @@
 	</div>
 </section>
 
-<!-- ============ COMMUNITY ============ -->
+<!-- ============ GITHUB ============ -->
 <section class="mx-auto max-w-6xl px-4 pt-24 sm:px-6">
 	<div class="panel relative">
 		<div class="hazard-stripe-thin h-1.5"></div>
 		<div class="flex flex-col gap-8 px-6 py-8 sm:px-10 md:flex-row md:items-center md:justify-between">
 			<div class="max-w-[52ch]">
-				<h2 class="font-display text-4xl leading-none text-bone sm:text-5xl">MORE THAN A PORTFOLIO</h2>
+				<h2 class="font-display text-4xl leading-none text-bone sm:text-5xl">BUILT IN THE OPEN</h2>
 				<p class="mt-4 text-[1rem] leading-relaxed text-steel">
-					Lightning Web is a small community too — devs, gamers, storm nerds, and everyone in
-					between. Come try the lightning rods.
+					Most of what I ship has its wires showing on GitHub — products, bots, experiments,
+					and the occasional beautiful disaster. Star something or watch the commits roll in.
 				</p>
 			</div>
 			<div class="flex flex-wrap gap-3">
 				<a
-					href="https://discord.gg/u2YBbHjJRh"
+					href="https://github.com/Lightningrod6"
 					target="_blank"
 					rel="noreferrer"
 					class="bg-volt px-6 py-3 font-mono text-[0.78rem] font-medium uppercase tracking-[0.18em] text-ink-950 transition-colors hover:bg-warn"
 				>
-					Join the discord
+					GitHub profile
 				</a>
 				<a
-					href="https://github.com/Lightningrod6"
-					target="_blank"
-					rel="noreferrer"
+					href="/projects"
 					class="border border-ink-800 px-6 py-3 font-mono text-[0.78rem] uppercase tracking-[0.18em] text-bone transition-colors hover:border-volt hover:text-volt"
 				>
-					GitHub profile
+					View projects
 				</a>
 			</div>
 		</div>

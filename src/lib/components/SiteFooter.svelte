@@ -3,7 +3,6 @@
 
 	const socials = [
 		{ href: 'https://github.com/Lightningrod6', label: 'GitHub /Lightningrod6', external: true },
-		{ href: 'https://discord.gg/u2YBbHjJRh', label: 'Discord community', external: true },
 		{ href: '/', label: 'Home', external: false }
 	];
 </script>

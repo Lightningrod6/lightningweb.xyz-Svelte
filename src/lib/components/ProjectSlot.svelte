@@ -10,12 +10,12 @@
 	let {
 		title = 'Your project here',
 		blurb = 'Have a project, a collab, or a gig in mind? The grid has an open slot — and the operator is open for work.',
-		cta = 'Open a line'
+		cta = 'Say hi on GitHub'
 	}: Props = $props();
 </script>
 
 <a
-	href="https://discord.gg/u2YBbHjJRh"
+	href="https://github.com/Lightningrod6"
 	target="_blank"
 	rel="noreferrer"
 	class="panel group flex flex-col border-dashed transition-all duration-200 hover:border-volt/60 hover:-translate-y-0.5 focus-visible:-translate-y-0.5"
