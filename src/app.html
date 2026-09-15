@@ -1,33 +1,39 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<link rel="stylesheet" href='https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap' />
 		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<title>Lightning Web</title>
-		<meta name="title" content="Lightning Web" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content="Welcome to Lightning web. This website is owned and operated by Liam Caywood who goes by Lightning or Lightningrod654 online. I am a web developer and python developer" />
+		<meta name="theme-color" content="#0c0e17" />
+		<link rel="icon" href="/favicon.png" />
+
+		<title>Lightning Web — Liam Caywood, full-stack developer</title>
+		<meta
+			name="description"
+			content="The personal site of Liam Caywood (Lightning) — backend developer, builder, and CS student at Cameron University. Python, FastAPI, TypeScript, and Svelte."
+		/>
 		<meta name="author" content="Lightning, Liam Caywood" />
-		<meta name="keywords" content="developer, portfolio, web, software, lightning, liam, python, svelte, liam, caywood2" />
-		
+		<meta name="keywords" content="developer, portfolio, web, software, lightning, liam, python, fastapi, svelte" />
+
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content="lightningweb.xyz" />
-		<meta property="og:title" content="Lightning Web" />
-		<meta property="og:description" content="Welcome to lightning web. Expect great things" />
-		<meta property="og:image" content="%sveltekit.assets%/logo.jpg" />
+		<meta property="og:url" content="https://lightningweb.xyz" />
+		<meta property="og:title" content="Lightning Web — Liam Caywood, full-stack developer" />
+		<meta
+			property="og:description"
+			content="Backend developer and builder. Python, FastAPI, TypeScript, Svelte — and the occasional tornado."
+		/>
+		<meta property="og:image" content="https://lightningweb.xyz/logo.jpg" />
 
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content="lightningweb.xyz" />
-		<meta property="twitter:title" content="Lightning Web" />
-		<meta property="twitter:description" content="Welcome to lightning web. Expect great things" />
-		<meta property="og:image" content="%sveltekit.assets%/logo.jpg" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Lightning Web — Liam Caywood, full-stack developer" />
+		<meta
+			name="twitter:description"
+			content="Backend developer and builder. Python, FastAPI, TypeScript, Svelte — and the occasional tornado."
+		/>
+		<meta name="twitter:image" content="https://lightningweb.xyz/logo.jpg" />
 
-		<link rel="stylesheet" href="%sveltekit.assets%/global.css">
 		%sveltekit.head%
 	</head>
-	<body data-sveltekit-preload-data="hover" class="bg-gray-800">
+	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>

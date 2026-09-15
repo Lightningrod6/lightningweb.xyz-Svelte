@@ -1,130 +1,214 @@
-<link rel="stylesheet" href='https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap' />
 <script lang="ts">
-    import { onMount } from 'svelte';
-    import { gsap } from "gsap";
-    import { TextPlugin } from 'gsap/all';
-    import Icon from '@iconify/svelte';
-    import { P } from 'flowbite-svelte';
-    
-    let easter_egg = false
+	import Bolt from '$lib/components/Bolt.svelte';
+	import DataPlate from '$lib/components/DataPlate.svelte';
+	import ProjectPanel from '$lib/components/ProjectPanel.svelte';
+	import ProjectSlot from '$lib/components/ProjectSlot.svelte';
+	import Ticker from '$lib/components/Ticker.svelte';
 
-    gsap.registerPlugin(TextPlugin);
-    var tl = gsap.timeline();
-    function easterEgg() {
-            let loopanimat = gsap.timeline()
-            console.log("Easter Egg was found!")
-            tl.to('.cool-header', {
-                    duration: 0.2,
-                    text: ''
-                })
-            tl.to('.projects-redirect', {
-                    duration: 0.2,
-                    text: ''
-                })
-            tl.to('.about-me-redirect', {
-                    duration: 0.2,
-                    text: ''
-                })
+	const heroPlate = {
+		rows: [
+			{ k: 'operator', v: 'Liam Caywood' },
+			{ k: 'base', v: 'Lawton, OK — 34.61°N, 98.39°W' },
+			{ k: 'study', v: 'CS · Cameron University (sophomore)' },
+			{ k: 'stack', v: 'Python · FastAPI · TypeScript · Svelte · Redis' },
+			{ k: 'availability', v: 'Open for work & collabs' }
+		]
+	};
 
-            tl.to('.contribution-redirect', {
-                    duration: 0.2,
-                    text: ''
-                })
+	const featured = [
+		{
+			name: 'Deadline',
+			blurb:
+				'Set a deadline, submit, and let it watch the clock. It emails you before the due date slips past — so you can focus on everything else.',
+			tags: ['SaaS', 'email alerts', '$9/mo', 'live'],
+			href: 'https://deadline.lightningweb.xyz',
+			status: 'live' as const,
+			cta: 'open product'
+		},
+		{
+			name: 'Conflicts Tracker',
+			blurb:
+				'Watches in-game world events — wars, deals, drama — across game universes and alerts you the moment something changes. FastAPI + Redis scrapers with a SvelteKit front end.',
+			tags: ['FastAPI', 'Redis', 'SvelteKit', 'live'],
+			href: 'https://conflicts-tracker.com',
+			status: 'live' as const,
+			cta: 'open product'
+		},
+		{
+			name: 'LightningWeb API',
+			blurb:
+				'My first real back end: a public multi-endpoint API for text generation, chat, and utilities. Still the home of my earliest shipping scars.',
+			tags: ['Python', 'api', 'llm'],
+			href: 'https://api.lightningweb.xyz',
+			status: 'live' as const,
+			cta: 'hit the api'
+		}
+	];
 
-            tl.to('.community-redirect', {
-                    duration: 0.2,
-                    text: ''
-                })
-
-            tl.to("body", {
-                backgroundColor: "black"
-            })
-            tl.to('.cool-header', {
-                    duration: 0.2,
-                    text: 'Lightning Web',
-                    fontFamily: 'Josefin Sans, sans-serif'
-            })
-            tl.to(".old-thing-lol", {
-                duration: 0.2,
-                text: "Lightning is a",
-                fontFamily: 'Josefin Sans, sans-serif'
-            })
-            tl.to('.old-thing-lol', {
-                duration: 0.2,
-                text: "Lightning is a developer",
-                fontFamily: 'Josefin Sans, sans-serif'
-            }, "-=1")
-            tl.fromTo(".directory", {
-                opacity: 0,
-                y: 100,
-                fontFamily: 'Josefin Sans, sans-serif'
-            }, {
-                opacity: 1,
-                y: 0
-            })
-        }
-    function IntroAnimation() {
-            tl.to('.cool-header', {
-            duration: 0.4,
-            text: 'Lightning Web',
-            ease: ''
-        });
-        tl.to('.cool-header', {
-            duration: 0.8,
-            y: "-390px",
-            ease: "sine.out"
-        });
-        tl.to('.projects-redirect', {
-            duration: 0.3,
-            text: 'Projects'
-        })
-        tl.to('.about-me-redirect', {
-            duration: 0.3,
-            text: 'About Me'
-        })
-        tl.to('.contribution-redirect', {
-            duration: 0.4,
-            text: 'Contributions'
-        })
-
-        tl.to('.community-redirect', {
-            duration: 0.5,
-            text: 'More than Lightning Web'
-        })
-    }
-    onMount(() => {
-        IntroAnimation();
-    });
+	const more = [
+		{
+			name: 'Bot-Bot',
+			blurb: 'Discord moderation bot, rebuilt from the ground up. Currently learning how not to break prod.',
+			tags: ['Python', 'discord'],
+			href: 'https://top.gg/bot/609076611609788427',
+			status: 'dev' as const,
+			cta: 'see the bot'
+		},
+		{
+			name: 'Voice work',
+			blurb: 'Voiced General Geratan in the Blade & Sorcery Audible Lore mod. Five lines, immortalized.',
+			tags: ['voice acting', 'Blade & Sorcery'],
+			href: 'https://www.nexusmods.com/bladeandsorcery/mods/11048',
+			status: 'other' as const,
+			cta: 'hear it'
+		}
+	];
 </script>
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
+<svelte:head>
+	<title>Lightning Web — Liam Caywood, full-stack developer</title>
+</svelte:head>
 
-    .cool-header {
-        margin-top: 400px;
-    }
+<!-- ============ HERO ============ -->
+<section class="mx-auto grid max-w-6xl gap-10 px-4 pb-16 pt-14 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:pt-20">
+	<div>
+		<p class="font-mono text-[0.72rem] uppercase tracking-[0.2em] text-dim">
+			<span class="text-volt">//</span> lightningweb.xyz — personal site of liam caywood
+		</p>
 
-    .redirects {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-    }
-</style>
+		<h1 class="mt-5 font-display leading-[0.88]">
+			<span class="block text-[clamp(2.5rem,9.5vw,7.5rem)] text-bone">LIGHTNING</span>
+			<span class="flex items-center gap-4 text-[clamp(2.5rem,9.5vw,7.5rem)] text-volt">
+				<Bolt class="h-[0.72em] w-[0.72em] text-volt" strike />
+				WEB
+			</span>
+		</h1>
 
+		<p class="mt-6 max-w-[52ch] text-lg leading-relaxed text-steel">
+			I build and operate web software — backend-first, Python and FastAPI at heart — and I'm
+			studying computer science at Cameron University. This is where I bolt the whole grid together.
+		</p>
 
+		<div class="mt-8 flex flex-wrap gap-3">
+			<a
+				href="/projects"
+				class="bg-volt px-6 py-3 font-mono text-[0.78rem] font-medium uppercase tracking-[0.18em] text-ink-950 transition-colors hover:bg-warn"
+			>
+				View projects
+			</a>
+			<a
+				href="/about-me"
+				class="border border-ink-800 px-6 py-3 font-mono text-[0.78rem] uppercase tracking-[0.18em] text-bone transition-colors hover:border-volt hover:text-volt"
+			>
+				More about me
+			</a>
+		</div>
+	</div>
 
-<h1 class="text-center text-3xl cool-header"></h1>
+	<DataPlate title="System status" led rows={heroPlate.rows} class="w-full" />
+</section>
 
-<div class="redirects">
-    <a href="/projects" ><h3 class="text-white text-center projects-redirect text-2xl"></h3></a>
-    <a href="/about-me"><h3 class="text-white text-center about-me-redirect text-2xl"></h3></a>
-    <a href="/contributions"><h3 class="text-white text-center contribution-redirect text-2xl"></h3></a>
-    <a href="/community"><h3 class="text-white text-center text-2xl community-redirect"></h3></a>
-</div>
+<Ticker />
 
-<div class="old">
-    <h2 class="old-thing-lol text-3xl text-center"></h2>
-    <h3 class="directory text-2xl text-center" style="opacity: 0;"><a href="/projects">Directory</a></h3>
-</div>
+<!-- ============ FEATURED PROJECTS ============ -->
+<section class="mx-auto max-w-6xl px-4 pt-20 sm:px-6">
+	<div class="flex flex-wrap items-end justify-between gap-4">
+		<div>
+			<p class="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-dim">what's running</p>
+			<h2 class="mt-2 font-display text-5xl leading-none text-bone sm:text-6xl">FEATURED PROJECTS</h2>
+		</div>
+		<a
+			href="/projects"
+			class="border border-ink-800 px-4 py-2 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-steel transition-colors hover:border-volt hover:text-volt"
+		>
+			All projects
+		</a>
+	</div>
 
-<a href="" on:click={easterEgg} class="text-gray-700">b</a>
+	<div class="mt-8 grid gap-4 md:grid-cols-3">
+		{#each featured as p (p.name)}
+			<ProjectPanel {...p} />
+		{/each}
+	</div>
+
+	<div class="mt-4 grid gap-4 md:grid-cols-3">
+		{#each more as p (p.name)}
+			<ProjectPanel {...p} />
+		{/each}
+		<ProjectSlot />
+	</div>
+</section>
+
+<!-- ============ OPERATOR ============ -->
+<section class="mx-auto grid max-w-6xl gap-10 px-4 pt-24 sm:px-6 lg:grid-cols-[1fr_0.9fr] lg:items-start">
+	<div>
+		<p class="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-dim">the operator</p>
+		<h2 class="mt-2 font-display text-5xl leading-none text-bone sm:text-6xl">ABOUT ME</h2>
+		<p class="mt-6 max-w-[56ch] text-[1.05rem] leading-relaxed text-steel">
+			I'm a CS student who got hooked on shipping things people actually use. Backend is my
+			home — APIs, scrapers, databases, bots — but I've gone deep enough into the front end
+			(Svelte, TypeScript) to build complete products on my own. At the moment I'm running
+			Deadline, a real paid SaaS, and keeping an eye on a few more ideas waiting to strike.
+		</p>
+		<a
+			href="/about-me"
+			class="mt-6 inline-block border border-ink-800 px-4 py-2 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-steel transition-colors hover:border-volt hover:text-volt"
+		>
+			Read the full profile
+		</a>
+	</div>
+
+	<div class="panel">
+		<div class="border-b border-ink-800 px-5 py-3">
+			<span class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-dim">loadout</span>
+		</div>
+		<div class="divide-y divide-ink-800/70">
+			<div class="px-5 py-4">
+				<p class="font-mono text-[0.66rem] uppercase tracking-[0.16em] text-dim">backend</p>
+				<p class="mt-1.5 text-[0.95rem] text-bone">Python · FastAPI · Redis · SQL</p>
+			</div>
+			<div class="px-5 py-4">
+				<p class="font-mono text-[0.66rem] uppercase tracking-[0.16em] text-dim">frontend</p>
+				<p class="mt-1.5 text-[0.95rem] text-bone">TypeScript · Svelte 5 · SvelteKit</p>
+			</div>
+			<div class="px-5 py-4">
+				<p class="font-mono text-[0.66rem] uppercase tracking-[0.16em] text-dim">on the side</p>
+				<p class="mt-1.5 text-[0.95rem] text-bone">C# · game mods · meteorology · awful puns</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ============ COMMUNITY ============ -->
+<section class="mx-auto max-w-6xl px-4 pt-24 sm:px-6">
+	<div class="panel relative">
+		<div class="hazard-stripe-thin h-1.5"></div>
+		<div class="flex flex-col gap-8 px-6 py-8 sm:px-10 md:flex-row md:items-center md:justify-between">
+			<div class="max-w-[52ch]">
+				<h2 class="font-display text-4xl leading-none text-bone sm:text-5xl">MORE THAN A PORTFOLIO</h2>
+				<p class="mt-4 text-[1rem] leading-relaxed text-steel">
+					Lightning Web is a small community too — devs, gamers, storm nerds, and everyone in
+					between. Come try the lightning rods.
+				</p>
+			</div>
+			<div class="flex flex-wrap gap-3">
+				<a
+					href="https://discord.gg/u2YBbHjJRh"
+					target="_blank"
+					rel="noreferrer"
+					class="bg-volt px-6 py-3 font-mono text-[0.78rem] font-medium uppercase tracking-[0.18em] text-ink-950 transition-colors hover:bg-warn"
+				>
+					Join the discord
+				</a>
+				<a
+					href="https://github.com/Lightningrod6"
+					target="_blank"
+					rel="noreferrer"
+					class="border border-ink-800 px-6 py-3 font-mono text-[0.78rem] uppercase tracking-[0.18em] text-bone transition-colors hover:border-volt hover:text-volt"
+				>
+					GitHub profile
+				</a>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,38 +1,38 @@
-# create-svelte
+# lightningweb.xyz
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+The personal site of Liam Caywood (Lightning) — rebuilt on the modern Svelte stack.
 
-## Creating a project
+## Stack
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **Svelte 5** (runes) + **SvelteKit 2**
+- **Tailwind CSS v4** (CSS-first tokens, no config file)
+- **@sveltejs/adapter-cloudflare** — deploys to Cloudflare Pages
+- Fonts: Bebas Neue (display), Archivo Variable (body), JetBrains Mono Variable (data)
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Design
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+High-voltage signage: near-black navy canvas, hazard-yellow bolt accent, sharp-corner panels,
+mono data plates, and one orchestrated motion moment (the hero bolt strike). No gradients,
+no rounded cards, no GSAP.
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
 ```bash
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
 ## Building
 
-To create a production version of your app:
-
 ```bash
-npm run build
+npm run check   # svelte-check
+npm run build   # production build into dist/ (Cloudflare Pages output)
 ```
 
-You can preview the production build with `npm run preview`.
+## Pages
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- `/` — hero, system status plate, featured projects, about teaser, community strip
+- `/projects` — everything wired up
+- `/about-me` — personnel file
+- `/contributions` — voice acting cameo
+- `/community` — the Discord hub

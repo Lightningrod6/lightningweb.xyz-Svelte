@@ -1,78 +1,133 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
- 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 224 71.4% 4.1%;
- 
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
- 
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
- 
-    --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
- 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
- 
-    --primary: 220.9 39.3% 11%;
-    --primary-foreground: 210 20% 98%;
- 
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
- 
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
- 
-    --destructive: 0 72.2% 50.6%;
-    --destructive-foreground: 210 20% 98%;
- 
-    --ring: 224 71.4% 4.1%;
- 
-    --radius: 0.5rem;
-  }
- 
-  .dark {
-    --background: 224 71.4% 4.1%;
-    --foreground: 210 20% 98%;
- 
-    --muted: 215 27.9% 16.9%;
-    --muted-foreground: 217.9 10.6% 64.9%;
- 
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 210 20% 98%;
- 
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 20% 98%;
- 
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
- 
-    --primary: 210 20% 98%;
-    --primary-foreground: 220.9 39.3% 11%;
- 
-    --secondary: 215 27.9% 16.9%;
-    --secondary-foreground: 210 20% 98%;
- 
-    --accent: 215 27.9% 16.9%;
-    --accent-foreground: 210 20% 98%;
- 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 98%;
- 
-    --ring: 216 12.2% 83.9%;
-  }
+@import 'tailwindcss';
+@import '@fontsource-variable/archivo';
+@import '@fontsource/bebas-neue';
+@import '@fontsource-variable/jetbrains-mono';
+
+/* ---------- design tokens ---------- */
+@theme {
+	--font-display: 'Bebas Neue', 'Archivo Variable', sans-serif;
+	--font-sans: 'Archivo Variable', system-ui, sans-serif;
+	--font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+
+	/* palette: high-voltage signage on near-black navy */
+	--color-ink-950: oklch(15% 0.028 262);
+	--color-ink-900: oklch(20% 0.035 262);
+	--color-ink-800: oklch(27% 0.042 262);
+	--color-steel: oklch(72% 0.022 255);
+	--color-bone: oklch(96% 0.006 250);
+	--color-volt: oklch(87% 0.16 100);
+	--color-live: oklch(72% 0.15 148);
+	--color-warn: oklch(68% 0.14 70);
+	--color-dim: oklch(58% 0.05 260);
+
+	/* motion */
+	--animate-led: led-pulse 2.6s ease-in-out infinite;
+	--animate-ticker: ticker 42s linear infinite;
+	--animate-bolt: bolt-draw 0.9s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+
+	@keyframes led-pulse {
+		0%,
+		100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.3;
+		}
+	}
+	@keyframes ticker {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-50%);
+		}
+	}
+	@keyframes bolt-draw {
+		from {
+			stroke-dashoffset: 320;
+		}
+		to {
+			stroke-dashoffset: 0;
+		}
+	}
 }
- 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+
+/* ---------- base ---------- */
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: var(--color-ink-950);
+	color: var(--color-bone);
+	font-family: var(--font-sans);
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+/* faint blueprint grid behind everything */
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	background-image:
+		linear-gradient(to right, oklch(96% 0.006 250 / 0.035) 1px, transparent 1px),
+		linear-gradient(to bottom, oklch(96% 0.006 250 / 0.035) 1px, transparent 1px);
+	background-size: 44px 44px;
+}
+
+::selection {
+	background: var(--color-volt);
+	color: var(--color-ink-950);
+}
+
+:focus-visible {
+	outline: 2px solid var(--color-volt);
+	outline-offset: 2px;
+}
+
+/* ---------- utilities ---------- */
+.hazard-stripe {
+	background-image: repeating-linear-gradient(
+		-45deg,
+		var(--color-volt) 0 12px,
+		var(--color-ink-950) 12px 24px
+	);
+}
+
+.hazard-stripe-thin {
+	background-image: repeating-linear-gradient(
+		-45deg,
+		var(--color-volt) 0 8px,
+		var(--color-ink-950) 8px 16px
+	);
+}
+
+.panel {
+	border: 1px solid oklch(36% 0.05 262);
+	background: color-mix(in oklch, var(--color-ink-900) 92%, transparent);
+	box-shadow: inset 0 1px 0 oklch(96% 0.006 250 / 0.045);
+}
+
+/* the strike-on-load bolt */
+.bolt-ink {
+	stroke-dasharray: 320;
+	stroke-dashoffset: 0;
+	filter: drop-shadow(0 0 14px oklch(87% 0.16 100 / 0.55));
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.animate-led,
+	.animate-ticker {
+		animation: none;
+	}
+	.bolt-ink {
+		stroke-dasharray: none;
+		filter: none;
+	}
+	html {
+		scroll-behavior: auto;
+	}
 }

@@ -1,73 +1,74 @@
-<script lang='ts'>
-    import { Card } from 'flowbite-svelte';
-    import { gsap } from 'gsap'
-    import { TextPlugin } from 'gsap/all';
-    import { onMount } from 'svelte';
-   
-    gsap.registerPlugin(TextPlugin);
-   
-    function introAnimation() {
-      const tl = gsap.timeline();
-      tl.to('.projects-header', {
-        duration: 0.2,
-        text: 'Projects',
-      });
-      tl.from('.project-card', {
-        duration: 0.2,
-        y: 50,
-        opacity: 0,
-        stagger: 0.2,
-        ease: 'power2.out',
-      }, '-=0.5');
-    }
-   
-    onMount(() => {
-      introAnimation();
-    });
-   </script>
-   
-   <style>
-    .page-container {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    .content {
-      flex: 1;
-      padding: 2rem 0;
-    }
-    .projects {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      max-width: 400px;
-      margin: 0 auto;
-    }
-    .project-card {
-      width: 300px;
-    }
-    .go-back-button {
-      padding: 1rem;
-    }
-   </style>
-   
-   <div class="page-container">
-     <div class="content">
-       <h1 class="projects-header text-3xl mb-8 text-center"></h1>
-       <div class="projects m-10">
-         <Card href="https://top.gg/bot/609076611609788427" class="project-card bg-gray-700 hover:bg-gray-600 transition-colors duration-300 ease-in-out">
-           <h3 class="text-white text-2xl text-center mb-2">Bot-Bot</h3>
-           <p class="text-white text-center">Currently being rewritten into a powerful moderation bot</p>
-         </Card>
-         <Card href="https://api.lightningweb.xyz" class="project-card bg-gray-700 hover:bg-gray-600 transition-colors duration-300 ease-in-out">
-           <h3 class="text-white text-2xl text-center mb-2">LightningWeb API</h3>
-           <p class="text-white text-center">An API containing multiple generative AIs and a chat API using llama 3!</p>
-         </Card>
+<script lang="ts">
+	import ProjectPanel from '$lib/components/ProjectPanel.svelte';
+	import ProjectSlot from '$lib/components/ProjectSlot.svelte';
 
-       </div>
-     </div>
-     <div class="go-back-button">
-       <a href="/" class="text-white hover:text-gray-300">Go Back</a>
-     </div>
-   </div>
+	const projects = [
+		{
+			name: 'Deadline',
+			blurb:
+				'Set a deadline, submit, and let it watch the clock. It emails you before the due date slips past — so you can focus on everything else. My first real paid product.',
+			tags: ['SaaS', 'email alerts', 'stripe', 'live'],
+			href: 'https://deadline.lightningweb.xyz',
+			status: 'live' as const,
+			cta: 'open product'
+		},
+		{
+			name: 'Conflicts Tracker',
+			blurb:
+				'Watches in-game world events — wars, deals, drama — across game universes and alerts you the moment something changes. FastAPI + Redis scrapers with a SvelteKit front end.',
+			tags: ['fastapi', 'redis', 'scrapers', 'sveltekit', 'live'],
+			href: 'https://conflicts-tracker.com',
+			status: 'live' as const,
+			cta: 'open product'
+		},
+		{
+			name: 'LightningWeb API',
+			blurb:
+				'My first real back end: a public multi-endpoint API for text generation, chat, and utilities. Where I learned what production actually means.',
+			tags: ['python', 'api', 'llm', 'live'],
+			href: 'https://api.lightningweb.xyz',
+			status: 'live' as const,
+			cta: 'hit the api'
+		},
+		{
+			name: 'Bot-Bot',
+			blurb:
+				'Discord moderation bot, rebuilt from the ground up. Slightly less likely to ban a friend than it used to be. Currently in active development.',
+			tags: ['python', 'discord', 'moderation'],
+			href: 'https://top.gg/bot/609076611609788427',
+			status: 'dev' as const,
+			cta: 'see the bot'
+		},
+		{
+			name: 'Audible Lore — B&S',
+			blurb:
+				'Voiced General Geratan in this Blade & Sorcery mod that adds voice acting to the game\'s lore. Five lines, zero retakes, one proud voice actor.',
+			tags: ['voice acting', 'blade & sorcery'],
+			href: 'https://www.nexusmods.com/bladeandsorcery/mods/11048',
+			status: 'other' as const,
+			cta: 'hear it'
+		}
+	];
+</script>
+
+<svelte:head>
+	<title>Projects — Lightning Web</title>
+</svelte:head>
+
+<section class="mx-auto max-w-6xl px-4 pt-14 sm:px-6">
+	<p class="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-dim">
+		<span class="text-volt">//</span> everything with wires showing
+	</p>
+	<h1 class="mt-2 font-display text-[clamp(2.5rem,9vw,6rem)] leading-none text-bone">PROJECTS</h1>
+	<p class="mt-5 max-w-[58ch] text-[1.05rem] leading-relaxed text-steel">
+		Things I've built, broken, rebuilt, and shipped. Live products first, experiments after,
+		one voice-acting cameo at the end just to keep you guessing.
+	</p>
+</section>
+
+<section class="mx-auto grid max-w-6xl gap-4 px-4 pt-10 sm:px-6 md:grid-cols-2">
+	{#each projects as p (p.name)}
+		<ProjectPanel {...p} />
+	{/each}
+	<ProjectSlot />
+</section>

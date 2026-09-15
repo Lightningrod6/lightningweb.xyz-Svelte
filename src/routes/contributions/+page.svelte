@@ -1,49 +1,29 @@
 <script lang="ts">
-    import { Card } from 'flowbite-svelte';
-    import { gsap } from 'gsap';
-    import { TextPlugin } from 'gsap/all';
-    import { onMount } from 'svelte';
-
-    gsap.registerPlugin(TextPlugin);
-
-    function intro() {
-        var tl = gsap.timeline();
-
-        tl.to('.cont-header', {
-            duration: 0.4,
-            text: 'Contributions',
-        });
-
-        tl.from('.project-card', {
-            duration: 0.8,
-            y: 50,
-            opacity: 0,
-            stagger: 0.2,
-            ease: 'power2.out',
-        }, '-=0.5');
-    }
-
-    onMount(() => {
-        intro();
-    })
-
-    
+	import ProjectPanel from '$lib/components/ProjectPanel.svelte';
 </script>
 
+<svelte:head>
+	<title>Contributions — Lightning Web</title>
+</svelte:head>
 
-<div class="container flex flex-col min-h-screen">
-    <div class="flex-1 p-2 space-y-4">
-        <h1 class="text-3xl text-center cont-header"></h1>
-        <div class="flex flex-wrap justify-center gap-1 max-w-[400px] m-auto">
-        <Card href="https://www.nexusmods.com/bladeandsorcery/mods/11048" class="project-card bg-gray-700 hover:bg-gray-600 transition-colors duration-300 ease-in-out max-w[30px]">
-            <h1 class="text-white text-2xl text-center">B&S Audible Lore Mod</h1>
-            <h3 class="text-white text-lg text-center mb-2">Made by: HuJohner</h3>
-            <p class="text-white text-center">A Blade & Sorcery mod that adds voice overs to the lore. I participated in it as a voice actor for a character called "General Geratan" with 5 voice lines recorded</p>
-        </Card>
-        </div>
-    </div>
-    <div class="p-1">
-        <a href="/" class="text-white hover:text-gray-300">Go Back</a>
-    </div>
+<section class="mx-auto max-w-6xl px-4 pt-14 sm:px-6">
+	<p class="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-dim">
+		<span class="text-volt">//</span> not everything ships as code
+	</p>
+	<h1 class="mt-2 font-display text-[clamp(2.5rem,9vw,6rem)] leading-none text-bone">CONTRIBUTIONS</h1>
+	<p class="mt-5 max-w-[58ch] text-[1.05rem] leading-relaxed text-steel">
+		Cameos and helping hands — things I've added to other people's worlds when the coding itch
+		wasn't the one scratching.
+	</p>
+</section>
 
-</div>
+<section class="mx-auto grid max-w-6xl gap-4 px-4 pt-10 sm:px-6 md:grid-cols-2">
+	<ProjectPanel
+		name="Audible Lore Mod"
+		blurb="Voice actor for the Blade & Sorcery mod that brings the game's lore to life. I played General Geratan — five recorded lines, full commitment, zero hindsight regrets."
+		tags={['voice acting', 'blade & sorcery', 'by hujohner']}
+		href="https://www.nexusmods.com/bladeandsorcery/mods/11048"
+		status="other"
+		cta="hear the lines"
+	/>
+</section>
