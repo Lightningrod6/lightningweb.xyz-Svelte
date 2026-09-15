@@ -8,5 +8,13 @@ export default defineConfig({
 			'@gsap/shockingly'
 		],
 	},
-	plugins: [sveltekit()]
+	plugins: [sveltekit()],
+	server: {
+		proxy: {
+			'/socket.io': {
+				target: 'http://localhost:3000', // Your socket.io server URL
+				ws: true, // Enable WebSocket proxying
+			},
+		},
+	},
 });

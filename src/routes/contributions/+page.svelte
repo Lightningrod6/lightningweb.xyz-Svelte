@@ -33,7 +33,7 @@
 
 <div class="container flex flex-col min-h-screen">
     <div class="flex-1 p-2 space-y-4">
-        <h1 class="text-3xl text-center cont-header"></h1>
+        <h1 class="text-3xl text-center cont-header">Contributions</h1>
         <div class="flex flex-wrap justify-center gap-1 max-w-[400px] m-auto">
         <Card href="https://www.nexusmods.com/bladeandsorcery/mods/11048" class="project-card bg-gray-700 hover:bg-gray-600 transition-colors duration-300 ease-in-out max-w[30px]">
             <h1 class="text-white text-2xl text-center">B&S Audible Lore Mod</h1>

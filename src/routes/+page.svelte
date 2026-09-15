@@ -5,10 +5,17 @@
     import { TextPlugin } from 'gsap/all';
     import Icon from '@iconify/svelte';
     import { P } from 'flowbite-svelte';
+    import socket from '$lib/socketClient';
+
+    socket.on('message', (data) => {
+        console.log('Message from server:', data);
+    })
     
     let easter_egg = false
 
-    gsap.registerPlugin(TextPlugin);
+    if(typeof window !== 'undefined') {
+      gsap.registerPlugin(TextPlugin);
+    }
     var tl = gsap.timeline();
     function easterEgg() {
             let loopanimat = gsap.timeline()
@@ -64,7 +71,8 @@
             })
         }
     function IntroAnimation() {
-            tl.to('.cool-header', {
+        gsap.set(['.cool-header', '.projects-redirect', '.about-me-redirect', '.contribution-redirect', '.community-redirect'], { textContent: '' });
+        tl.to('.cool-header', {
             duration: 0.4,
             text: 'Lightning Web',
             ease: ''
@@ -113,18 +121,14 @@
 
 
 
-<h1 class="text-center text-3xl cool-header"></h1>
+<h1 class="text-center text-3xl cool-header">Lightning Web</h1>
 
 <div class="redirects">
-    <a href="/projects" ><h3 class="text-white text-center projects-redirect text-2xl"></h3></a>
-    <a href="/about-me"><h3 class="text-white text-center about-me-redirect text-2xl"></h3></a>
-    <a href="/contributions"><h3 class="text-white text-center contribution-redirect text-2xl"></h3></a>
-    <a href="/community"><h3 class="text-white text-center text-2xl community-redirect"></h3></a>
+    <a href="/projects" ><h3 class="text-white text-center projects-redirect text-2xl">Projects</h3></a>
+    <a href="/about-me"><h3 class="text-white text-center about-me-redirect text-2xl">About Me</h3></a>
+    <a href="/contributions"><h3 class="text-white text-center contribution-redirect text-2xl">Contributions</h3></a>
+    <a href="/community"><h3 class="text-white text-center text-2xl community-redirect">More than Lightning Web</h3></a>
 </div>
 
-<div class="old">
-    <h2 class="old-thing-lol text-3xl text-center"></h2>
-    <h3 class="directory text-2xl text-center" style="opacity: 0;"><a href="/projects">Directory</a></h3>
-</div>
 
-<a href="" on:click={easterEgg} class="text-gray-700">b</a>
+<button on:click={easterEgg} class="text-gray-700 bg-transparent p-0">b</button>
