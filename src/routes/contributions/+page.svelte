@@ -12,7 +12,7 @@
 	</p>
 	<h1 class="mt-2 font-display text-[clamp(2.5rem,9vw,6rem)] leading-none text-bone">CONTRIBUTIONS</h1>
 	<p class="mt-5 max-w-[58ch] text-[1.05rem] leading-relaxed text-steel">
-		Cameos and helping hands — things I've added to other people's worlds when the coding itch
+		Cameos and helping hands - things I've added to other people's worlds when the coding itch
 		wasn't the one scratching.
 	</p>
 </section>

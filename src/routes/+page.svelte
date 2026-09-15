@@ -85,8 +85,7 @@
 		</h1>
 
 		<p class="mt-6 max-w-[52ch] text-lg leading-relaxed text-steel">
-			I build and operate web software — backend-first, Python and FastAPI at heart — and I'm
-			studying computer science at Cameron University. This is where I bolt the whole grid together.
+			Building software first, worry about the details later. I show my hands in the stuff that people dont see.
 		</p>
 
 		<div class="mt-8 flex flex-wrap gap-3">
@@ -145,10 +144,11 @@
 		<p class="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-dim">the operator</p>
 		<h2 class="mt-2 font-display text-5xl leading-none text-bone sm:text-6xl">ABOUT ME</h2>
 		<p class="mt-6 max-w-[56ch] text-[1.05rem] leading-relaxed text-steel">
-			I'm a CS student who got hooked on shipping things people actually use. Backend is my
-			home — APIs, scrapers, databases, bots — but I've gone deep enough into the front end
-			(Svelte, TypeScript) to build complete products on my own. At the moment I'm running
-			Deadline, a real paid SaaS, and keeping an eye on a few more ideas waiting to strike.
+			I'm a CS student addicted to creating the next thing. Using AI, it allows me to 
+			focus on the big picture and go bigger than I ever could. I focus on the back while
+			my agent works on the front. I have a strong passion for web development and an even
+			stronger passion for geopolitics. Why not combine those two into a single product? 
+			Oh wait, someone already did that, me.
 		</p>
 		<a
 			href="/about-me"

@@ -15,7 +15,7 @@
 		{
 			name: 'Conflicts Tracker',
 			blurb:
-				'Watches in-game world events — wars, deals, drama — across game universes and alerts you the moment something changes. FastAPI + Redis scrapers with a SvelteKit front end.',
+				'Current events, wars and crises, all in one place. Getting the latest from a variety of sources and slimming out the narrative to give you the facts.',
 			tags: ['fastapi', 'redis', 'scrapers', 'sveltekit', 'live'],
 			href: 'https://conflicts-tracker.com',
 			status: 'live' as const,
@@ -24,7 +24,7 @@
 		{
 			name: 'LightningWeb API',
 			blurb:
-				'My first real back end: a public multi-endpoint API for text generation, chat, and utilities. Where I learned what production actually means.',
+				'My first backend API, back when Deepinfra didnt have a lock.',
 			tags: ['python', 'api', 'llm', 'live'],
 			href: 'https://api.lightningweb.xyz',
 			status: 'live' as const,

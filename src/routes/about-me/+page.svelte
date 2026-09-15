@@ -3,35 +3,49 @@
 
 	const milestones = [
 		{
+			year: '2019',
+			title: 'First steps',
+			body: "There was a cool social app called Discord. I wanted to make a bot for it and it all started on a small prepaid phone using an app that had python"
+		},
+		{
+			year: '2022',
+			title: 'ADHDmaxxing',
+			body: 'While I was attending GPTC, I was more into learning about programming instead of paying attention in class. I learned a lot at a cost.'
+		}
+		{
 			year: '2023',
-			title: 'First site, first scrapes',
-			body: 'Built the first version of this website in plain HTML and taught myself Python. Started making Discord bots for fun.'
+			title: 'Portfolio without Projects',
+			body: 'On my summer vacation, I started to learn more and more about programming and eventually was introduced to HTML, CSS and Javascript. This site was originally built on pure HTML and CSS.'
 		},
 		{
 			year: '2024',
-			title: 'First real back end',
-			body: 'Shipped the LightningWeb API — generative AI endpoints in Python — and got my first taste of running something in production.'
+			title: 'A real web app',
+			body: 'After discovering how webapps worked, I decided to build my own and shape it around lightningweb. I started out with Flask and started to learn more about backend development. I then moved on to FastAPI and Sveltekit came along to help me build a better frontend'
 		},
 		{
 			year: '2025',
-			title: 'Into the deep end',
-			body: 'Went all-in on FastAPI and TypeScript, rebuilt my stack on Svelte, and started computer science at Cameron University.'
+			title: 'Wartime',
+			body: 'With the world on fire, I got distracted and more interested into geopolitics. Thats when I was inspired to build Conflicts Tracker. It taught me about webscraping and how to create background tasks. This also lead me into using Redis and Postgres.'
 		},
 		{
 			year: '2026',
 			title: 'First paid product',
-			body: 'Launched Deadline as a real SaaS with Stripe billing, email alerts, and actual users. This site got the full 2026 treatment.'
+			body: 'An exciting year of AI, releasing my first SaaS product, Deadline. With enough credits, anything is possible'
 		}
 	];
 
 	const offClock = [
 		{
 			name: 'Meteorology',
-			body: 'Weather research and storm watching. The name "Lightning" wasn\'t a marketing decision — it\'s a personality trait.'
+			body: 'Weather research and storm watching. The name "Lightning" wasn\'t a marketing decision - it\'s a personality trait.'
+		},
+		{
+			name: "Situation Monitoring",
+			body: "Keeping track of global conflicts, wars and crises"
 		},
 		{
 			name: 'Game modding',
-			body: 'C# mods for Schedule 1, Rust, and Bonelab. Breaking games is research; fixing them is a hobby.'
+			body: 'Modding games that use Unity like Rust and BoneLab'
 		},
 		{
 			name: 'Voice acting',
@@ -56,11 +70,12 @@
 		<div>
 			<p class="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-dim">the short version</p>
 			<p class="mt-3 max-w-[56ch] text-[1.05rem] leading-relaxed text-steel">
-				I'm Liam — 21, a computer science sophomore at Cameron University in Lawton, Oklahoma.
-				I'm a backend developer at heart: Python, FastAPI, Redis, and SQL are my home turf, and
-				TypeScript + Svelte are how I build the front ends when a product needs to be whole.
-				Right now the main project is Deadline, a paid deadline-tracker SaaS, with a few more
-				storms forming on the horizon.
+				I'm Liam - 21, a computer science sophomore at Cameron University in Lawton, Oklahoma.
+				I'm a backend developer using Python, FastAPI, Redis, and SQL. I prefer to use Sveltekit along side
+				TypeScript for my frontend (with some amazing help from AI). I have a strong passion for web development,
+				Geopolitics, and meteorology. My mind is always floating with ideas and I am always
+				looking for new ways to improve my skills. I am self-taught and mainly
+				learned from YouTube videos about discord bots.
 			</p>
 		</div>
 
@@ -73,7 +88,7 @@
 				</li>
 				<li>
 					<span class="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-volt">frontend</span>
-					<span class="text-steel"> — TypeScript, Svelte 5, SvelteKit, Tailwind, CSS that doesn't fight back.</span>
+					<span class="text-steel"> — TypeScript, Svelte 5, SvelteKit, Tailwind, CSS.</span>
 				</li>
 				<li>
 					<span class="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-volt">ops</span>
