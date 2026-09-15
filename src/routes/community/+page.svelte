@@ -11,6 +11,7 @@
 
 <svelte:head>
 	<title>Community — Lightning Web</title>
+	<meta name="robots" content="noindex, nofollow" />
 </svelte:head>
 
 <section class="mx-auto max-w-6xl px-4 pt-14 sm:px-6">
