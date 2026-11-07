@@ -20,18 +20,18 @@
 			name: 'Deadline',
 			blurb:
 				'Set a deadline, submit, and let it watch the clock. It emails you before the due date slips past — so you can focus on everything else.',
-			tags: ['SaaS', 'email alerts', '$9/mo', 'live'],
+			tags: ['SaaS', 'email alerts', '$9/mo'],
 			href: 'https://deadline.lightningweb.xyz',
-			status: 'live' as const,
+			status: 'offline' as const,
 			cta: 'open product'
 		},
 		{
 			name: 'Conflicts Tracker',
 			blurb:
-				'Watches in-game world events — wars, deals, drama — across game universes and alerts you the moment something changes. FastAPI + Redis scrapers with a SvelteKit front end.',
+				'Wartime dashboard that monitors events around the world. Uses accurate information to deliver fast and relable updates for those who wish to stay informed.',
 			tags: ['FastAPI', 'Redis', 'SvelteKit', 'live'],
 			href: 'https://conflicts-tracker.com',
-			status: 'live' as const,
+			status: 'dev' as const,
 			cta: 'open product'
 		},
 		{
@@ -40,7 +40,7 @@
 				'My first real back end: a public multi-endpoint API for text generation, chat, and utilities. Still the home of my earliest shipping scars.',
 			tags: ['Python', 'api', 'llm'],
 			href: 'https://api.lightningweb.xyz',
-			status: 'live' as const,
+			status: 'offline' as const,
 			cta: 'hit the api'
 		}
 	];
