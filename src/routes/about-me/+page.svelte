@@ -30,7 +30,7 @@
 		{
 			year: '2026',
 			title: 'First paid product',
-			body: 'An exciting year of AI, releasing my first SaaS product, Deadline. With enough credits, anything is possible'
+			body: 'An exciting year of AI, releasing my first SaaS product, Deadline.'
 		}
 	];
 
@@ -123,7 +123,7 @@
 				{ k: 'age', v: '21' },
 				{ k: 'role', v: 'Full-stack dev, backend-leaning' },
 				{ k: 'education', v: 'CS · Cameron University' },
-				{ k: 'based', v: 'Lawton, Oklahoma, USA' }
+				{ k: 'based', v: 'Oklahoma, USA' }
 			]}
 		/>
 		<a

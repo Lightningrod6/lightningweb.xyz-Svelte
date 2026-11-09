@@ -40,9 +40,9 @@
 				'My first real back end: a public multi-endpoint API for text generation, chat, and utilities. Still the home of my earliest shipping scars.',
 			tags: ['Python', 'api', 'llm'],
 			href: 'https://api.lightningweb.xyz',
-			status: 'offline' as const,
+			status: 'dev' as const,
 			cta: 'hit the api'
-		}
+		},
 	];
 
 	const more = [
@@ -61,6 +61,14 @@
 			href: 'https://www.nexusmods.com/bladeandsorcery/mods/11048',
 			status: 'other' as const,
 			cta: 'hear it'
+		},
+		{
+			name: "Elections 26",
+			blurb: "Elections dashboard for the 2026 US midterms. Built to track and visualize results from the house, senate and governor races",
+			tags: ['FastAPI', 'Redis', 'SvelteKit', 'live'],
+			href: 'https://elections.conflicts-tracker.com',
+			status: 'live' as const,
+			cta: 'see the dashboard'
 		}
 	];
 </script>
