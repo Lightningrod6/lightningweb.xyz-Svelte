@@ -7,13 +7,12 @@ The personal site of Liam Caywood (Lightning) — rebuilt on the modern Svelte s
 - **Svelte 5** (runes) + **SvelteKit 2**
 - **Tailwind CSS v4** (CSS-first tokens, no config file)
 - **@sveltejs/adapter-cloudflare** — deploys to Cloudflare Pages
-- Fonts: Bebas Neue (display), Archivo Variable (body), JetBrains Mono Variable (data)
+- Fonts: the system font stack (no web fonts)
 
 ## Design
 
-High-voltage signage: near-black navy canvas, hazard-yellow bolt accent, sharp-corner panels,
-mono data plates, and one orchestrated motion moment (the hero bolt strike). No gradients,
-no rounded cards, no GSAP.
+Simple and quiet: one narrow column, the system font, ink on off-white (with a dark mode that follows the OS),
+plain underlined links, thin rules between projects, and no animation. All copy lives in `src/lib/content.ts`.
 
 ## Developing
 
