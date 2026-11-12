@@ -3,12 +3,12 @@
 	import { site } from '$lib/content';
 </script>
 
-<header class="wrap">
-	<div class="masthead flex flex-wrap items-end justify-between gap-x-6 gap-y-2 pt-6 pb-3">
-		<a href="/" class="word" aria-label={site.brand.homeLabel}>
-			<span class="sentence inline-block">{site.brand.a}</span>&nbsp;<span class="sentence inline-block">{site.brand.b}</span><span class="tld">{site.brand.tld}</span>
+<header class="block-navy">
+	<div class="wrap flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-4">
+		<a href="/" class="word wide-black" aria-label={site.brand.homeLabel}>
+			<span class="text-[var(--yellow)]">{site.brand.a}</span><span>{site.brand.b}</span><span class="text-[var(--red)]">{site.brand.tld}</span>
 		</a>
-		<nav class="flex gap-7 pb-1 text-[0.9375rem]" aria-label="Primary">
+		<nav class="flex gap-2" aria-label="Primary">
 			{#each site.nav as link (link.href)}
 				{@const active = page.url.pathname === link.href}
 				<a href={link.href} aria-current={active ? 'page' : undefined} class="nav" class:active>{link.label}</a>
@@ -18,36 +18,24 @@
 </header>
 
 <style>
-	.masthead {
-		border-bottom: 3px double var(--ink);
-	}
 	.word {
-		font-family: var(--font-display);
-		font-size: 1.875rem;
+		font-size: 1.375rem;
 		line-height: 1;
-		letter-spacing: -0.01em;
-	}
-	.tld {
-		font-family: var(--font-sans);
-		font-size: 0.875rem;
-		font-weight: 600;
-		letter-spacing: 0.06em;
-		color: var(--red);
-		margin-left: 0.15em;
-		text-transform: lowercase;
 	}
 	.nav {
-		color: var(--soft);
-		font-weight: 500;
+		font-weight: 800;
+		font-stretch: 112%;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		font-size: 0.875rem;
+		padding: 0.45rem 0.8rem 0.4rem;
+		border: 2px solid transparent;
 	}
 	.nav:hover {
-		color: var(--ink);
+		border-color: var(--cream);
 	}
 	.nav.active {
-		color: var(--ink);
-		text-decoration: underline;
-		text-decoration-color: var(--red);
-		text-decoration-thickness: 2px;
-		text-underline-offset: 0.45em;
+		background: var(--yellow);
+		color: var(--navy);
 	}
 </style>

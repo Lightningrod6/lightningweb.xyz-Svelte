@@ -1,65 +1,40 @@
 @import 'tailwindcss';
-@import '@fontsource-variable/libre-franklin';
-@import '@fontsource/libre-caslon-display';
-@import '@fontsource/libre-caslon-text/400.css';
-@import '@fontsource/libre-caslon-text/400-italic.css';
-@import '@fontsource/libre-caslon-text/700.css';
+@import '@fontsource-variable/archivo/standard.css';
 
 /*
   Decisions, written down once:
-  - Type: Libre Caslon Display for big headings, Libre Caslon Text for notes and numerals,
-    Libre Franklin for everything else. Caslon and Franklin Gothic are the old newspaper pairing.
-  - Color: newsprint paper, warm ink, editor's red for marks and notes, a deep green band,
-    and plain underlined links.
-  - Detail: hand-drawn rules, numbered margin notes drawn in CSS, ink drawings of each project.
-  - Motion: none.
+  - Type: Archivo for everything. Headlines use its widest, heaviest cut; text uses the normal width.
+  - Color: storm colors in flat blocks. Night navy, lightning yellow, signal red, sky blue, cream.
+    No gradients, no glass, no glow.
+  - Shape: square corners, thick ink borders, color blocks that run edge to edge, a few diagonal cuts.
+  - Motion: the stack line scrolls, pictures tilt a little on hover. All of it stops for reduced motion.
 */
 @theme {
-	--font-sans: 'Libre Franklin Variable', 'Franklin Gothic Medium', 'Helvetica Neue', Arial, sans-serif;
-	--font-display: 'Libre Caslon Display', 'Libre Caslon Text', Georgia, serif;
-	--font-serif: 'Libre Caslon Text', Georgia, serif;
+	--font-sans: 'Archivo Variable', 'Arial Narrow', Arial, sans-serif;
 }
 
 :root {
-	--paper: #f3eee4;
-	--paper-2: #e9e2d4;
-	--card: #fbf8f2;
-	--ink: #1d1b17;
-	--soft: #47433b;
-	--muted: #76705f;
-	--rule: #cfc6b3;
-	--red: #b3261e;
-	--link: #1d3f8f;
-	--band: #1e3a32;
-	--band-ink: #efe9dc;
-	--band-muted: #a9bdb3;
+	--navy: #0f1a2b;
+	--navy-2: #1b2a44;
+	--yellow: #ffd23f;
+	--red: #f2542d;
+	--sky: #5fc2e8;
+	--cream: #fff4dc;
+	--ink: #0f1a2b;
+	/* used by the project drawings */
+	--card: #fff4dc;
+	--rule: #c9bfa6;
+	--muted: #5b6372;
+	--paper: #fff4dc;
 	color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--paper: #17160f;
-		--paper-2: #201e16;
-		--card: #1d1b14;
-		--ink: #ece6d8;
-		--soft: #c9c2b2;
-		--muted: #958e7d;
-		--rule: #3a362b;
-		--red: #ef7a6c;
-		--link: #9db8f5;
-		--band: #16302a;
-		--band-ink: #efe9dc;
-		--band-muted: #9fb7ac;
-		color-scheme: dark;
-	}
-}
-
 body {
-	background: var(--paper);
+	background: var(--cream);
 	color: var(--ink);
 	font-family: var(--font-sans);
 	font-size: 1.0625rem;
-	line-height: 1.6;
+	line-height: 1.55;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -68,28 +43,19 @@ a {
 	text-decoration: none;
 }
 
-.link {
-	color: var(--link);
-	text-decoration: underline;
-	text-decoration-thickness: 1px;
-	text-underline-offset: 0.18em;
-}
-.link:hover {
-	text-decoration-thickness: 2px;
-}
-
 :focus-visible {
-	outline: 2px solid var(--red);
-	outline-offset: 2px;
+	outline: 3px solid var(--red);
+	outline-offset: 3px;
 }
 
 ::selection {
-	background: color-mix(in srgb, var(--red) 22%, transparent);
+	background: var(--yellow);
+	color: var(--navy);
 }
 
 .wrap {
 	width: 100%;
-	max-width: 76rem;
+	max-width: 80rem;
 	margin-inline: auto;
 	padding-inline: 1.25rem;
 }
@@ -99,191 +65,231 @@ a {
 	}
 }
 
-/* headings are stored in caps; shown in sentence case */
-.sentence {
-	text-transform: lowercase;
-}
-.sentence::first-letter {
+/* the widest, heaviest cut, for headlines */
+.wide-black {
+	font-weight: 900;
+	font-stretch: 125%;
 	text-transform: uppercase;
-}
-
-.display {
-	font-family: var(--font-display);
-	font-weight: 400;
-	letter-spacing: -0.02em;
-	line-height: 0.86;
-	font-size: clamp(4.25rem, 15vw, 12.5rem);
-}
-
-.h1 {
-	font-family: var(--font-display);
-	font-weight: 400;
-	letter-spacing: -0.015em;
-	line-height: 0.95;
-	font-size: clamp(3.25rem, 9vw, 6.5rem);
-}
-
-.h2 {
-	font-family: var(--font-display);
-	font-weight: 400;
 	letter-spacing: -0.01em;
-	line-height: 1;
-	font-size: clamp(2.25rem, 5vw, 3.5rem);
+	line-height: 0.88;
 }
-
+.mega {
+	font-size: clamp(3.5rem, 13.5vw, 13rem);
+}
+.h1 {
+	font-size: clamp(3rem, 10vw, 8rem);
+}
+.h2 {
+	font-size: clamp(2.25rem, 6vw, 5rem);
+}
 .h3 {
-	font-family: var(--font-display);
-	font-weight: 400;
-	line-height: 1.05;
-	font-size: clamp(1.75rem, 3vw, 2.25rem);
+	font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+	line-height: 0.95;
 }
 
-/* small label: Franklin small caps, tracked, in red */
-.kicker {
-	display: block;
-	font-size: 0.8125rem;
-	font-weight: 600;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
-	color: var(--red);
+/* outlined letters */
+.outline {
+	color: transparent;
+	-webkit-text-stroke: 2px currentColor;
 }
-
-.soft {
-	color: var(--soft);
+.outline-cream {
+	color: transparent;
+	-webkit-text-stroke: 2px var(--cream);
 }
-.muted {
-	color: var(--muted);
-}
-.serif {
-	font-family: var(--font-serif);
-}
-
-.section {
-	margin-top: 6.5rem;
-}
-
-/* a rule that looks drawn with a pen */
-.scribble {
-	height: 10px;
-	color: var(--ink);
-	background: no-repeat left center / 100% 10px
-		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 10' preserveAspectRatio='none'%3E%3Cpath d='M1 6.2C40 4.1 77 7.3 118 5.6s83-2.9 127-.4 80 2.6 124 .2 92-2.5 131 .1 64 1.9 99-.4' fill='none' stroke='%231d1b17' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
-}
-@media (prefers-color-scheme: dark) {
-	.scribble {
-		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 10' preserveAspectRatio='none'%3E%3Cpath d='M1 6.2C40 4.1 77 7.3 118 5.6s83-2.9 127-.4 80 2.6 124 .2 92-2.5 131 .1 64 1.9 99-.4' fill='none' stroke='%23ece6d8' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+@media (min-width: 48rem) {
+	.outline,
+	.outline-cream {
+		-webkit-text-stroke-width: 3px;
 	}
 }
 
-/* a short red underline drawn under a heading */
-.mark-under {
-	position: relative;
+/* a strip of black tape with white letters, for small labels */
+.tape {
 	display: inline-block;
-}
-.mark-under::after {
-	content: '';
-	position: absolute;
-	left: -0.05em;
-	right: -0.1em;
-	bottom: -0.12em;
-	height: 0.22em;
-	background: no-repeat center / 100% 100%
-		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M2 9.5C38 5.8 71 4.9 109 5.6c33 .6 59 2.1 89 4.4M14 11.8c40-3.1 92-3.6 151-1.4' fill='none' stroke='%23b3261e' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E");
-}
-
-/* numbered margin notes; the numbers are drawn by CSS */
-.notes {
-	counter-reset: note;
-}
-.note {
-	counter-increment: note;
-	position: relative;
-	padding-left: 2.1rem;
-}
-.note::before {
-	content: '[' counter(note) ']';
-	position: absolute;
-	left: 0;
-	top: 0.05em;
-	font-family: var(--font-serif);
-	font-size: 0.875rem;
-	color: var(--red);
-}
-
-/* capitalise the first letter of a heading that is already in lower case */
-.cap-first {
-	display: block;
-}
-.cap-first::first-letter {
+	background: var(--navy);
+	color: var(--cream);
+	font-size: 0.75rem;
+	font-weight: 800;
+	font-stretch: 115%;
+	letter-spacing: 0.08em;
 	text-transform: uppercase;
+	padding: 0.3rem 0.55rem 0.25rem;
 }
-
-.button {
-	display: inline-block;
-	background: var(--ink);
-	color: var(--paper);
-	font-weight: 600;
-	font-size: 0.9375rem;
-	padding: 0.75rem 1.15rem;
-	border-radius: 2px;
+.tape.yellow {
+	background: var(--yellow);
+	color: var(--navy);
 }
-.button:hover {
+.tape.red {
 	background: var(--red);
-	color: #fff;
+	color: var(--cream);
 }
 
-/* inline list separated by commas drawn in CSS */
-.commas {
-	display: inline;
+/* square stickers for tags, each a little crooked */
+.stickers {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.45rem;
 }
-.commas > li {
-	display: inline;
+.stickers > li {
+	border: 2px solid var(--navy);
+	background: var(--cream);
+	color: var(--navy);
+	font-size: 0.8125rem;
+	font-weight: 700;
+	padding: 0.15rem 0.5rem;
 }
-.commas > li + li::before {
-	content: ', ';
+.stickers > li:nth-child(3n + 1) {
+	transform: rotate(-2deg);
 }
-
-/* list separated by red bullets, for the stack line */
-.bullets > li {
-	display: inline;
-}
-.bullets > li + li::before {
-	content: '\2022';
-	color: var(--red);
-	margin-inline: 0.6em;
-}
-
-.rows > * + * {
-	border-top: 1px solid var(--rule);
+.stickers > li:nth-child(3n + 2) {
+	transform: rotate(1.5deg);
 }
 
-/* a framed picture, like a print plate */
-.plate {
-	background: var(--card);
-	border: 1px solid var(--rule);
-	padding: 0.5rem;
+/* a bold link with an arrow drawn in CSS */
+.go {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-weight: 800;
+	font-stretch: 112%;
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
+	font-size: 0.9375rem;
+	border-bottom: 3px solid currentColor;
+	padding-bottom: 0.1rem;
 }
-.plate > * {
-	display: block;
-	width: 100%;
-	border: 1px solid var(--rule);
+.go::after {
+	content: '';
+	width: 1.1em;
+	height: 0.7em;
+	background: currentColor;
+	clip-path: polygon(0 40%, 62% 40%, 62% 0, 100% 50%, 62% 100%, 62% 60%, 0 60%);
+	transition: transform 160ms ease;
+}
+.go:hover::after {
+	transform: translateX(4px);
 }
 
-/* the dark green section */
-.band {
-	background: var(--band);
-	color: var(--band-ink);
+.btn {
+	display: inline-block;
+	font-weight: 800;
+	font-stretch: 112%;
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
+	font-size: 0.9375rem;
+	padding: 0.95rem 1.4rem 0.85rem;
+	background: var(--yellow);
+	color: var(--navy);
+	border: 3px solid var(--navy);
+	transition: transform 160ms ease;
 }
-.band .muted {
-	color: var(--band-muted);
+.btn:hover {
+	transform: translate(-2px, -2px);
+	background: var(--red);
+	color: var(--cream);
 }
-.band .link {
-	color: var(--band-ink);
+.btn.dark {
+	background: var(--navy);
+	color: var(--cream);
 }
-.band .button {
-	background: var(--band-ink);
-	color: var(--band);
+.btn.dark:hover {
+	background: var(--red);
 }
-.band .button:hover {
-	background: #fff;
+
+/* edge-to-edge blocks */
+.block-navy {
+	background: var(--navy);
+	color: var(--cream);
+}
+.block-yellow {
+	background: var(--yellow);
+	color: var(--navy);
+}
+.block-red {
+	background: var(--red);
+	color: var(--cream);
+}
+.block-sky {
+	background: var(--sky);
+	color: var(--navy);
+}
+.block-cream {
+	background: var(--cream);
+	color: var(--navy);
+}
+
+/* a diagonal top edge */
+.cut-top {
+	clip-path: polygon(0 3.5rem, 100% 0, 100% 100%, 0 100%);
+	padding-top: 6rem;
+	margin-top: -3.5rem;
+}
+.cut-bottom {
+	clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3.5rem), 0 100%);
+	padding-bottom: 6.5rem;
+}
+
+/* halftone dots, for texture on blocks */
+.dots {
+	background-image: radial-gradient(currentColor 1.3px, transparent 1.6px);
+	background-size: 14px 14px;
+}
+
+/* yellow and navy warning stripes */
+.stripes {
+	background: repeating-linear-gradient(-45deg, var(--yellow) 0 18px, var(--navy) 18px 36px);
+}
+
+/* the stack line that scrolls sideways */
+.marquee {
+	overflow: hidden;
+	white-space: nowrap;
+}
+.marquee-track {
+	display: inline-flex;
+	animation: marquee 38s linear infinite;
+}
+.marquee-track > ul {
+	display: inline-flex;
+}
+.marquee-track li {
+	display: inline-flex;
+	align-items: center;
+}
+.marquee-track li::after {
+	content: '';
+	display: inline-block;
+	width: 0.8em;
+	height: 1.15em;
+	margin-inline: 1.1rem;
+	background: var(--yellow);
+	clip-path: polygon(55% 0, 10% 58%, 45% 58%, 30% 100%, 90% 38%, 55% 38%, 75% 0);
+}
+@keyframes marquee {
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+/* numbered things; the numbers are drawn by CSS */
+.count {
+	counter-reset: item;
+}
+.tick {
+	counter-increment: item;
+}
+.num::before {
+	content: counter(item, decimal-leading-zero);
+	font-weight: 900;
+	font-stretch: 125%;
+	line-height: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.marquee-track {
+		animation: none;
+	}
+	* {
+		transition: none !important;
+	}
 }

@@ -1,41 +1,30 @@
 <script lang="ts">
-	import Feature from '$lib/components/Feature.svelte';
-	import SlotNote from '$lib/components/SlotNote.svelte';
+	import ProjectBlock from '$lib/components/ProjectBlock.svelte';
+	import SlotBlock from '$lib/components/SlotBlock.svelte';
 	import { projectsPage as c } from '$lib/content';
-	const [lead, second, third, ...rest] = c.projects;
+	const tones = ['yellow', 'red', 'sky', 'cream', 'yellow', 'navy'] as const;
+	const spans = ['lg:col-span-7 lg:row-span-2', 'lg:col-span-5', 'lg:col-span-5', 'lg:col-span-4', 'lg:col-span-4', 'lg:col-span-4'];
 </script>
 
 <svelte:head>
 	<title>{c.title}</title>
 </svelte:head>
 
-<section class="wrap grid gap-8 pt-12 sm:pt-16 lg:grid-cols-12 lg:items-end lg:gap-10">
-	<div class="lg:col-span-7">
-		<p class="kicker">{c.eyebrowMark} {c.eyebrow}</p>
-		<h1 class="h1 sentence mt-4">{c.heading}</h1>
+<section class="block-sky cut-bottom">
+	<div class="wrap grid gap-8 pt-14 pb-6 sm:pt-20 lg:grid-cols-[1.3fr_1fr] lg:items-end">
+		<div>
+			<p class="tape">{c.eyebrowMark} {c.eyebrow}</p>
+			<h1 class="wide-black mega mt-6">{c.heading}</h1>
+		</div>
+		<p class="text-[1.375rem] leading-snug font-semibold">{c.intro}</p>
 	</div>
-	<p class="serif soft text-[1.375rem] leading-snug lg:col-span-5">{c.intro}</p>
 </section>
 
-<section class="wrap mt-12">
-	<div class="border-t pt-12" style="border-color: var(--ink)">
-	<div class="grid gap-12 lg:grid-cols-12 lg:gap-10">
-		<div class="lg:col-span-7"><Feature p={lead} size="lead" /></div>
-		<div class="rows lg:col-span-5 lg:border-l lg:pl-10" style="border-color: var(--rule)">
-			{#each [second, third] as p (p.name)}
-				<div class="py-7 first:pt-0"><Feature {p} size="row" /></div>
-			{/each}
-		</div>
-	</div>
-
-	<div class="scribble mt-14"></div>
-
-	<div class="mt-12 grid gap-12 md:grid-cols-3 md:gap-10">
-		{#each rest as p (p.name)}
-			<Feature {p} size="col" />
+<section class="wrap count pt-16 pb-24">
+	<div class="grid gap-5 lg:grid-cols-12">
+		{#each c.projects as p, i (p.name)}
+			<div class="tick {spans[i] ?? 'lg:col-span-4'}"><ProjectBlock {p} tone={tones[i] ?? 'cream'} big={i === 0} /></div>
 		{/each}
-	</div>
-
-	<div class="mt-14 max-w-[36rem]"><SlotNote /></div>
+		<div class="lg:col-span-12"><div class="max-w-[40rem]"><SlotBlock /></div></div>
 	</div>
 </section>

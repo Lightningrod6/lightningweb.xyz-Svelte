@@ -14,7 +14,6 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
-		"@fontsource-variable/libre-franklin": "^5.3.0",
 		"@sveltejs/adapter-cloudflare": "^7.2.9",
 		"@sveltejs/adapter-node": "^5.5.8",
 		"@sveltejs/kit": "^2.70.3",
@@ -27,7 +26,6 @@
 		"vite": "^8.3.0"
 	},
 	"dependencies": {
-		"@fontsource/libre-caslon-display": "^5.3.0",
-		"@fontsource/libre-caslon-text": "^5.3.0"
+		"@fontsource-variable/archivo": "^5.3.0"
 	}
 }

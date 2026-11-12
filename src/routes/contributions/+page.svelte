@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Feature from '$lib/components/Feature.svelte';
+	import ProjectBlock from '$lib/components/ProjectBlock.svelte';
 	import { contributionsPage as c } from '$lib/content';
 </script>
 
@@ -7,16 +7,16 @@
 	<title>{c.title}</title>
 </svelte:head>
 
-<section class="wrap grid gap-8 pt-12 sm:pt-16 lg:grid-cols-12 lg:items-end lg:gap-10">
-	<div class="lg:col-span-7">
-		<p class="kicker">{c.eyebrowMark} {c.eyebrow}</p>
-		<h1 class="h1 sentence mt-4">{c.heading}</h1>
+<section class="block-red cut-bottom">
+	<div class="wrap grid gap-8 pt-14 pb-6 sm:pt-20 lg:grid-cols-[1.3fr_1fr] lg:items-end">
+		<div>
+			<p class="tape">{c.eyebrowMark} {c.eyebrow}</p>
+			<h1 class="wide-black h1 mt-6">{c.heading}</h1>
+		</div>
+		<p class="text-[1.375rem] leading-snug font-semibold">{c.intro}</p>
 	</div>
-	<p class="serif soft text-[1.375rem] leading-snug lg:col-span-5">{c.intro}</p>
 </section>
 
-<section class="wrap mt-12">
-	<div class="border-t pt-12" style="border-color: var(--ink)">
-	<Feature p={c.item} size="wide" />
-	</div>
+<section class="wrap count pt-16 pb-24">
+	<div class="tick"><ProjectBlock p={c.item} tone="yellow" side /></div>
 </section>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { communityPage as c, site } from '$lib/content';
+	const tones = ['block-yellow', 'block-sky', 'block-red', 'block-cream'];
 </script>
 
 <svelte:head>
@@ -7,33 +8,36 @@
 	<meta name="robots" content="noindex, nofollow" />
 </svelte:head>
 
-<section class="wrap grid gap-8 pt-12 sm:pt-16 lg:grid-cols-12 lg:items-end lg:gap-10">
-	<div class="lg:col-span-7">
-		<p class="kicker">{c.eyebrowMark} {c.eyebrow}</p>
-		<h1 class="h1 sentence mt-4">{c.heading}</h1>
-	</div>
-	<p class="serif soft text-[1.375rem] leading-snug lg:col-span-5">{c.intro}</p>
-</section>
-
-<section class="wrap mt-12">
-	<div class="border-t pt-12" style="border-color: var(--ink)">
-	<div class="max-w-[44rem]">
-		<p class="kicker">{c.findsTitle}</p>
-		<ul class="notes mt-5 space-y-5">
-			{#each c.finds as f (f)}<li class="note text-[1.125rem] leading-relaxed">{f}</li>{/each}
-		</ul>
-	</div>
-	</div>
-</section>
-
-<section class="band section py-20">
-	<div class="wrap grid gap-10 md:grid-cols-[1.1fr_1fr] md:items-end md:gap-16">
-		<h2 class="h1 sentence">{c.joinTitle}</h2>
+<section class="block-navy cut-bottom">
+	<div class="wrap grid gap-8 pt-14 pb-6 sm:pt-20 lg:grid-cols-[1.3fr_1fr] lg:items-end">
 		<div>
-			<p class="text-[1.125rem] leading-relaxed">{c.joinBody}</p>
-			<p class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
-				<a href={c.discord} target="_blank" rel="noreferrer" class="button">{c.joinCta}</a>
-				<a href={site.github} target="_blank" rel="noreferrer" class="link">{c.codeCta}</a>
+			<p class="tape yellow">{c.eyebrowMark} {c.eyebrow}</p>
+			<h1 class="wide-black h1 mt-6 text-[var(--yellow)]">{c.heading}</h1>
+		</div>
+		<p class="text-[1.375rem] leading-snug font-semibold">{c.intro}</p>
+	</div>
+</section>
+
+<section class="wrap count pt-16">
+	<p class="tape red">{c.findsTitle}</p>
+	<ul class="mt-6 grid gap-5 md:grid-cols-2">
+		{#each c.finds as f, i (f)}
+			<li class="tick {tones[i % tones.length]} border-[3px] border-[var(--navy)] p-6">
+				<span class="num outline block text-[2.75rem]" aria-hidden="true"></span>
+				<p class="mt-3 text-[1.125rem] leading-relaxed font-semibold">{f}</p>
+			</li>
+		{/each}
+	</ul>
+</section>
+
+<section class="block-yellow cut-top mt-24 pb-24">
+	<div class="wrap grid gap-10 lg:grid-cols-[1.25fr_1fr] lg:items-end">
+		<h2 class="wide-black h1">{c.joinTitle}</h2>
+		<div>
+			<p class="text-[1.25rem] leading-relaxed font-semibold">{c.joinBody}</p>
+			<p class="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
+				<a href={c.discord} target="_blank" rel="noreferrer" class="btn dark">{c.joinCta}</a>
+				<a href={site.github} target="_blank" rel="noreferrer" class="go">{c.codeCta}</a>
 			</p>
 		</div>
 	</div>
