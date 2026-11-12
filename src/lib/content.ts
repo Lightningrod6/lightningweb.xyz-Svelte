@@ -72,7 +72,6 @@ export const home = {
 	plateLed: 'nominal',
 	plate: [
 		{ k: 'operator', v: 'Liam Caywood' },
-		{ k: 'base', v: 'Lawton, OK — 34.61°N, 98.39°W' },
 		{ k: 'study', v: 'CS · Cameron University (sophomore)' },
 		{ k: 'stack', v: 'Python · FastAPI · TypeScript · Svelte · Redis' },
 		{ k: 'availability', v: 'Open for work & collabs' }
@@ -225,7 +224,7 @@ export const aboutPage = {
 	heading: 'ABOUT ME',
 	shortTitle: 'the short version',
 	short:
-		"I'm Liam - 21, a computer science sophomore at Cameron University in Lawton, Oklahoma. I'm a backend developer using Python, FastAPI, Redis, and SQL. I prefer to use Sveltekit along side TypeScript for my frontend (with some amazing help from AI). I have a strong passion for web development, Geopolitics, and meteorology. My mind is always floating with ideas and I am always looking for new ways to improve my skills. I am self-taught and mainly learned from YouTube videos about discord bots.",
+		"I'm Liam - 21, a computer science sophomore at Cameron University. I'm a backend developer using Python, FastAPI, Redis, and SQL. I prefer to use Sveltekit along side TypeScript for my frontend (with some amazing help from AI). I have a strong passion for web development, Geopolitics, and meteorology. My mind is always floating with ideas and I am always looking for new ways to improve my skills. I am self-taught and mainly learned from YouTube videos about discord bots.",
 	workTitle: 'how I work',
 	// each line renders as: label, then " — " + text
 	work: [
@@ -253,8 +252,7 @@ export const aboutPage = {
 		{ k: 'callsign', v: 'Lightning (Lightningrod6)' },
 		{ k: 'age', v: '21' },
 		{ k: 'role', v: 'Full-stack dev, backend-leaning' },
-		{ k: 'education', v: 'CS · Cameron University' },
-		{ k: 'based', v: 'Oklahoma, USA' }
+		{ k: 'education', v: 'CS · Cameron University' }
 	],
 	githubLabel: 'github.com/lightningrod6',
 	timelineEyebrow: 'stake in the ground',
