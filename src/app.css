@@ -29,6 +29,11 @@
 	color-scheme: light;
 }
 
+html,
+body {
+	overflow-x: clip;
+}
+
 body {
 	background: var(--cream);
 	color: var(--ink);
