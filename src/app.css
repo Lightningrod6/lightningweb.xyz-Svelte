@@ -1,40 +1,27 @@
 @import 'tailwindcss';
-@import '@fontsource-variable/archivo';
-@import '@fontsource/bebas-neue';
+@import '@fontsource-variable/space-grotesk';
 @import '@fontsource-variable/jetbrains-mono';
 
-/* ---------- design tokens ---------- */
+/* =====================================================================
+   SWISS GRID / BOLD
+   Warm white paper, black ink, one flat voltage yellow.
+   Every section is a 12-column grid whose gaps ARE the rules:
+   the grid background is ink, cells are paper, gap = rule width.
+   ===================================================================== */
+
 @theme {
-	--font-display: 'Bebas Neue', 'Archivo Variable', sans-serif;
-	--font-sans: 'Archivo Variable', system-ui, sans-serif;
-	--font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+	--font-sans: 'Space Grotesk Variable', 'Helvetica Neue', Arial, sans-serif;
+	--font-mono: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
 
-	/* palette: high-voltage signage on near-black navy */
-	--color-ink-950: oklch(15% 0.028 262);
-	--color-ink-900: oklch(20% 0.035 262);
-	--color-ink-800: oklch(27% 0.042 262);
-	--color-steel: oklch(72% 0.022 255);
-	--color-bone: oklch(96% 0.006 250);
-	--color-volt: oklch(87% 0.16 100);
-	--color-live: oklch(72% 0.15 148);
-	--color-warn: oklch(68% 0.14 70);
-	--color-dim: oklch(58% 0.05 260);
+	--color-paper: #f6f4ee;
+	--color-ink: #0b0b0b;
+	--color-ink-2: #3a3a3a;
+	--color-volt: #ffe500;
 
-	/* motion */
-	--animate-led: led-pulse 2.6s ease-in-out infinite;
-	--animate-ticker: ticker 42s linear infinite;
-	--animate-bolt: bolt-draw 0.9s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+	--animate-marquee: marquee 38s linear infinite;
+	--animate-blink: blink 1.4s steps(1, end) infinite;
 
-	@keyframes led-pulse {
-		0%,
-		100% {
-			opacity: 1;
-		}
-		50% {
-			opacity: 0.3;
-		}
-	}
-	@keyframes ticker {
+	@keyframes marquee {
 		from {
 			transform: translateX(0);
 		}
@@ -42,92 +29,479 @@
 			transform: translateX(-50%);
 		}
 	}
-	@keyframes bolt-draw {
-		from {
-			stroke-dashoffset: 320;
+	@keyframes blink {
+		0%,
+		100% {
+			opacity: 1;
 		}
-		to {
-			stroke-dashoffset: 0;
+		50% {
+			opacity: 0;
 		}
 	}
 }
 
-/* ---------- base ---------- */
-html {
-	scroll-behavior: smooth;
+:root {
+	color-scheme: light;
+	--rule: 3px; /* structural rules: the grid */
+	--hair: 2px; /* rules inside a cell: tables, tags */
+	--frame: 1440px;
+	--pad: clamp(1rem, 2.2vw, 2rem);
 }
 
-body {
-	background-color: var(--color-ink-950);
-	color: var(--color-bone);
-	font-family: var(--font-sans);
-	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
+@layer base {
+	html {
+		background-color: var(--color-paper);
+		color: var(--color-ink);
+	}
+
+	body {
+		background-color: var(--color-paper);
+		color: var(--color-ink);
+		font-family: var(--font-sans);
+		font-size: 1rem;
+		line-height: 1.5;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+	}
+
+	::selection {
+		background: var(--color-ink);
+		color: var(--color-volt);
+	}
+
+	:focus-visible {
+		outline: 3px solid var(--color-ink);
+		outline-offset: 3px;
+	}
 }
 
-/* faint blueprint grid behind everything */
-body::before {
-	content: '';
-	position: fixed;
-	inset: 0;
-	z-index: -1;
-	pointer-events: none;
-	background-image:
-		linear-gradient(to right, oklch(96% 0.006 250 / 0.035) 1px, transparent 1px),
-		linear-gradient(to bottom, oklch(96% 0.006 250 / 0.035) 1px, transparent 1px);
-	background-size: 44px 44px;
-}
+@layer components {
+	/* ---------- the frame: a poster with ruled edges ---------- */
+	.frame {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		max-width: var(--frame);
+		margin-inline: auto;
+		border-inline: var(--rule) solid var(--color-ink);
+		background: var(--color-paper);
+	}
 
-::selection {
-	background: var(--color-volt);
-	color: var(--color-ink-950);
-}
+	/* ---------- rule grid ---------- */
+	.rg {
+		display: grid;
+		grid-template-columns: repeat(12, minmax(0, 1fr));
+		gap: var(--rule);
+		background: var(--color-ink);
+		border-bottom: var(--rule) solid var(--color-ink);
+	}
+	.rg > * {
+		grid-column: 1 / -1;
+		min-width: 0;
+		background: var(--color-paper);
+	}
+	.cell {
+		padding: var(--pad);
+	}
 
-:focus-visible {
-	outline: 2px solid var(--color-volt);
-	outline-offset: 2px;
-}
+	/* ---------- type ---------- */
+	.label {
+		font-family: var(--font-mono);
+		font-size: 0.72rem;
+		font-weight: 600;
+		line-height: 1.35;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
 
-/* ---------- utilities ---------- */
-.hazard-stripe {
-	background-image: repeating-linear-gradient(
-		-45deg,
-		var(--color-volt) 0 12px,
-		var(--color-ink-950) 12px 24px
-	);
-}
+	/* small ink square before a label */
+	.sq-label {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+	}
+	.sq-label::before {
+		content: '';
+		flex: none;
+		width: 0.7rem;
+		height: 0.7rem;
+		background: currentColor;
+	}
 
-.hazard-stripe-thin {
-	background-image: repeating-linear-gradient(
-		-45deg,
-		var(--color-volt) 0 8px,
-		var(--color-ink-950) 8px 16px
-	);
-}
+	/* the // eyebrow mark, set in a solid yellow block */
+	.eyebrow {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.75rem;
+		padding-block: 0.85rem;
+	}
+	.mark {
+		display: inline-block;
+		background: var(--color-volt);
+		color: var(--color-ink);
+		padding: 0.2rem 0.45rem;
+		font-weight: 800;
+		letter-spacing: 0.04em;
+		outline: var(--hair) solid var(--color-ink);
+	}
 
-.panel {
-	border: 1px solid oklch(36% 0.05 262);
-	background: color-mix(in oklch, var(--color-ink-900) 92%, transparent);
-	box-shadow: inset 0 1px 0 oklch(96% 0.006 250 / 0.045);
-}
+	.display {
+		font-family: var(--font-sans);
+		font-weight: 700;
+		line-height: 0.86;
+		letter-spacing: -0.045em;
+		text-transform: uppercase;
+		overflow-wrap: break-word;
+	}
 
-/* the strike-on-load bolt */
-.bolt-ink {
-	stroke-dasharray: 320;
-	stroke-dashoffset: 0;
-	filter: drop-shadow(0 0 14px oklch(87% 0.16 100 / 0.55));
+	.h2 {
+		font-size: clamp(2.5rem, 6.4vw, 6.25rem);
+	}
+
+	/* a heading that scales to fill the frame width.
+	   --len is the character count, --k an average glyph width in em. */
+	.fit {
+		font-size: clamp(
+			2rem,
+			calc(
+				(min(100vw, var(--frame)) - 2 * var(--pad) - 2 * var(--rule) - 1rem) /
+					(var(--len, 8) * var(--k, 0.66))
+			),
+			var(--fit-max, 12rem)
+		);
+	}
+
+	.lead {
+		font-size: clamp(1.15rem, 1.7vw, 1.5rem);
+		font-weight: 500;
+		line-height: 1.3;
+		letter-spacing: -0.012em;
+		max-width: 38ch;
+	}
+
+	.body {
+		font-size: 1rem;
+		line-height: 1.55;
+		color: var(--color-ink-2);
+		max-width: 60ch;
+	}
+
+	/* ---------- arrows (drawn in SVG, moved on hover) ---------- */
+	.arrow {
+		width: 1.15em;
+		height: 1.15em;
+		flex: none;
+		transition: transform 80ms linear;
+	}
+	.arrow--ext {
+		transform: rotate(-45deg);
+	}
+	a:hover .arrow,
+	a:focus-visible .arrow {
+		transform: translateX(0.25em);
+	}
+	a:hover .arrow--ext,
+	a:focus-visible .arrow--ext {
+		transform: rotate(-45deg) translateX(0.25em);
+	}
+
+	/* ---------- buttons ---------- */
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.75rem;
+		padding: 0.95rem 1.1rem;
+		border: var(--rule) solid var(--color-ink);
+		background: var(--color-paper);
+		color: var(--color-ink);
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		font-weight: 700;
+		line-height: 1;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		transition:
+			background-color 80ms linear,
+			color 80ms linear;
+	}
+	.btn:hover,
+	.btn:focus-visible {
+		background: var(--color-ink);
+		color: var(--color-volt);
+	}
+	.btn--ink {
+		background: var(--color-ink);
+		color: var(--color-paper);
+	}
+	.btn--ink:hover,
+	.btn--ink:focus-visible {
+		background: var(--color-paper);
+		color: var(--color-ink);
+	}
+	.btn--clear {
+		background: transparent;
+	}
+
+	/* ---------- a whole cell that is a link ---------- */
+	.cell-link {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 1.5rem;
+		padding: var(--pad);
+		background: var(--color-paper);
+		color: var(--color-ink);
+		font-weight: 700;
+		font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+		line-height: 1;
+		letter-spacing: -0.02em;
+		text-transform: uppercase;
+		transition:
+			background-color 80ms linear,
+			color 80ms linear;
+	}
+	.cell-link .arrow {
+		align-self: flex-end;
+		width: 1.6em;
+		height: 1.6em;
+	}
+	.cell-link:focus-visible {
+		outline-offset: -9px;
+	}
+	.rg > .cell-link:hover,
+	.rg > .cell-link:focus-visible,
+	.cell-link:hover,
+	.cell-link:focus-visible {
+		background: var(--color-volt);
+		color: var(--color-ink);
+	}
+	.rg > .cell-link--volt,
+	.cell-link--volt {
+		background: var(--color-volt);
+	}
+	.rg > .cell-link--volt:hover,
+	.rg > .cell-link--volt:focus-visible,
+	.cell-link--volt:hover,
+	.cell-link--volt:focus-visible {
+		background: var(--color-ink);
+		color: var(--color-volt);
+	}
+	.cell-link--volt:focus-visible {
+		outline-color: var(--color-volt);
+	}
+	.rg > .cell-link--ink,
+	.cell-link--ink {
+		background: var(--color-ink);
+		color: var(--color-paper);
+	}
+
+	/* ---------- status markers: a small square, never a dot ---------- */
+	.status {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+	}
+	.status-sq {
+		position: relative;
+		flex: none;
+		width: 0.85rem;
+		height: 0.85rem;
+		border: var(--hair) solid currentColor;
+		overflow: hidden;
+	}
+	.status[data-status='live'] .status-sq {
+		background: currentColor;
+	}
+	.status[data-status='dev'] .status-sq::after {
+		content: '';
+		position: absolute;
+		inset: 0 50% 0 0;
+		background: currentColor;
+	}
+	.status[data-status='offline'] .status-sq::after {
+		content: '';
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		width: 150%;
+		height: var(--hair);
+		background: currentColor;
+		transform: translate(-50%, -50%) rotate(-45deg);
+	}
+
+	/* ---------- project tiles ---------- */
+	.tile {
+		display: flex;
+		flex-direction: column;
+		gap: 1.1rem;
+		padding: var(--pad) var(--pad) 0;
+		min-height: 19rem;
+		color: var(--color-ink);
+		transition:
+			background-color 80ms linear,
+			color 80ms linear;
+	}
+	.tile:focus-visible {
+		outline-offset: -9px;
+	}
+	@media (min-width: 768px) {
+		.tile {
+			min-height: 24rem;
+		}
+	}
+	.rg > .tile:hover,
+	.rg > .tile:focus-visible {
+		background: var(--color-volt);
+	}
+
+	.tile-name {
+		font-weight: 700;
+		font-size: clamp(2rem, 3.1vw, 3.1rem);
+		line-height: 0.9;
+		letter-spacing: -0.045em;
+		text-transform: uppercase;
+		overflow-wrap: break-word;
+		margin-top: 0.6rem;
+	}
+	.tile-blurb {
+		font-size: 1rem;
+		line-height: 1.5;
+		color: var(--color-ink-2);
+		max-width: 46ch;
+	}
+	.tile:hover .tile-blurb,
+	.tile:focus-visible .tile-blurb {
+		color: var(--color-ink);
+	}
+	.tile-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+		margin-top: auto;
+		padding-top: 0.5rem;
+	}
+	.tile-tags li {
+		border: var(--hair) solid currentColor;
+		padding: 0.28rem 0.5rem;
+		font-family: var(--font-mono);
+		font-size: 0.66rem;
+		font-weight: 600;
+		line-height: 1.2;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+	.tile-cta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		margin-inline: calc(var(--pad) * -1);
+		padding: 1rem var(--pad);
+		border-top: var(--hair) solid currentColor;
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+	.tile:hover .tile-cta,
+	.tile:focus-visible .tile-cta {
+		background: var(--color-ink);
+		color: var(--color-volt);
+		border-top-color: var(--color-ink);
+	}
+
+	/* the inverted (ink) tile: the open slot */
+	.rg > .tile--ink {
+		background: var(--color-ink);
+		color: var(--color-paper);
+	}
+	.tile--ink .tile-blurb {
+		color: var(--color-paper);
+	}
+	.rg > .tile--ink:hover,
+	.rg > .tile--ink:focus-visible {
+		background: var(--color-volt);
+		color: var(--color-ink);
+	}
+	.tile--ink:hover .tile-blurb,
+	.tile--ink:focus-visible .tile-blurb {
+		color: var(--color-ink);
+	}
+	.slot-label {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+		align-self: flex-start;
+		background: var(--color-volt);
+		color: var(--color-ink);
+		padding: 0.3rem 0.55rem;
+	}
+	.slot-label::before {
+		content: '';
+		width: 0.7rem;
+		height: 0.7rem;
+		background: var(--color-ink);
+		animation: var(--animate-blink);
+	}
+	.tile--ink:hover .slot-label,
+	.tile--ink:focus-visible .slot-label {
+		background: var(--color-ink);
+		color: var(--color-volt);
+	}
+	.tile--ink:hover .slot-label::before,
+	.tile--ink:focus-visible .slot-label::before {
+		background: var(--color-volt);
+	}
+
+	/* wide tiles: one full row, laid out as a three-column line */
+	@media (min-width: 1024px) {
+		.tile--wide {
+			display: grid;
+			grid-template-columns: minmax(0, 5fr) minmax(0, 4fr) minmax(0, 3fr);
+			grid-template-rows: auto 1fr auto;
+			column-gap: calc(var(--pad) * 1.5);
+			row-gap: 1.1rem;
+			min-height: 19rem;
+		}
+		.tile--wide > :first-child {
+			grid-column: 1;
+			grid-row: 1;
+		}
+		.tile--wide .tile-name {
+			grid-column: 1;
+			grid-row: 2;
+			font-size: clamp(2.5rem, 4.6vw, 4.5rem);
+			align-self: end;
+		}
+		.tile--wide .tile-blurb {
+			grid-column: 2;
+			grid-row: 1 / span 2;
+			align-self: end;
+			font-size: 1.1rem;
+		}
+		.tile--wide .tile-tags {
+			grid-column: 3;
+			grid-row: 1 / span 2;
+			align-self: end;
+			margin-top: 0;
+		}
+		.tile--wide .tile-cta {
+			grid-column: 1 / -1;
+			grid-row: 3;
+		}
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.animate-led,
-	.animate-ticker {
+	*,
+	*::before,
+	*::after {
+		transition-duration: 0ms !important;
+	}
+	.slot-label::before {
 		animation: none;
-	}
-	.bolt-ink {
-		stroke-dasharray: none;
-		filter: none;
-	}
-	html {
-		scroll-behavior: auto;
 	}
 }
