@@ -1,12 +1,10 @@
 <script lang="ts">
 	import { site } from '$lib/content';
-	import StatusDot from './StatusDot.svelte';
 </script>
 
 <footer class="statusbar">
 	<div class="wrap inner">
 		<p class="left">
-			<StatusDot status="live" pulse={false} />
 			<span>{site.footer.copyright}</span>
 		</p>
 		<nav aria-label="Footer">
