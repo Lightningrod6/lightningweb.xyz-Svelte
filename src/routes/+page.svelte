@@ -73,7 +73,7 @@
 	<div class="lg:col-span-7">
 		<p class="kicker">{home.aboutEyebrow}</p>
 		<h2 class="h2 mt-2"><span class="sentence mark-under">{home.aboutTitle}</span></h2>
-		<p class="dropcap soft mt-8 text-[1.125rem] leading-relaxed">{home.about}</p>
+		<p class="serif mt-8 text-[1.3125rem] leading-relaxed">{home.about}</p>
 		<p class="mt-6"><a href="/about-me" class="link">{home.aboutCta}</a></p>
 	</div>
 	<div class="lg:col-span-4 lg:col-start-9 lg:pt-24">

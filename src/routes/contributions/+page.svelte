@@ -15,6 +15,8 @@
 	<p class="serif soft text-[1.375rem] leading-snug lg:col-span-5">{c.intro}</p>
 </section>
 
-<section class="wrap mt-12 border-t pt-12" style="border-color: var(--ink)">
+<section class="wrap mt-12">
+	<div class="border-t pt-12" style="border-color: var(--ink)">
 	<Feature p={c.item} size="wide" />
+	</div>
 </section>

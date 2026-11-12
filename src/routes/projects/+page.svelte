@@ -17,7 +17,8 @@
 	<p class="serif soft text-[1.375rem] leading-snug lg:col-span-5">{c.intro}</p>
 </section>
 
-<section class="wrap mt-12 border-t pt-12" style="border-color: var(--ink)">
+<section class="wrap mt-12">
+	<div class="border-t pt-12" style="border-color: var(--ink)">
 	<div class="grid gap-12 lg:grid-cols-12 lg:gap-10">
 		<div class="lg:col-span-7"><Feature p={lead} size="lead" /></div>
 		<div class="rows lg:col-span-5 lg:border-l lg:pl-10" style="border-color: var(--rule)">
@@ -36,4 +37,5 @@
 	</div>
 
 	<div class="mt-14 max-w-[36rem]"><SlotNote /></div>
+	</div>
 </section>

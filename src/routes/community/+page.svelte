@@ -15,12 +15,14 @@
 	<p class="serif soft text-[1.375rem] leading-snug lg:col-span-5">{c.intro}</p>
 </section>
 
-<section class="wrap mt-12 border-t pt-12" style="border-color: var(--ink)">
+<section class="wrap mt-12">
+	<div class="border-t pt-12" style="border-color: var(--ink)">
 	<div class="max-w-[44rem]">
 		<p class="kicker">{c.findsTitle}</p>
 		<ul class="notes mt-5 space-y-5">
 			{#each c.finds as f (f)}<li class="note text-[1.125rem] leading-relaxed">{f}</li>{/each}
 		</ul>
+	</div>
 	</div>
 </section>
 

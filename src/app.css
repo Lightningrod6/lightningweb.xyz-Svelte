@@ -210,14 +210,12 @@ a {
 	color: var(--red);
 }
 
-/* a big first letter, set in the display face */
-.dropcap::first-letter {
-	float: left;
-	font-family: var(--font-display);
-	font-size: 4.4em;
-	line-height: 0.8;
-	padding: 0.06em 0.12em 0 0;
-	color: var(--red);
+/* capitalise the first letter of a heading that is already in lower case */
+.cap-first {
+	display: block;
+}
+.cap-first::first-letter {
+	text-transform: uppercase;
 }
 
 .button {
