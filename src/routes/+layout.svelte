@@ -8,7 +8,7 @@
 
 <div class="flex min-h-screen flex-col">
 	<SiteHeader />
-	<main class="flex-1">
+	<main class="enter flex-1">
 		{@render children()}
 	</main>
 	<SiteFooter />

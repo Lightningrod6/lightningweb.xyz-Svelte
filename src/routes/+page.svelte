@@ -1,220 +1,165 @@
 <script lang="ts">
+	import { home, slot, site } from '$lib/content';
+	import Arrow from '$lib/components/Arrow.svelte';
 	import Bolt from '$lib/components/Bolt.svelte';
-	import DataPlate from '$lib/components/DataPlate.svelte';
-	import ProjectPanel from '$lib/components/ProjectPanel.svelte';
-	import ProjectSlot from '$lib/components/ProjectSlot.svelte';
+	import Colophon from '$lib/components/Colophon.svelte';
+	import Eyebrow from '$lib/components/Eyebrow.svelte';
+	import ProjectEntry from '$lib/components/ProjectEntry.svelte';
+	import SectionHead from '$lib/components/SectionHead.svelte';
 	import Ticker from '$lib/components/Ticker.svelte';
-
-	const heroPlate = {
-		rows: [
-			{ k: 'operator', v: 'Liam Caywood' },
-			{ k: 'base', v: 'Lawton, OK — 34.61°N, 98.39°W' },
-			{ k: 'study', v: 'CS · Cameron University (sophomore)' },
-			{ k: 'stack', v: 'Python · FastAPI · TypeScript · Svelte · Redis' },
-			{ k: 'availability', v: 'Open for work & collabs' }
-		]
-	};
-
-	const featured = [
-		{
-			name: 'Deadline',
-			blurb:
-				'Set a deadline, submit, and let it watch the clock. It emails you before the due date slips past — so you can focus on everything else.',
-			tags: ['SaaS', 'email alerts', '$9/mo'],
-			href: 'https://deadline.lightningweb.xyz',
-			status: 'offline' as const,
-			cta: 'open product'
-		},
-		{
-			name: 'Conflicts Tracker',
-			blurb:
-				'Wartime dashboard that monitors events around the world. Uses accurate information to deliver fast and relable updates for those who wish to stay informed.',
-			tags: ['FastAPI', 'Redis', 'SvelteKit', 'live'],
-			href: 'https://conflicts-tracker.com',
-			status: 'dev' as const,
-			cta: 'open product'
-		},
-		{
-			name: 'LightningWeb API',
-			blurb:
-				'My first real back end: a public multi-endpoint API for text generation, chat, and utilities. Still the home of my earliest shipping scars.',
-			tags: ['Python', 'api', 'llm'],
-			href: 'https://api.lightningweb.xyz',
-			status: 'dev' as const,
-			cta: 'hit the api'
-		},
-	];
-
-	const more = [
-		{
-			name: 'Bot-Bot',
-			blurb: 'Discord moderation bot, rebuilt from the ground up. Currently learning how not to break prod.',
-			tags: ['Python', 'discord'],
-			href: 'https://top.gg/bot/609076611609788427',
-			status: 'dev' as const,
-			cta: 'see the bot'
-		},
-		{
-			name: 'Voice work',
-			blurb: 'Voiced General Geratan in the Blade & Sorcery Audible Lore mod. Five lines, immortalized.',
-			tags: ['voice acting', 'Blade & Sorcery'],
-			href: 'https://www.nexusmods.com/bladeandsorcery/mods/11048',
-			status: 'other' as const,
-			cta: 'hear it'
-		},
-		{
-			name: "Elections 26",
-			blurb: "Elections dashboard for the 2026 US midterms. Built to track and visualize results from the house, senate and governor races",
-			tags: ['FastAPI', 'Redis', 'SvelteKit', 'live'],
-			href: 'https://elections.conflicts-tracker.com',
-			status: 'live' as const,
-			cta: 'see the dashboard'
-		}
-	];
 </script>
 
 <svelte:head>
-	<title>Lightning Web — Liam Caywood, full-stack developer</title>
+	<title>{home.title}</title>
 </svelte:head>
 
 <!-- ============ HERO ============ -->
-<section class="mx-auto grid max-w-6xl gap-10 px-4 pb-16 pt-14 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:pt-20">
-	<div>
-		<p class="font-mono text-[0.72rem] uppercase tracking-[0.2em] text-dim">
-			<span class="text-volt">//</span> lightningweb.xyz — personal site of liam caywood
-		</p>
-
-		<h1 class="mt-5 font-display leading-[0.88]">
-			<span class="block text-[clamp(2.5rem,9.5vw,7.5rem)] text-bone">LIGHTNING</span>
-			<span class="flex items-center gap-4 text-[clamp(2.5rem,9.5vw,7.5rem)] text-volt">
-				<Bolt class="h-[0.72em] w-[0.72em] text-volt" strike />
-				WEB
-			</span>
-		</h1>
-
-		<p class="mt-6 max-w-[52ch] text-lg leading-relaxed text-steel">
-			Building software first, worry about the details later. I show my hands in the stuff that people dont see.
-		</p>
-
-		<div class="mt-8 flex flex-wrap gap-3">
-			<a
-				href="/projects"
-				class="bg-volt px-6 py-3 font-mono text-[0.78rem] font-medium uppercase tracking-[0.18em] text-ink-950 transition-colors hover:bg-warn"
-			>
-				View projects
-			</a>
-			<a
-				href="/about-me"
-				class="border border-ink-800 px-6 py-3 font-mono text-[0.78rem] uppercase tracking-[0.18em] text-bone transition-colors hover:border-volt hover:text-volt"
-			>
-				More about me
-			</a>
-		</div>
+<section class="wrap pt-10 sm:pt-14 lg:pt-16">
+	<div class="flex items-center gap-5">
+		<Eyebrow mark={home.eyebrowMark} text={home.eyebrow} class="min-w-0" />
+		<span class="hidden h-px flex-1 bg-rule sm:block" aria-hidden="true"></span>
 	</div>
 
-	<DataPlate title="System status" led rows={heroPlate.rows} class="w-full" />
+	<h1 class="display display-xl hero mt-8 sm:mt-12">
+		<span class="sentence">{home.heroA}</span>
+		<span class="sentence hero-b"><span class="hl">{home.heroB}</span></span>
+	</h1>
+
+	<div class="spread mt-10 sm:mt-14">
+		<div class="margin hidden lg:block" aria-hidden="true">
+			<Bolt outline class="hero-bolt" />
+		</div>
+		<div class="body grid gap-12 xl:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] xl:gap-16">
+			<div>
+				<p class="standfirst">{home.intro}</p>
+				<div class="mt-8 flex flex-wrap items-center gap-x-7 gap-y-3">
+					<a href="/projects" class="btn">
+						<span>{home.ctaProjects}</span>
+						<Arrow />
+					</a>
+					<a href="/about-me" class="textlink">
+						<span class="link">{home.ctaAbout}</span>
+					</a>
+				</div>
+			</div>
+			<Colophon title={home.plateTitle} led={home.plateLed} rows={home.plate} class="max-w-xl xl:max-w-none" />
+		</div>
+	</div>
 </section>
 
-<Ticker />
+<div class="mt-16 sm:mt-24">
+	<Ticker />
+</div>
 
 <!-- ============ FEATURED PROJECTS ============ -->
-<section class="mx-auto max-w-6xl px-4 pt-20 sm:px-6">
-	<div class="flex flex-wrap items-end justify-between gap-4">
-		<div>
-			<p class="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-dim">what's running</p>
-			<h2 class="mt-2 font-display text-5xl leading-none text-bone sm:text-6xl">FEATURED PROJECTS</h2>
+<section class="wrap mt-20 sm:mt-28">
+	<SectionHead eyebrow={home.featuredEyebrow} title={home.featuredTitle}>
+		{#snippet aside()}
+			<a href="/projects" class="textlink">
+				<span class="link">{home.allProjects}</span>
+				<Arrow />
+			</a>
+		{/snippet}
+	</SectionHead>
+
+	<div class="spread mt-10">
+		<div class="body">
+			{#each home.featured as p (p.name)}
+				<ProjectEntry {...p} layout="row" level={3} />
+			{/each}
+
+			<div class="mt-6 grid gap-x-10 md:grid-cols-2">
+				{#each home.more as p (p.name)}
+					<ProjectEntry {...p} layout="compact" level={3} />
+				{/each}
+				<ProjectEntry
+					name={slot.title}
+					blurb={slot.blurb}
+					tags={slot.tags}
+					href={slot.href}
+					cta={slot.cta}
+					openLabel={slot.label}
+					layout="compact"
+					level={3}
+				/>
+			</div>
 		</div>
-		<a
-			href="/projects"
-			class="border border-ink-800 px-4 py-2 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-steel transition-colors hover:border-volt hover:text-volt"
-		>
-			All projects
-		</a>
-	</div>
-
-	<div class="mt-8 grid gap-4 md:grid-cols-3">
-		{#each featured as p (p.name)}
-			<ProjectPanel {...p} />
-		{/each}
-	</div>
-
-	<div class="mt-4 grid gap-4 md:grid-cols-3">
-		{#each more as p (p.name)}
-			<ProjectPanel {...p} />
-		{/each}
-		<ProjectSlot />
 	</div>
 </section>
 
 <!-- ============ OPERATOR ============ -->
-<section class="mx-auto grid max-w-6xl gap-10 px-4 pt-24 sm:px-6 lg:grid-cols-[1fr_0.9fr] lg:items-start">
-	<div>
-		<p class="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-dim">the operator</p>
-		<h2 class="mt-2 font-display text-5xl leading-none text-bone sm:text-6xl">ABOUT ME</h2>
-		<p class="mt-6 max-w-[56ch] text-[1.05rem] leading-relaxed text-steel">
-			I'm a CS student addicted to creating the next thing. Using AI, it allows me to 
-			focus on the big picture and go bigger than I ever could. I focus on the back while
-			my agent works on the front. I have a strong passion for web development and an even
-			stronger passion for geopolitics. Why not combine those two into a single product? 
-			Oh wait, someone already did that, me.
-		</p>
-		<a
-			href="/about-me"
-			class="mt-6 inline-block border border-ink-800 px-4 py-2 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-steel transition-colors hover:border-volt hover:text-volt"
-		>
-			Read the full profile
-		</a>
-	</div>
+<section class="wrap mt-20 sm:mt-28">
+	<SectionHead eyebrow={home.aboutEyebrow} title={home.aboutTitle} />
 
-	<div class="panel">
-		<div class="border-b border-ink-800 px-5 py-3">
-			<span class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-dim">loadout</span>
-		</div>
-		<div class="divide-y divide-ink-800/70">
-			<div class="px-5 py-4">
-				<p class="font-mono text-[0.66rem] uppercase tracking-[0.16em] text-dim">backend</p>
-				<p class="mt-1.5 text-[0.95rem] text-bone">Python · FastAPI · Redis · SQL</p>
+	<div class="spread mt-10">
+		<div class="body grid gap-12 xl:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] xl:gap-14">
+			<div>
+				<p class="prose-serif dropcap">{home.about}</p>
+				<a href="/about-me" class="textlink mt-5">
+					<span class="link">{home.aboutCta}</span>
+					<Arrow />
+				</a>
 			</div>
-			<div class="px-5 py-4">
-				<p class="font-mono text-[0.66rem] uppercase tracking-[0.16em] text-dim">frontend</p>
-				<p class="mt-1.5 text-[0.95rem] text-bone">TypeScript · Svelte 5 · SvelteKit</p>
-			</div>
-			<div class="px-5 py-4">
-				<p class="font-mono text-[0.66rem] uppercase tracking-[0.16em] text-dim">on the side</p>
-				<p class="mt-1.5 text-[0.95rem] text-bone">C# · game mods · meteorology · awful puns</p>
-			</div>
+			<Colophon title={home.loadoutTitle} rows={home.loadout} level={3} class="max-w-xl xl:max-w-none" />
 		</div>
 	</div>
 </section>
 
 <!-- ============ GITHUB ============ -->
-<section class="mx-auto max-w-6xl px-4 pt-24 sm:px-6">
-	<div class="panel relative">
-		<div class="hazard-stripe-thin h-1.5"></div>
-		<div class="flex flex-col gap-8 px-6 py-8 sm:px-10 md:flex-row md:items-center md:justify-between">
-			<div class="max-w-[52ch]">
-				<h2 class="font-display text-4xl leading-none text-bone sm:text-5xl">BUILT IN THE OPEN</h2>
-				<p class="mt-4 text-[1rem] leading-relaxed text-steel">
-					Most of what I ship has its wires showing on GitHub — products, bots, experiments,
-					and the occasional beautiful disaster. Star something or watch the commits roll in.
-				</p>
-			</div>
-			<div class="flex flex-wrap gap-3">
-				<a
-					href="https://github.com/Lightningrod6"
-					target="_blank"
-					rel="noreferrer"
-					class="bg-volt px-6 py-3 font-mono text-[0.78rem] font-medium uppercase tracking-[0.18em] text-ink-950 transition-colors hover:bg-warn"
-				>
-					GitHub profile
+<section class="wrap mt-24 sm:mt-32">
+	<div class="rule-heavy spread pt-10 sm:pt-12">
+		<div class="margin hidden lg:block" aria-hidden="true">
+			<Bolt class="open-bolt" />
+		</div>
+		<div class="body">
+			<h2 class="display display-m sentence">{home.openTitle}</h2>
+			<p class="measure muted mt-6 text-[1.125rem] leading-relaxed">{home.openBody}</p>
+			<div class="mt-8 flex flex-wrap items-center gap-x-7 gap-y-3">
+				<a href={site.github} target="_blank" rel="noreferrer" class="btn">
+					<span>{home.openCtaGithub}</span>
+					<Arrow />
 				</a>
-				<a
-					href="/projects"
-					class="border border-ink-800 px-6 py-3 font-mono text-[0.78rem] uppercase tracking-[0.18em] text-bone transition-colors hover:border-volt hover:text-volt"
-				>
-					View projects
+				<a href="/projects" class="textlink">
+					<span class="link">{home.openCtaProjects}</span>
 				</a>
 			</div>
 		</div>
 	</div>
 </section>
+
+<style>
+	.hero {
+		font-weight: 360;
+	}
+	.hero-b {
+		font-style: italic;
+		font-weight: 330;
+		font-variation-settings:
+			'opsz' 144,
+			'SOFT' 100,
+			'WONK' 1;
+	}
+	@media (min-width: 48rem) {
+		.hero-b {
+			padding-left: 0.62em;
+		}
+	}
+	@media (min-width: 64rem) {
+		/* "Web" steps in to meet the body column */
+		.hero-b {
+			padding-left: 14rem;
+		}
+	}
+
+	:global(.hero-bolt) {
+		width: 5.5rem;
+		height: 5.5rem;
+		color: var(--color-ink);
+		opacity: 0.7;
+	}
+	:global(.open-bolt) {
+		width: 2.25rem;
+		height: 2.25rem;
+		color: var(--color-ink);
+	}
+</style>

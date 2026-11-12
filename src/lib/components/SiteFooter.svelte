@@ -1,33 +1,24 @@
 <script lang="ts">
+	import { site } from '$lib/content';
 	import Bolt from './Bolt.svelte';
-
-	const socials = [
-		{ href: 'https://github.com/Lightningrod6', label: 'GitHub /Lightningrod6', external: true },
-		{ href: '/', label: 'Home', external: false }
-	];
 </script>
 
-<footer class="mt-20">
-	<div class="hazard-stripe h-2"></div>
-	<div class="border-t border-ink-800 bg-ink-900/50">
-		<div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-8 sm:px-6 md:flex-row md:items-center md:justify-between">
-			<div class="flex items-center gap-2.5">
-				<Bolt class="h-4 w-4 text-volt" filled />
-				<p class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-steel">
-					© 2026 lightningweb.xyz — operator: liam caywood
-				</p>
-			</div>
-			<nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Footer">
-				{#each socials as s (s.label)}
-					<a
-						href={s.href}
-						{...s.external ? { target: '_blank', rel: 'noreferrer' } : {}}
-						class="font-mono text-[0.76rem] uppercase tracking-[0.18em] text-steel transition-colors hover:text-volt"
-					>
-						{s.label}
-					</a>
+<footer class="wrap mt-24 sm:mt-32">
+	<div class="rule-heavy flex flex-col gap-5 pt-6 pb-10 md:flex-row md:items-baseline md:justify-between">
+		<p class="flex items-center gap-2.5 text-[0.875rem] muted">
+			<Bolt class="h-3.5 w-3.5 shrink-0 text-ink" />
+			<span>{site.footer.copyright}</span>
+		</p>
+		<nav aria-label="Footer">
+			<ul class="flex flex-wrap gap-x-7 gap-y-2 text-[0.875rem]">
+				{#each site.footer.links as s (s.label)}
+					<li>
+						<a href={s.href} {...s.external ? { target: '_blank', rel: 'noreferrer' } : {}} class="link">
+							{s.label}
+						</a>
+					</li>
 				{/each}
-			</nav>
-		</div>
+			</ul>
+		</nav>
 	</div>
 </footer>

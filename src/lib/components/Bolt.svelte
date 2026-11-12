@@ -1,35 +1,24 @@
 <script lang="ts">
 	interface Props {
 		class?: string;
-		/** draw the stroke once on mount (hero bolt) */
-		strike?: boolean;
-		filled?: boolean;
+		/** hairline outline instead of a solid glyph */
+		outline?: boolean;
 	}
 
-	let { class: klass = '', strike = false, filled = false }: Props = $props();
+	let { class: klass = '', outline = false }: Props = $props();
 </script>
 
-<svg
-	viewBox="0 0 24 24"
-	class={klass}
-	{...filled ? { fill: 'currentColor' } : {}}
-	aria-hidden="true"
->
-	{#if filled}
+<svg viewBox="0 0 24 24" class={klass} aria-hidden="true" focusable="false">
+	{#if outline}
 		<path
-			d="M13.9 1 4 14.1h6.6L7.7 23 18.6 9.4h-6.9z"
-			fill="currentColor"
-		/>
-	{:else}
-		<path
-			class="bolt-ink"
-			{...strike ? { style: 'animation: bolt-draw 0.9s cubic-bezier(0.65,0,0.35,1) forwards' } : {}}
 			d="M13.9 1 4 14.1h6.6L7.7 23 18.6 9.4h-6.9z"
 			fill="none"
 			stroke="currentColor"
-			stroke-width="2.2"
+			stroke-width="1.25"
 			stroke-linejoin="miter"
-			stroke-linecap="square"
+			vector-effect="non-scaling-stroke"
 		/>
+	{:else}
+		<path d="M13.9 1 4 14.1h6.6L7.7 23 18.6 9.4h-6.9z" fill="currentColor" />
 	{/if}
 </svg>
