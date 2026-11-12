@@ -7,13 +7,18 @@ The personal site of Liam Caywood (Lightning) — rebuilt on the modern Svelte s
 - **Svelte 5** (runes) + **SvelteKit 2**
 - **Tailwind CSS v4** (CSS-first tokens, no config file)
 - **@sveltejs/adapter-cloudflare** — deploys to Cloudflare Pages
-- Fonts: Bebas Neue (display), Archivo Variable (body), JetBrains Mono Variable (data)
+- Fonts: IBM Plex Mono (headings, labels, data), IBM Plex Sans (body copy)
 
 ## Design
 
-High-voltage signage: near-black navy canvas, hazard-yellow bolt accent, sharp-corner panels,
-mono data plates, and one orchestrated motion moment (the hero bolt strike). No gradients,
-no rounded cards, no GSAP.
+Operator console: a graphite canvas with hairline-bordered, titled panes, like a well-made
+internal tool or status page. One accent (phosphor amber) for brand, active tab and primary
+actions, plus semantic status colours (live, in development, contribution, offline). Projects
+render as a service list (status, name, blurb, tag chips, row action), the timeline as a log
+with a year column, the ticker as a status strip and the footer as a status bar. Spacing sits
+on an 8px grid; numerals are tabular. A light variant follows `prefers-color-scheme`. Motion
+is limited to the live-status pulse, row hover and the ticker, and all of it respects
+`prefers-reduced-motion`. Every visible string lives in `src/lib/content.ts`.
 
 ## Developing
 

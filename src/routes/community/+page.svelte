@@ -1,71 +1,111 @@
 <script lang="ts">
-	import Bolt from '$lib/components/Bolt.svelte';
-
-	const finds = [
-		'Project updates and early access before they hit the public',
-		'A place to talk dev — Python, FastAPI, Svelte, or whatever you\'re fighting',
-		'Gaming crew for whatever\'s on the server that week',
-		'Weather talk, storm chasing, and radar screenshots that mean nothing to anyone else'
-	];
+	import { communityPage, site } from '$lib/content';
+	import PageHeader from '$lib/components/PageHeader.svelte';
+	import Pane from '$lib/components/Pane.svelte';
+	import Arrow from '$lib/components/Arrow.svelte';
 </script>
 
 <svelte:head>
-	<title>Community — Lightning Web</title>
+	<title>{communityPage.title}</title>
 	<meta name="robots" content="noindex, nofollow" />
 </svelte:head>
 
-<section class="mx-auto max-w-6xl px-4 pt-14 sm:px-6">
-	<p class="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-dim">
-		<span class="text-volt">//</span> it takes a grid
-	</p>
-	<h1 class="mt-2 font-display text-[clamp(2.5rem,9vw,6rem)] leading-none text-bone">COMMUNITY</h1>
-	<p class="mt-5 max-w-[60ch] text-[1.05rem] leading-relaxed text-steel">
-		Lightning Web started as a portfolio and grew a small community around it. It's a place for
-		anyone to join, learn, and explore — developers, gamers, storm nerds, and anyone who just
-		wants to hang out while the sky does something interesting.
-	</p>
-</section>
+<PageHeader
+	mark={communityPage.eyebrowMark}
+	eyebrow={communityPage.eyebrow}
+	heading={communityPage.heading}
+	intro={communityPage.intro}
+/>
 
-<section class="mx-auto mt-10 grid max-w-6xl items-stretch gap-8 px-4 sm:px-6 md:grid-cols-[1fr_0.8fr]">
-	<div class="panel">
-		<div class="border-b border-ink-800 px-5 py-3">
-			<span class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-dim">what you'll find</span>
-		</div>
-		<ul class="divide-y divide-ink-800/70">
-			{#each finds as f (f)}
-				<li class="flex items-start gap-3 px-5 py-4">
-					<Bolt class="mt-1 h-3.5 w-3.5 shrink-0 text-volt" filled />
-					<span class="text-[0.95rem] leading-relaxed text-bone">{f}</span>
-				</li>
+<section class="wrap split">
+	<Pane title={communityPage.findsTitle}>
+		<ul class="finds">
+			{#each communityPage.finds as f (f)}
+				<li>{f}</li>
 			{/each}
 		</ul>
-	</div>
+	</Pane>
 
-	<div class="panel flex flex-col justify-between gap-8 p-6 sm:p-8">
+	<div class="join">
 		<div>
-			<h2 class="font-display text-4xl leading-none text-bone">COME TRY THE LIGHTNING RODS</h2>
-			<p class="mt-4 text-[0.98rem] leading-relaxed text-steel">
-				The server is small, friendly, and run by me. No spam, no 47 channels of noise — just
-				a few rooms where the current flows.
-			</p>
+			<h2 class="h2">{communityPage.joinTitle}</h2>
+			<p class="prose">{communityPage.joinBody}</p>
 		</div>
-		<div class="flex flex-col gap-3">
-			<a
-				href="https://discord.gg/u2YBbHjJRh"
-				target="_blank"
-				rel="noreferrer"
-				class="bg-volt px-6 py-3.5 text-center font-mono text-[0.78rem] font-medium uppercase tracking-[0.18em] text-ink-950 transition-colors hover:bg-warn"
-			>
-				Join the discord
+		<div class="actions">
+			<a href={communityPage.discord} target="_blank" rel="noreferrer" class="btn btn-primary">
+				{communityPage.joinCta}
+				<Arrow class="arrow" />
 			</a>
-			<a
-				href="https://github.com/Lightningrod6"
-				target="_blank"
-				rel="noreferrer"
-				class="border border-ink-800 px-6 py-3.5 text-center font-mono text-[0.78rem] uppercase tracking-[0.18em] text-bone transition-colors hover:border-volt hover:text-volt"
-			>
-				Browse the code
-			</a>
+			<a href={site.github} target="_blank" rel="noreferrer" class="btn">{communityPage.codeCta}</a>
 		</div>
 	</div>
 </section>
+
+<style>
+	.split {
+		display: grid;
+		gap: var(--space-3);
+		align-items: stretch;
+	}
+	.finds {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.finds li {
+		position: relative;
+		padding: 12px var(--space-2) 12px 40px;
+		font-family: var(--sans);
+		font-size: 0.9375rem;
+		line-height: 1.5rem;
+		color: var(--text);
+	}
+	.finds li + li {
+		border-top: 1px solid var(--line);
+	}
+	/* square bullet drawn in CSS */
+	.finds li::before {
+		content: '';
+		position: absolute;
+		left: var(--space-2);
+		top: 21px;
+		width: 6px;
+		height: 6px;
+		background: var(--accent);
+	}
+
+	.join {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: var(--space-4);
+		padding: var(--space-3) var(--space-2);
+		border: 1px solid var(--line);
+		border-left: 2px solid var(--accent);
+		border-radius: 2px;
+		background: var(--surface);
+	}
+	.join .h2 {
+		margin-top: 0;
+	}
+	.join .prose {
+		margin-top: var(--space-2);
+	}
+	.actions {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
+	}
+
+	@media (min-width: 640px) {
+		.join {
+			padding: var(--space-4);
+		}
+	}
+	@media (min-width: 900px) {
+		.split {
+			grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+			gap: var(--space-4);
+		}
+	}
+</style>

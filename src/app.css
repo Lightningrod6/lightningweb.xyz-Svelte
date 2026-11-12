@@ -1,133 +1,259 @@
 @import 'tailwindcss';
-@import '@fontsource-variable/archivo';
-@import '@fontsource/bebas-neue';
-@import '@fontsource-variable/jetbrains-mono';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+@import '@fontsource/ibm-plex-mono/600.css';
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/500.css';
 
-/* ---------- design tokens ---------- */
+/* ---------- type ---------- */
 @theme {
-	--font-display: 'Bebas Neue', 'Archivo Variable', sans-serif;
-	--font-sans: 'Archivo Variable', system-ui, sans-serif;
-	--font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+	--font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+	--font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+}
 
-	/* palette: high-voltage signage on near-black navy */
-	--color-ink-950: oklch(15% 0.028 262);
-	--color-ink-900: oklch(20% 0.035 262);
-	--color-ink-800: oklch(27% 0.042 262);
-	--color-steel: oklch(72% 0.022 255);
-	--color-bone: oklch(96% 0.006 250);
-	--color-volt: oklch(87% 0.16 100);
-	--color-live: oklch(72% 0.15 148);
-	--color-warn: oklch(68% 0.14 70);
-	--color-dim: oklch(58% 0.05 260);
+/* ---------- design tokens: operator console ----------
+   Graphite canvas, hairline panes, one accent (phosphor amber),
+   four semantic status colours. Spacing sits on an 8px grid. */
+:root {
+	color-scheme: dark;
 
-	/* motion */
-	--animate-led: led-pulse 2.6s ease-in-out infinite;
-	--animate-ticker: ticker 42s linear infinite;
-	--animate-bolt: bolt-draw 0.9s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+	--bg: #141413;
+	--surface: #1a1a19;
+	--surface-2: #212120;
+	--line: #2e2e2c;
+	--line-strong: #3f3f3c;
 
-	@keyframes led-pulse {
-		0%,
-		100% {
-			opacity: 1;
-		}
-		50% {
-			opacity: 0.3;
-		}
+	--text: #ecebe6;
+	--text-2: #b9b7af;
+	--text-3: #8f8d86;
+
+	--accent: #f2b84b;
+	--accent-text: #f2b84b;
+	--accent-ink: #141413;
+	--accent-hover: #f7cb74;
+
+	--status-live: #5fd38d;
+	--status-dev: #6aaef5;
+	--status-other: #b79cf2;
+	--status-offline: #ef6b5e;
+	--status-idle: #8f8d86;
+
+	--mono: var(--font-mono);
+	--sans: var(--font-sans);
+
+	--space-1: 8px;
+	--space-2: 16px;
+	--space-3: 24px;
+	--space-4: 32px;
+	--space-5: 40px;
+	--space-6: 48px;
+	--space-8: 64px;
+	--space-12: 96px;
+
+	--gutter: 16px;
+	--max: 75rem;
+	--bar-h: 48px;
+}
+
+@media (min-width: 640px) {
+	:root {
+		--gutter: 24px;
 	}
-	@keyframes ticker {
-		from {
-			transform: translateX(0);
-		}
-		to {
-			transform: translateX(-50%);
-		}
+}
+@media (min-width: 1024px) {
+	:root {
+		--gutter: 32px;
 	}
-	@keyframes bolt-draw {
-		from {
-			stroke-dashoffset: 320;
-		}
-		to {
-			stroke-dashoffset: 0;
-		}
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		color-scheme: light;
+
+		--bg: #f6f5f1;
+		--surface: #fdfcfa;
+		--surface-2: #efeee9;
+		--line: #dcdad3;
+		--line-strong: #c4c2ba;
+
+		--text: #1b1b19;
+		--text-2: #46453f;
+		--text-3: #6b6962;
+
+		--accent: #f2b84b;
+		--accent-text: #8a5a00;
+		--accent-ink: #1b1b19;
+		--accent-hover: #e9a62c;
+
+		--status-live: #1f8a4c;
+		--status-dev: #2f6fc0;
+		--status-other: #7a55c9;
+		--status-offline: #c8463a;
+		--status-idle: #8c8a83;
 	}
 }
 
 /* ---------- base ---------- */
 html {
 	scroll-behavior: smooth;
+	-webkit-text-size-adjust: 100%;
 }
 
 body {
-	background-color: var(--color-ink-950);
-	color: var(--color-bone);
-	font-family: var(--font-sans);
+	background-color: var(--bg);
+	color: var(--text);
+	font-family: var(--sans);
+	font-size: 1rem;
+	line-height: 1.5;
+	font-variant-numeric: tabular-nums;
 	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
 }
 
-/* faint blueprint grid behind everything */
-body::before {
-	content: '';
-	position: fixed;
-	inset: 0;
-	z-index: -1;
-	pointer-events: none;
-	background-image:
-		linear-gradient(to right, oklch(96% 0.006 250 / 0.035) 1px, transparent 1px),
-		linear-gradient(to bottom, oklch(96% 0.006 250 / 0.035) 1px, transparent 1px);
-	background-size: 44px 44px;
-}
-
 ::selection {
-	background: var(--color-volt);
-	color: var(--color-ink-950);
+	background: var(--accent);
+	color: var(--accent-ink);
 }
 
 :focus-visible {
-	outline: 2px solid var(--color-volt);
+	outline: 2px solid var(--accent);
 	outline-offset: 2px;
 }
 
-/* ---------- utilities ---------- */
-.hazard-stripe {
-	background-image: repeating-linear-gradient(
-		-45deg,
-		var(--color-volt) 0 12px,
-		var(--color-ink-950) 12px 24px
-	);
+/* ---------- layout primitives ---------- */
+.wrap {
+	width: 100%;
+	max-width: var(--max);
+	margin-inline: auto;
+	padding-inline: var(--gutter);
 }
 
-.hazard-stripe-thin {
-	background-image: repeating-linear-gradient(
-		-45deg,
-		var(--color-volt) 0 8px,
-		var(--color-ink-950) 8px 16px
-	);
+/* section heading block: eyebrow + h2, optional action at right */
+.section-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: var(--space-2);
+	margin-bottom: var(--space-3);
 }
 
-.panel {
-	border: 1px solid oklch(36% 0.05 262);
-	background: color-mix(in oklch, var(--color-ink-900) 92%, transparent);
-	box-shadow: inset 0 1px 0 oklch(96% 0.006 250 / 0.045);
+.eyebrow {
+	font-family: var(--mono);
+	font-size: 0.75rem;
+	line-height: 1rem;
+	letter-spacing: 0.02em;
+	color: var(--text-3);
+}
+.eyebrow .mark {
+	color: var(--accent-text);
+	margin-right: 0.25em;
 }
 
-/* the strike-on-load bolt */
-.bolt-ink {
-	stroke-dasharray: 320;
-	stroke-dashoffset: 0;
-	filter: drop-shadow(0 0 14px oklch(87% 0.16 100 / 0.55));
+.h2 {
+	margin-top: var(--space-1);
+	font-family: var(--mono);
+	font-weight: 600;
+	font-size: clamp(1.625rem, 4.2vw, 2.5rem);
+	line-height: 1.1;
+	letter-spacing: -0.03em;
+	color: var(--text);
+	text-wrap: balance;
+}
+
+.lede {
+	font-family: var(--sans);
+	font-size: 1.0625rem;
+	line-height: 1.65;
+	color: var(--text-2);
+	max-width: 62ch;
+}
+
+.prose {
+	font-family: var(--sans);
+	font-size: 1rem;
+	line-height: 1.7;
+	color: var(--text-2);
+	max-width: 64ch;
+}
+
+/* ---------- buttons ---------- */
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-1);
+	min-height: 40px;
+	padding: 0 var(--space-2);
+	border: 1px solid var(--line-strong);
+	border-radius: 2px;
+	background: transparent;
+	color: var(--text);
+	font-family: var(--mono);
+	font-size: 0.8125rem;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: 0.01em;
+	white-space: nowrap;
+	transition:
+		background-color 120ms ease,
+		border-color 120ms ease,
+		color 120ms ease;
+}
+.btn:hover {
+	border-color: var(--text-3);
+	background: var(--surface-2);
+}
+.btn-primary {
+	border-color: var(--accent);
+	background: var(--accent);
+	color: var(--accent-ink);
+}
+.btn-primary:hover {
+	border-color: var(--accent-hover);
+	background: var(--accent-hover);
+}
+.btn .arrow {
+	width: 12px;
+	height: 12px;
+	flex: none;
+}
+.btn-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-1);
+}
+
+/* ---------- motion ---------- */
+@keyframes ring {
+	0% {
+		transform: scale(1);
+		opacity: 0.55;
+	}
+	70%,
+	100% {
+		transform: scale(2.6);
+		opacity: 0;
+	}
+}
+
+@keyframes marquee {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.animate-led,
-	.animate-ticker {
-		animation: none;
-	}
-	.bolt-ink {
-		stroke-dasharray: none;
-		filter: none;
-	}
 	html {
 		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		transition-duration: 0.001ms !important;
 	}
 }

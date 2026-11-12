@@ -1,33 +1,77 @@
 <script lang="ts">
-	import Bolt from './Bolt.svelte';
-
-	const socials = [
-		{ href: 'https://github.com/Lightningrod6', label: 'GitHub /Lightningrod6', external: true },
-		{ href: '/', label: 'Home', external: false }
-	];
+	import { site } from '$lib/content';
+	import StatusDot from './StatusDot.svelte';
 </script>
 
-<footer class="mt-20">
-	<div class="hazard-stripe h-2"></div>
-	<div class="border-t border-ink-800 bg-ink-900/50">
-		<div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-8 sm:px-6 md:flex-row md:items-center md:justify-between">
-			<div class="flex items-center gap-2.5">
-				<Bolt class="h-4 w-4 text-volt" filled />
-				<p class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-steel">
-					© 2026 lightningweb.xyz — operator: liam caywood
-				</p>
-			</div>
-			<nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Footer">
-				{#each socials as s (s.label)}
-					<a
-						href={s.href}
-						{...s.external ? { target: '_blank', rel: 'noreferrer' } : {}}
-						class="font-mono text-[0.76rem] uppercase tracking-[0.18em] text-steel transition-colors hover:text-volt"
-					>
-						{s.label}
-					</a>
+<footer class="statusbar">
+	<div class="wrap inner">
+		<p class="left">
+			<StatusDot status="live" pulse={false} />
+			<span>{site.footer.copyright}</span>
+		</p>
+		<nav aria-label="Footer">
+			<ul class="links">
+				{#each site.footer.links as s (s.label)}
+					<li>
+						<a href={s.href} {...s.external ? { target: '_blank', rel: 'noreferrer' } : {}}>
+							{s.label}
+						</a>
+					</li>
 				{/each}
-			</nav>
-		</div>
+			</ul>
+		</nav>
 	</div>
 </footer>
+
+<style>
+	.statusbar {
+		border-top: 1px solid var(--line);
+		background: var(--surface);
+		font-family: var(--mono);
+		font-size: 0.75rem;
+		line-height: 1rem;
+		color: var(--text-3);
+	}
+	.inner {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
+		padding-block: 12px;
+	}
+	.left {
+		display: flex;
+		align-items: center;
+		gap: var(--space-1);
+		margin: 0;
+	}
+	.links {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.links li + li {
+		margin-left: 12px;
+		padding-left: 12px;
+		border-left: 1px solid var(--line);
+	}
+	.links a {
+		color: var(--text-2);
+		text-decoration: none;
+		transition: color 120ms ease;
+	}
+	.links a:hover {
+		color: var(--accent-text);
+	}
+
+	@media (min-width: 768px) {
+		.inner {
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			min-height: 40px;
+			padding-block: var(--space-1);
+		}
+	}
+</style>

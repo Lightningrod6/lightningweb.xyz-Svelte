@@ -6,10 +6,28 @@
 	let { children } = $props();
 </script>
 
-<div class="flex min-h-screen flex-col">
+<div class="shell">
 	<SiteHeader />
-	<main class="flex-1">
+	<main>
 		{@render children()}
 	</main>
 	<SiteFooter />
 </div>
+
+<style>
+	.shell {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		min-height: 100dvh;
+	}
+	main {
+		flex: 1;
+		padding-bottom: var(--space-8);
+	}
+	@media (min-width: 768px) {
+		main {
+			padding-bottom: var(--space-12);
+		}
+	}
+</style>
