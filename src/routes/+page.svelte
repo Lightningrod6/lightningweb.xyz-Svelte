@@ -14,7 +14,7 @@
 	<title>{home.title}</title>
 </svelte:head>
 
-<!-- hero: identity at left, live system status pane at right -->
+<!-- hero -->
 <section class="wrap hero">
 	<div class="intro">
 		<p class="eyebrow"><span class="mark">{home.eyebrowMark}</span> {home.eyebrow}</p>
@@ -31,10 +31,6 @@
 			<a href="/about-me" class="btn">{home.ctaAbout}</a>
 		</div>
 	</div>
-
-	<Pane title={home.plateTitle} indicator={home.plateLed}>
-		<KvTable rows={home.plate} />
-	</Pane>
 </section>
 
 <Ticker />
@@ -43,7 +39,7 @@
 <section class="wrap band">
 	<div class="section-head">
 		<div>
-			<p class="eyebrow">{home.featuredEyebrow}</p>
+			{#if home.featuredEyebrow}<p class="eyebrow">{home.featuredEyebrow}</p>{/if}
 			<h2 class="h2">{home.featuredTitle}</h2>
 		</div>
 		<a href="/projects" class="btn">{home.allProjects}</a>
@@ -66,10 +62,10 @@
 	</ServiceList>
 </section>
 
-<!-- operator -->
+<!-- about -->
 <section class="wrap band about">
 	<div>
-		<p class="eyebrow">{home.aboutEyebrow}</p>
+		{#if home.aboutEyebrow}<p class="eyebrow">{home.aboutEyebrow}</p>{/if}
 		<h2 class="h2">{home.aboutTitle}</h2>
 		<p class="prose">{home.about}</p>
 		<a href="/about-me" class="btn">
@@ -114,7 +110,7 @@
 		margin: var(--space-3) 0 0;
 		font-family: var(--mono);
 		font-weight: 600;
-		font-size: clamp(3rem, 7.5vw, 6rem);
+		font-size: clamp(3rem, 10vw, 8.5rem);
 		line-height: 0.95;
 		letter-spacing: -0.045em;
 	}
@@ -140,7 +136,7 @@
 	.hero .lede {
 		margin-top: var(--space-3);
 		font-size: 1.125rem;
-		max-width: 52ch;
+		max-width: 60ch;
 	}
 	.cta {
 		margin-top: var(--space-4);
@@ -192,11 +188,6 @@
 	}
 
 	@media (min-width: 1024px) {
-		.hero {
-			grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-			align-items: center;
-			gap: var(--space-6);
-		}
 		.about {
 			grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
 			gap: var(--space-6);

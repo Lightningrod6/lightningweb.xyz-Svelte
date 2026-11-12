@@ -7,7 +7,7 @@
 		pulse?: boolean;
 	}
 
-	let { status, pulse = status === 'live' }: Props = $props();
+	let { status, pulse = false }: Props = $props();
 </script>
 
 <span class="dot s-{status}" class:pulse aria-hidden="true"></span>

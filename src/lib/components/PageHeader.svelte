@@ -10,7 +10,7 @@
 </script>
 
 <header class="wrap head">
-	<p class="eyebrow"><span class="mark">{mark}</span> {eyebrow}</p>
+	{#if eyebrow}<p class="eyebrow"><span class="mark">{mark}</span> {eyebrow}</p>{/if}
 	<h1>{heading}</h1>
 	{#if intro}
 		<p class="lede">{intro}</p>

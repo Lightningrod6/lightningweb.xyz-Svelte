@@ -2,15 +2,10 @@
 	import { ticker } from '$lib/content';
 </script>
 
-<!-- single-line status strip; second copy exists only to make the loop seamless -->
+<!-- stack strip -->
 <div class="strip">
 	<div class="track">
 		<ul class="items">
-			{#each ticker as item (item)}
-				<li>{item}</li>
-			{/each}
-		</ul>
-		<ul class="items copy" aria-hidden="true">
 			{#each ticker as item (item)}
 				<li>{item}</li>
 			{/each}
@@ -26,8 +21,8 @@
 	}
 	.track {
 		display: flex;
-		width: max-content;
-		animation: marquee 48s linear infinite;
+		max-width: var(--max);
+		margin-inline: auto;
 	}
 	.strip:hover .track,
 	.strip:focus-within .track {
@@ -35,6 +30,8 @@
 	}
 	.items {
 		display: flex;
+		flex-wrap: wrap;
+		padding-inline: var(--gutter);
 		align-items: center;
 		margin: 0;
 		padding: 0;
@@ -71,9 +68,6 @@
 		.track {
 			animation: none;
 			width: auto;
-		}
-		.copy {
-			display: none;
 		}
 		.items {
 			flex-wrap: wrap;

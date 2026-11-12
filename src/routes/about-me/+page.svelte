@@ -41,7 +41,7 @@
 	</div>
 
 	<aside class="side">
-		<Pane title={aboutPage.fileTitle} indicator={aboutPage.fileLed}>
+		<Pane title={aboutPage.fileTitle}>
 			<KvTable rows={aboutPage.file} />
 		</Pane>
 		<a href={site.github} target="_blank" rel="noreferrer" class="btn gh">
