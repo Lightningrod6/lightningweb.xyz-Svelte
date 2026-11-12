@@ -1,4 +1,5 @@
 <script lang="ts">
+	// a list of short facts set as numbered margin notes
 	interface Props {
 		title: string;
 		rows: { k: string; v: string }[];
@@ -7,17 +8,17 @@
 	let { title, rows, note = '' }: Props = $props();
 </script>
 
-<div class="ruled">
-	<p class="flex items-baseline justify-between gap-4">
-		<span class="font-semibold">{title}</span>
-		{#if note}<span class="muted text-[0.875rem]">{note}</span>{/if}
+<aside class="notes">
+	<p class="flex items-baseline justify-between gap-4 border-b pb-2" style="border-color: var(--ink)">
+		<span class="kicker">{title}</span>
+		{#if note}<span class="serif muted text-[0.9375rem] italic">{note}</span>{/if}
 	</p>
-	<dl class="rows mt-3">
+	<dl class="mt-3 space-y-3">
 		{#each rows as r (r.k)}
-			<div class="grid gap-0.5 py-2.5 text-[0.9375rem] sm:grid-cols-[7.5rem_1fr] sm:gap-4">
-				<dt class="muted">{r.k}</dt>
+			<div class="note text-[0.9375rem] leading-snug">
+				<dt class="serif muted italic">{r.k}</dt>
 				<dd>{r.v}</dd>
 			</div>
 		{/each}
 	</dl>
-</div>
+</aside>

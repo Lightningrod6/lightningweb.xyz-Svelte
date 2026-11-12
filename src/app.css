@@ -1,44 +1,62 @@
 @import 'tailwindcss';
 @import '@fontsource-variable/libre-franklin';
+@import '@fontsource/libre-caslon-display';
+@import '@fontsource/libre-caslon-text/400.css';
+@import '@fontsource/libre-caslon-text/400-italic.css';
+@import '@fontsource/libre-caslon-text/700.css';
 
 /*
   Decisions, written down once:
-  - Type: Libre Franklin (a Franklin Gothic revival, the newspaper/headline face) for everything.
-  - Color: ink on white, grey for secondary text, classic link blue for links. Nothing else.
-  - Shape: hairline rules instead of boxes, 3px corners on the one button, no shadows.
-  - Motion: none, beyond link color on hover.
+  - Type: Libre Caslon Display for big headings, Libre Caslon Text for notes and numerals,
+    Libre Franklin for everything else. Caslon and Franklin Gothic are the old newspaper pairing.
+  - Color: newsprint paper, warm ink, editor's red for marks and notes, a deep green band,
+    and plain underlined links.
+  - Detail: hand-drawn rules, numbered margin notes drawn in CSS, ink drawings of each project.
+  - Motion: none.
 */
 @theme {
 	--font-sans: 'Libre Franklin Variable', 'Franklin Gothic Medium', 'Helvetica Neue', Arial, sans-serif;
+	--font-display: 'Libre Caslon Display', 'Libre Caslon Text', Georgia, serif;
+	--font-serif: 'Libre Caslon Text', Georgia, serif;
 }
 
 :root {
-	--bg: #ffffff;
-	--fg: #18191b;
-	--soft: #45474c;
-	--muted: #6e7076;
-	--rule: #dfe0e2;
-	--rule-strong: #18191b;
-	--link: #1f47c9;
+	--paper: #f3eee4;
+	--paper-2: #e9e2d4;
+	--card: #fbf8f2;
+	--ink: #1d1b17;
+	--soft: #47433b;
+	--muted: #76705f;
+	--rule: #cfc6b3;
+	--red: #b3261e;
+	--link: #1d3f8f;
+	--band: #1e3a32;
+	--band-ink: #efe9dc;
+	--band-muted: #a9bdb3;
 	color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--bg: #141517;
-		--fg: #ececea;
-		--soft: #c3c3c0;
-		--muted: #9a9a97;
-		--rule: #2e3033;
-		--rule-strong: #ececea;
-		--link: #8fb0ff;
+		--paper: #17160f;
+		--paper-2: #201e16;
+		--card: #1d1b14;
+		--ink: #ece6d8;
+		--soft: #c9c2b2;
+		--muted: #958e7d;
+		--rule: #3a362b;
+		--red: #ef7a6c;
+		--link: #9db8f5;
+		--band: #16302a;
+		--band-ink: #efe9dc;
+		--band-muted: #9fb7ac;
 		color-scheme: dark;
 	}
 }
 
 body {
-	background: var(--bg);
-	color: var(--fg);
+	background: var(--paper);
+	color: var(--ink);
 	font-family: var(--font-sans);
 	font-size: 1.0625rem;
 	line-height: 1.6;
@@ -50,7 +68,6 @@ a {
 	text-decoration: none;
 }
 
-/* links inside text: blue and underlined, like the web always was */
 .link {
 	color: var(--link);
 	text-decoration: underline;
@@ -62,13 +79,17 @@ a {
 }
 
 :focus-visible {
-	outline: 2px solid var(--link);
+	outline: 2px solid var(--red);
 	outline-offset: 2px;
+}
+
+::selection {
+	background: color-mix(in srgb, var(--red) 22%, transparent);
 }
 
 .wrap {
 	width: 100%;
-	max-width: 66rem;
+	max-width: 76rem;
 	margin-inline: auto;
 	padding-inline: 1.25rem;
 }
@@ -87,31 +108,44 @@ a {
 }
 
 .display {
-	font-weight: 800;
-	letter-spacing: -0.03em;
-	line-height: 0.95;
-	font-size: clamp(3rem, 10vw, 6.25rem);
+	font-family: var(--font-display);
+	font-weight: 400;
+	letter-spacing: -0.02em;
+	line-height: 0.86;
+	font-size: clamp(4.25rem, 15vw, 12.5rem);
 }
 
 .h1 {
-	font-weight: 800;
-	letter-spacing: -0.025em;
-	line-height: 1;
-	font-size: clamp(2.5rem, 7vw, 4rem);
+	font-family: var(--font-display);
+	font-weight: 400;
+	letter-spacing: -0.015em;
+	line-height: 0.95;
+	font-size: clamp(3.25rem, 9vw, 6.5rem);
 }
 
 .h2 {
-	font-weight: 750;
-	letter-spacing: -0.02em;
-	line-height: 1.1;
-	font-size: clamp(1.625rem, 3.5vw, 2.125rem);
+	font-family: var(--font-display);
+	font-weight: 400;
+	letter-spacing: -0.01em;
+	line-height: 1;
+	font-size: clamp(2.25rem, 5vw, 3.5rem);
 }
 
-/* small label above or beside a block: plain text, not caps, not mono */
+.h3 {
+	font-family: var(--font-display);
+	font-weight: 400;
+	line-height: 1.05;
+	font-size: clamp(1.75rem, 3vw, 2.25rem);
+}
+
+/* small label: Franklin small caps, tracked, in red */
 .kicker {
 	display: block;
-	font-size: 0.9375rem;
-	color: var(--muted);
+	font-size: 0.8125rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--red);
 }
 
 .soft {
@@ -120,28 +154,83 @@ a {
 .muted {
 	color: var(--muted);
 }
-
-.section {
-	margin-top: 5.5rem;
+.serif {
+	font-family: var(--font-serif);
 }
 
-/* a section opens with a heavy rule */
-.ruled {
-	border-top: 2px solid var(--rule-strong);
-	padding-top: 1.25rem;
+.section {
+	margin-top: 6.5rem;
+}
+
+/* a rule that looks drawn with a pen */
+.scribble {
+	height: 10px;
+	color: var(--ink);
+	background: no-repeat left center / 100% 10px
+		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 10' preserveAspectRatio='none'%3E%3Cpath d='M1 6.2C40 4.1 77 7.3 118 5.6s83-2.9 127-.4 80 2.6 124 .2 92-2.5 131 .1 64 1.9 99-.4' fill='none' stroke='%231d1b17' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+@media (prefers-color-scheme: dark) {
+	.scribble {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 10' preserveAspectRatio='none'%3E%3Cpath d='M1 6.2C40 4.1 77 7.3 118 5.6s83-2.9 127-.4 80 2.6 124 .2 92-2.5 131 .1 64 1.9 99-.4' fill='none' stroke='%23ece6d8' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+	}
+}
+
+/* a short red underline drawn under a heading */
+.mark-under {
+	position: relative;
+	display: inline-block;
+}
+.mark-under::after {
+	content: '';
+	position: absolute;
+	left: -0.05em;
+	right: -0.1em;
+	bottom: -0.12em;
+	height: 0.22em;
+	background: no-repeat center / 100% 100%
+		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M2 9.5C38 5.8 71 4.9 109 5.6c33 .6 59 2.1 89 4.4M14 11.8c40-3.1 92-3.6 151-1.4' fill='none' stroke='%23b3261e' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+/* numbered margin notes; the numbers are drawn by CSS */
+.notes {
+	counter-reset: note;
+}
+.note {
+	counter-increment: note;
+	position: relative;
+	padding-left: 2.1rem;
+}
+.note::before {
+	content: '[' counter(note) ']';
+	position: absolute;
+	left: 0;
+	top: 0.05em;
+	font-family: var(--font-serif);
+	font-size: 0.875rem;
+	color: var(--red);
+}
+
+/* a big first letter, set in the display face */
+.dropcap::first-letter {
+	float: left;
+	font-family: var(--font-display);
+	font-size: 4.4em;
+	line-height: 0.8;
+	padding: 0.06em 0.12em 0 0;
+	color: var(--red);
 }
 
 .button {
 	display: inline-block;
-	background: var(--fg);
-	color: var(--bg);
+	background: var(--ink);
+	color: var(--paper);
 	font-weight: 600;
 	font-size: 0.9375rem;
-	padding: 0.7rem 1.1rem;
-	border-radius: 3px;
+	padding: 0.75rem 1.15rem;
+	border-radius: 2px;
 }
 .button:hover {
-	background: var(--link);
+	background: var(--red);
 	color: #fff;
 }
 
@@ -156,7 +245,47 @@ a {
 	content: ', ';
 }
 
-/* simple definition rows */
+/* list separated by red bullets, for the stack line */
+.bullets > li {
+	display: inline;
+}
+.bullets > li + li::before {
+	content: '\2022';
+	color: var(--red);
+	margin-inline: 0.6em;
+}
+
 .rows > * + * {
 	border-top: 1px solid var(--rule);
+}
+
+/* a framed picture, like a print plate */
+.plate {
+	background: var(--card);
+	border: 1px solid var(--rule);
+	padding: 0.5rem;
+}
+.plate > * {
+	display: block;
+	width: 100%;
+	border: 1px solid var(--rule);
+}
+
+/* the dark green section */
+.band {
+	background: var(--band);
+	color: var(--band-ink);
+}
+.band .muted {
+	color: var(--band-muted);
+}
+.band .link {
+	color: var(--band-ink);
+}
+.band .button {
+	background: var(--band-ink);
+	color: var(--band);
+}
+.band .button:hover {
+	background: #fff;
 }
