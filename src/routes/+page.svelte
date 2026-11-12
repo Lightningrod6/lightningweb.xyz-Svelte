@@ -22,16 +22,13 @@
 			<span class="block text-[var(--yellow)]">{home.heroA}</span>
 			<span class="hollow-cream block">{home.heroB}</span>
 		</h1>
-		<div class="mt-12 grid gap-12 lg:grid-cols-[1fr_24rem] lg:items-start lg:gap-16">
-			<div class="max-w-[36rem]">
+		<div class="mt-12 pb-10">
+			<div class="max-w-[40rem]">
 				<p class="text-[1.375rem] leading-snug font-semibold sm:text-[1.625rem]">{home.intro}</p>
 				<p class="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4">
 					<a href="/projects" class="btn">{home.ctaProjects}</a>
 					<a href="/about-me" class="go text-[var(--yellow)]">{home.ctaAbout}</a>
 				</p>
-			</div>
-			<div class="count text-[var(--navy)]">
-				<Facts title={home.plateTitle} note={home.plateLed} rows={home.plate} tilt={2} />
 			</div>
 		</div>
 	</div>
@@ -44,7 +41,7 @@
 <section class="wrap count pt-24">
 	<div class="flex flex-wrap items-end justify-between gap-6">
 		<div>
-			<p class="tape red">{home.featuredEyebrow}</p>
+			{#if home.featuredEyebrow}<p class="tape red">{home.featuredEyebrow}</p>{/if}
 			<h2 class="wide-black h1 mt-4">{home.featuredTitle}</h2>
 		</div>
 		<a href="/projects" class="go">{home.allProjects}</a>
@@ -65,7 +62,7 @@
 	<div class="block-red dots-wrap relative flex items-end overflow-hidden px-5 py-16 sm:px-8 lg:min-h-[34rem] lg:px-12">
 		<div class="dots absolute inset-0 text-[#f46b48]" aria-hidden="true"></div>
 		<div class="relative">
-			<p class="tape">{home.aboutEyebrow}</p>
+			{#if home.aboutEyebrow}<p class="tape">{home.aboutEyebrow}</p>{/if}
 			<h2 class="wide-black h1 mt-5">{home.aboutTitle}</h2>
 		</div>
 	</div>

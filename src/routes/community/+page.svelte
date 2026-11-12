@@ -11,7 +11,7 @@
 <section class="block-navy cut-bottom">
 	<div class="wrap grid gap-8 pt-14 pb-6 sm:pt-20 lg:grid-cols-[1.3fr_1fr] lg:items-end">
 		<div>
-			<p class="tape yellow">{c.eyebrowMark} {c.eyebrow}</p>
+			{#if c.eyebrow}<p class="tape yellow">{c.eyebrowMark} {c.eyebrow}</p>{/if}
 			<h1 class="wide-black h1 mt-6 text-[var(--yellow)]">{c.heading}</h1>
 		</div>
 		<p class="text-[1.375rem] leading-snug font-semibold">{c.intro}</p>

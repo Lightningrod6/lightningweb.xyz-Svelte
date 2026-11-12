@@ -13,7 +13,7 @@
 <section class="block-red cut-bottom relative overflow-hidden">
 	<Bolt class="pointer-events-none absolute -right-8 -top-6 hidden h-[26rem] w-auto -rotate-[10deg] md:block lg:right-[8%]" />
 	<div class="wrap relative pt-14 pb-6 sm:pt-20">
-		<p class="tape">{c.eyebrowMark} {c.eyebrow}</p>
+		{#if c.eyebrow}<p class="tape">{c.eyebrowMark} {c.eyebrow}</p>{/if}
 		<h1 class="wide-black mega mt-6">{c.heading}</h1>
 	</div>
 </section>
@@ -33,7 +33,7 @@
 		</ul>
 	</div>
 	<div class="count lg:col-span-4 lg:col-start-9 lg:pt-14">
-		<Facts title={c.fileTitle} note={c.fileLed} rows={c.file} tilt={2} />
+		<Facts title={c.fileTitle} rows={c.file} tilt={2} />
 		<p class="mt-8"><a href={site.github} target="_blank" rel="noreferrer" class="go">{c.githubLabel}</a></p>
 	</div>
 </section>

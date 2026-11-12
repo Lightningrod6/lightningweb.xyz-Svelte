@@ -26,7 +26,7 @@ export const site = {
 		{ href: '/about-me', label: 'About' }
 	],
 	footer: {
-		copyright: '© 2026 lightningweb.xyz — operator: liam caywood',
+		copyright: '© 2026 lightningweb.xyz — liam caywood',
 		links: [
 			{ href: 'https://github.com/Lightningrod6', label: 'GitHub /Lightningrod6', external: true },
 			{ href: '/', label: 'Home', external: false }
@@ -38,7 +38,7 @@ export const site = {
 export const slot = {
 	title: 'Your project here',
 	blurb:
-		'Have a project, a collab, or a gig in mind? The grid has an open slot — and the operator is open for work.',
+		'Have a project, a collab, or a gig in mind? I\'m open for work.',
 	cta: 'Say hi on GitHub',
 	label: 'open slot',
 	tags: ['collab', 'freelance', 'available'],
@@ -68,15 +68,7 @@ export const home = {
 		'Building software first, worry about the details later. I show my hands in the stuff that people dont see.',
 	ctaProjects: 'View projects',
 	ctaAbout: 'More about me',
-	plateTitle: 'System status',
-	plateLed: 'nominal',
-	plate: [
-		{ k: 'operator', v: 'Liam Caywood' },
-		{ k: 'study', v: 'CS · Cameron University (sophomore)' },
-		{ k: 'stack', v: 'Python · FastAPI · TypeScript · Svelte · Redis' },
-		{ k: 'availability', v: 'Open for work & collabs' }
-	],
-	featuredEyebrow: "what's running",
+	featuredEyebrow: '',
 	featuredTitle: 'FEATURED PROJECTS',
 	allProjects: 'All projects',
 	featured: [
@@ -135,7 +127,7 @@ export const home = {
 			cta: 'see the dashboard'
 		}
 	] as Project[],
-	aboutEyebrow: 'the operator',
+	aboutEyebrow: '',
 	aboutTitle: 'ABOUT ME',
 	about:
 		"I'm a CS student addicted to creating the next thing. Using AI, it allows me to focus on the big picture and go bigger than I ever could. I focus on the back while my agent works on the front. I have a strong passion for web development and an even stronger passion for geopolitics. Why not combine those two into a single product? Oh wait, someone already did that, me.",
@@ -220,7 +212,7 @@ export const projectsPage = {
 export const aboutPage = {
 	title: 'About Me — Lightning Web',
 	eyebrowMark: '//',
-	eyebrow: 'who runs this grid',
+	eyebrow: '',
 	heading: 'ABOUT ME',
 	shortTitle: 'the short version',
 	short:
@@ -230,7 +222,7 @@ export const aboutPage = {
 	work: [
 		{ k: 'backend', v: 'Python, FastAPI, Redis, SQL, REST APIs, scrapers, bots.' },
 		{ k: 'frontend', v: 'TypeScript, Svelte 5, SvelteKit, Tailwind, CSS.' },
-		{ k: 'ops', v: 'Railway, Cloudflare Pages, Redis for the hot state, Postgres/Stripe for the important state.' },
+		{ k: 'hosting', v: 'Railway, Cloudflare Pages, Redis for the hot state, Postgres/Stripe for the important state.' },
 		{ k: 'elsewhere', v: 'C# for game mods, a bit of Java from school, a faint memory of HTML-only days.' }
 	],
 	offTitle: 'when the keyboard cools',
@@ -239,17 +231,16 @@ export const aboutPage = {
 			name: 'Meteorology',
 			body: 'Weather research and storm watching. The name "Lightning" wasn\'t a marketing decision - it\'s a personality trait.'
 		},
-		{ name: 'Situation Monitoring', body: 'Keeping track of global conflicts, wars and crises' },
+		{ name: 'World events', body: 'Keeping track of global conflicts, wars and crises' },
 		{ name: 'Game modding', body: 'Modding games that use Unity like Rust and BoneLab' },
 		{
 			name: 'Voice acting',
 			body: 'One official credit: General Geratan in the Blade & Sorcery Audible Lore mod. Five lines, fully committed.'
 		}
 	],
-	fileTitle: 'Personnel file',
-	fileLed: 'nominal',
+	fileTitle: 'Quick facts',
 	file: [
-		{ k: 'callsign', v: 'Lightning (Lightningrod6)' },
+		{ k: 'goes by', v: 'Lightning (Lightningrod6)' },
 		{ k: 'age', v: '21' },
 		{ k: 'role', v: 'Full-stack dev, backend-leaning' },
 		{ k: 'education', v: 'CS · Cameron University' }
@@ -312,7 +303,7 @@ export const contributionsPage = {
 export const communityPage = {
 	title: 'Community — Lightning Web',
 	eyebrowMark: '//',
-	eyebrow: 'it takes a grid',
+	eyebrow: '',
 	heading: 'COMMUNITY',
 	intro:
 		"Lightning Web started as a portfolio and grew a small community around it. It's a place for anyone to join, learn, and explore — developers, gamers, storm nerds, and anyone who just wants to hang out while the sky does something interesting.",
