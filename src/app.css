@@ -1,48 +1,37 @@
 @import 'tailwindcss';
-@import '@fontsource-variable/inter-tight';
-@import '@fontsource-variable/jetbrains-mono';
+@import '@fontsource-variable/libre-franklin';
 
-/* Clean and confident: Inter Tight for words, JetBrains Mono for small labels,
-   warm neutrals, one amber accent, structured cards, very little motion. */
+/*
+  Decisions, written down once:
+  - Type: Libre Franklin (a Franklin Gothic revival, the newspaper/headline face) for everything.
+  - Color: ink on white, grey for secondary text, classic link blue for links. Nothing else.
+  - Shape: hairline rules instead of boxes, 3px corners on the one button, no shadows.
+  - Motion: none, beyond link color on hover.
+*/
 @theme {
-	--font-sans: 'Inter Tight Variable', ui-sans-serif, system-ui, sans-serif;
-	--font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+	--font-sans: 'Libre Franklin Variable', 'Franklin Gothic Medium', 'Helvetica Neue', Arial, sans-serif;
 }
 
 :root {
-	--bg: #f7f6f3;
-	--surface: #ffffff;
-	--fg: #17171a;
-	--soft: #4a4a52;
-	--muted: #7a7a82;
-	--line: #e3e1db;
-	--line-strong: #c9c6bd;
-	--accent: #d97a06;
-	--accent-ink: #9a5200;
-	--accent-wash: #fbeedb;
-	--live: #2f9e5f;
-	--dev: #d97a06;
-	--other: #6b6bd6;
-	--off: #a3a3aa;
+	--bg: #ffffff;
+	--fg: #18191b;
+	--soft: #45474c;
+	--muted: #6e7076;
+	--rule: #dfe0e2;
+	--rule-strong: #18191b;
+	--link: #1f47c9;
 	color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
-	:root:not([data-theme='light']) {
-		--bg: #121214;
-		--surface: #1a1a1d;
-		--fg: #ededea;
-		--soft: #c4c3bf;
-		--muted: #8d8c88;
-		--line: #2a2a2e;
-		--line-strong: #3d3d42;
-		--accent: #f2a33a;
-		--accent-ink: #f6b860;
-		--accent-wash: #2a2116;
-		--live: #4cc283;
-		--dev: #f2a33a;
-		--other: #9a9aef;
-		--off: #6c6c73;
+	:root {
+		--bg: #141517;
+		--fg: #ececea;
+		--soft: #c3c3c0;
+		--muted: #9a9a97;
+		--rule: #2e3033;
+		--rule-strong: #ececea;
+		--link: #8fb0ff;
 		color-scheme: dark;
 	}
 }
@@ -54,7 +43,6 @@ body {
 	font-size: 1.0625rem;
 	line-height: 1.6;
 	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
 }
 
 a {
@@ -62,20 +50,25 @@ a {
 	text-decoration: none;
 }
 
-:focus-visible {
-	outline: 2px solid var(--accent);
-	outline-offset: 3px;
-	border-radius: 6px;
+/* links inside text: blue and underlined, like the web always was */
+.link {
+	color: var(--link);
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.18em;
+}
+.link:hover {
+	text-decoration-thickness: 2px;
 }
 
-::selection {
-	background: var(--accent-wash);
-	color: var(--fg);
+:focus-visible {
+	outline: 2px solid var(--link);
+	outline-offset: 2px;
 }
 
 .wrap {
 	width: 100%;
-	max-width: 68rem;
+	max-width: 66rem;
 	margin-inline: auto;
 	padding-inline: 1.25rem;
 }
@@ -83,19 +76,6 @@ a {
 	.wrap {
 		padding-inline: 2rem;
 	}
-}
-
-/* small mono label */
-.eyebrow {
-	display: block;
-	font-family: var(--font-mono);
-	font-size: 0.75rem;
-	letter-spacing: 0.04em;
-	color: var(--muted);
-}
-.eyebrow .mark {
-	color: var(--accent);
-	margin-right: 0.35em;
 }
 
 /* headings are stored in caps; shown in sentence case */
@@ -107,24 +87,31 @@ a {
 }
 
 .display {
-	font-weight: 650;
-	letter-spacing: -0.035em;
-	line-height: 0.98;
-	font-size: clamp(2.75rem, 9vw, 5.5rem);
+	font-weight: 800;
+	letter-spacing: -0.03em;
+	line-height: 0.95;
+	font-size: clamp(3rem, 10vw, 6.25rem);
 }
 
 .h1 {
-	font-weight: 650;
-	letter-spacing: -0.03em;
-	line-height: 1.02;
+	font-weight: 800;
+	letter-spacing: -0.025em;
+	line-height: 1;
 	font-size: clamp(2.5rem, 7vw, 4rem);
 }
 
 .h2 {
-	font-weight: 650;
-	letter-spacing: -0.025em;
+	font-weight: 750;
+	letter-spacing: -0.02em;
 	line-height: 1.1;
-	font-size: clamp(1.75rem, 4vw, 2.25rem);
+	font-size: clamp(1.625rem, 3.5vw, 2.125rem);
+}
+
+/* small label above or beside a block: plain text, not caps, not mono */
+.kicker {
+	display: block;
+	font-size: 0.9375rem;
+	color: var(--muted);
 }
 
 .soft {
@@ -135,108 +122,41 @@ a {
 }
 
 .section {
-	margin-top: 6rem;
+	margin-top: 5.5rem;
 }
 
-/* surfaces */
-.card {
-	background: var(--surface);
-	border: 1px solid var(--line);
-	border-radius: 12px;
+/* a section opens with a heavy rule */
+.ruled {
+	border-top: 2px solid var(--rule-strong);
+	padding-top: 1.25rem;
 }
 
-/* buttons */
-.btn {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.5rem;
-	border-radius: 999px;
-	padding: 0.65rem 1.15rem;
-	font-size: 0.9375rem;
-	font-weight: 550;
-	border: 1px solid transparent;
-	transition:
-		background-color 150ms,
-		border-color 150ms,
-		color 150ms;
-}
-.btn-primary {
+.button {
+	display: inline-block;
 	background: var(--fg);
 	color: var(--bg);
+	font-weight: 600;
+	font-size: 0.9375rem;
+	padding: 0.7rem 1.1rem;
+	border-radius: 3px;
 }
-.btn-primary:hover {
-	background: var(--accent-ink);
-}
-.btn-ghost {
-	border-color: var(--line-strong);
-	color: var(--fg);
-}
-.btn-ghost:hover {
-	border-color: var(--fg);
+.button:hover {
+	background: var(--link);
+	color: #fff;
 }
 
-/* inline text link */
-.tlink {
-	color: var(--fg);
-	font-weight: 550;
-	text-decoration: underline;
-	text-decoration-color: var(--accent);
-	text-decoration-thickness: 1.5px;
-	text-underline-offset: 0.22em;
-	transition: color 150ms;
+/* inline list separated by commas drawn in CSS */
+.commas {
+	display: inline;
 }
-.tlink:hover {
-	color: var(--accent-ink);
+.commas > li {
+	display: inline;
+}
+.commas > li + li::before {
+	content: ', ';
 }
 
-/* mono chip */
-.chip {
-	display: inline-block;
-	font-family: var(--font-mono);
-	font-size: 0.6875rem;
-	line-height: 1;
-	padding: 0.4rem 0.55rem;
-	border-radius: 6px;
-	background: var(--bg);
-	border: 1px solid var(--line);
-	color: var(--soft);
-}
-
-/* status dot */
-.dot {
-	display: inline-block;
-	width: 0.5rem;
-	height: 0.5rem;
-	border-radius: 999px;
-	flex: none;
-}
-
-/* the one bit of motion: content rises in on first load */
-@keyframes rise {
-	from {
-		opacity: 0;
-		transform: translateY(8px);
-	}
-	to {
-		opacity: 1;
-		transform: none;
-	}
-}
-.rise {
-	animation: rise 600ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
-}
-.rise-2 {
-	animation-delay: 90ms;
-}
-.rise-3 {
-	animation-delay: 180ms;
-}
-
-@media (prefers-reduced-motion: reduce) {
-	.rise {
-		animation: none;
-	}
-	* {
-		transition: none !important;
-	}
+/* simple definition rows */
+.rows > * + * {
+	border-top: 1px solid var(--rule);
 }

@@ -7,13 +7,14 @@ The personal site of Liam Caywood (Lightning) — rebuilt on the modern Svelte s
 - **Svelte 5** (runes) + **SvelteKit 2**
 - **Tailwind CSS v4** (CSS-first tokens, no config file)
 - **@sveltejs/adapter-cloudflare** — deploys to Cloudflare Pages
-- Fonts: Inter Tight Variable (text), JetBrains Mono Variable (labels)
+- Font: Libre Franklin Variable
 
 ## Design
 
-Clean and confident: Inter Tight for words and JetBrains Mono for small labels, warm neutrals with one amber
-accent, project cards with status, tags and a call to action, gentle hover states and a single fade-up on load.
-Light by default with a dark mode that follows the OS. All copy lives in `src/lib/content.ts`.
+Plain and editorial: Libre Franklin for everything, ink on white with grey secondary text and classic
+underlined blue links. Sections open with a heavy rule, projects are ruled rows instead of cards, tags are
+plain comma lists, status is a word, and nothing animates. Light by default with a dark mode that follows
+the OS. All copy lives in `src/lib/content.ts`.
 
 ## Developing
 
