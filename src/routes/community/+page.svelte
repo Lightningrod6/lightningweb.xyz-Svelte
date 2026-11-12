@@ -23,7 +23,7 @@
 	<ul class="mt-6 grid gap-5 md:grid-cols-2">
 		{#each c.finds as f, i (f)}
 			<li class="tick {tones[i % tones.length]} border-[3px] border-[var(--navy)] p-6">
-				<span class="num outline block text-[2.75rem]" aria-hidden="true"></span>
+				<span class="num hollow block text-[2.75rem]" aria-hidden="true"></span>
 				<p class="mt-3 text-[1.125rem] leading-relaxed font-semibold">{f}</p>
 			</li>
 		{/each}

@@ -14,7 +14,7 @@
 
 <article class="proj block-{tone} {side ? 'side' : ''}" class:big>
 	<div class="top flex items-start justify-between gap-4">
-		<span class="num outline {big ? 'text-[4.5rem]' : 'text-[3.25rem]'}" aria-hidden="true"></span>
+		<span class="num hollow {big ? 'text-[4.5rem]' : 'text-[3.25rem]'}" aria-hidden="true"></span>
 		<span class="tape {tone === 'navy' ? 'yellow' : ''}">{statusLabel[p.status]}</span>
 	</div>
 	<div class="pic mt-4"><Picture name={p.name} href={p.href} /></div>
@@ -58,6 +58,15 @@
 		.side h3 {
 			margin-top: 1rem;
 		}
+	}
+	.big .pic {
+		flex: 1;
+		display: flex;
+	}
+	.big .pic :global(.plate) {
+		flex: 1;
+		display: flex;
+		align-items: center;
 	}
 	.pic :global(.plate) {
 		background: var(--cream);

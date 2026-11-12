@@ -74,7 +74,7 @@ a {
 	line-height: 0.88;
 }
 .mega {
-	font-size: clamp(3.5rem, 13.5vw, 13rem);
+	font-size: clamp(3rem, 10.6vw, 10.5rem);
 }
 .h1 {
 	font-size: clamp(3rem, 10vw, 8rem);
@@ -87,18 +87,18 @@ a {
 	line-height: 0.95;
 }
 
-/* outlined letters */
-.outline {
+/* outlined letters; the stroke follows the block they sit on */
+.hollow {
 	color: transparent;
-	-webkit-text-stroke: 2px currentColor;
+	-webkit-text-stroke: 2px var(--stroke, var(--navy));
 }
-.outline-cream {
+.hollow-cream {
 	color: transparent;
 	-webkit-text-stroke: 2px var(--cream);
 }
 @media (min-width: 48rem) {
-	.outline,
-	.outline-cream {
+	.hollow,
+	.hollow-cream {
 		-webkit-text-stroke-width: 3px;
 	}
 }
@@ -200,22 +200,27 @@ a {
 .block-navy {
 	background: var(--navy);
 	color: var(--cream);
+	--stroke: var(--yellow);
 }
 .block-yellow {
 	background: var(--yellow);
 	color: var(--navy);
+	--stroke: var(--navy);
 }
 .block-red {
 	background: var(--red);
 	color: var(--cream);
+	--stroke: var(--cream);
 }
 .block-sky {
 	background: var(--sky);
 	color: var(--navy);
+	--stroke: var(--navy);
 }
 .block-cream {
 	background: var(--cream);
 	color: var(--navy);
+	--stroke: var(--navy);
 }
 
 /* a diagonal top edge */

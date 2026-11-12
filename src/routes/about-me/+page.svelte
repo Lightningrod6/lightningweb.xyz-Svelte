@@ -57,7 +57,7 @@
 		<ol class="mt-12 border-[3px] border-[var(--cream)]">
 			{#each c.milestones as m, i (m.year)}
 				<li class="{rowTones[i % rowTones.length]} grid gap-2 px-5 py-7 sm:grid-cols-[13rem_1fr] sm:gap-10 sm:px-8 [&+li]:border-t-[3px] [&+li]:border-[var(--navy)]">
-					<span class="wide-black outline text-[3.25rem] sm:text-[4.25rem]">{m.year}</span>
+					<span class="wide-black hollow text-[3.25rem] sm:text-[4.25rem]">{m.year}</span>
 					<div>
 						<p class="wide-black text-[1.5rem] leading-none">{m.title}</p>
 						<p class="mt-3 max-w-[44rem] font-medium leading-relaxed">{m.body}</p>

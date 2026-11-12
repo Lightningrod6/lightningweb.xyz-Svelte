@@ -15,12 +15,12 @@
 
 <section class="block-navy cut-bottom relative overflow-hidden">
 	<div class="dots pointer-events-none absolute inset-y-0 right-0 w-1/2 text-[var(--navy-2)]" aria-hidden="true"></div>
-	<Bolt class="pointer-events-none absolute -right-10 top-10 hidden h-[34rem] w-auto rotate-[8deg] md:block lg:right-[6%]" />
+	<Bolt class="pointer-events-none absolute right-[-3rem] bottom-16 hidden h-[26rem] w-auto rotate-[10deg] lg:block xl:right-[4%]" />
 	<div class="wrap relative pt-14 pb-10 sm:pt-20">
 		<p class="tape yellow">{home.eyebrowMark} {home.eyebrow}</p>
 		<h1 class="wide-black mega mt-8">
 			<span class="block text-[var(--yellow)]">{home.heroA}</span>
-			<span class="outline-cream block">{home.heroB}</span>
+			<span class="hollow-cream block">{home.heroB}</span>
 		</h1>
 		<div class="mt-12 grid gap-12 lg:grid-cols-[1fr_24rem] lg:items-start lg:gap-16">
 			<div class="max-w-[36rem]">
@@ -66,7 +66,7 @@
 		<div class="dots absolute inset-0 text-[#f46b48]" aria-hidden="true"></div>
 		<div class="relative">
 			<p class="tape">{home.aboutEyebrow}</p>
-			<h2 class="wide-black mega mt-5 leading-[0.82]">{home.aboutTitle}</h2>
+			<h2 class="wide-black h1 mt-5">{home.aboutTitle}</h2>
 		</div>
 	</div>
 	<div class="block-cream count px-5 py-16 sm:px-8 lg:px-12">
@@ -80,7 +80,7 @@
 
 <section class="block-yellow cut-top mt-0 pb-24">
 	<div class="wrap grid gap-10 lg:grid-cols-[1.25fr_1fr] lg:items-end">
-		<h2 class="wide-black mega">{home.openTitle}</h2>
+		<h2 class="wide-black h1">{home.openTitle}</h2>
 		<div>
 			<p class="text-[1.25rem] leading-relaxed font-semibold">{home.openBody}</p>
 			<p class="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
