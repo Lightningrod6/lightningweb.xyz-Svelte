@@ -59,7 +59,7 @@
 
 	<div class="mt-10 grid gap-12 md:grid-cols-3 md:gap-10">
 		{#each others as p (p.name)}
-			<Feature {p} size="row" />
+			<Feature {p} size="col" />
 		{/each}
 		<SlotNote />
 	</div>

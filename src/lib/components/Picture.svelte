@@ -8,7 +8,7 @@
 
 <a {href} {...ext} class="plate block" tabindex="-1" aria-hidden="true">
 	{#if art.shot}
-		<img src={art.shot} alt="" width="1200" height="760" loading="lazy" class="aspect-[400/260] object-cover object-top" />
+		<img src={art.shot} alt="" width="1200" height="760" class="aspect-[400/260] object-cover object-top" />
 	{:else}
 		<Drawing kind={art.kind} />
 	{/if}
