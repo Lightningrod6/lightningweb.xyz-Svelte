@@ -8,7 +8,6 @@
 	const heroPlate = {
 		rows: [
 			{ k: 'operator', v: 'Liam Caywood' },
-			{ k: 'base', v: 'Lawton, OK — 34.61°N, 98.39°W' },
 			{ k: 'study', v: 'CS · Cameron University (sophomore)' },
 			{ k: 'stack', v: 'Python · FastAPI · TypeScript · Svelte · Redis' },
 			{ k: 'availability', v: 'Open for work & collabs' }
