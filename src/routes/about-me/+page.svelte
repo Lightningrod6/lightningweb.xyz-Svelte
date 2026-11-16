@@ -70,7 +70,7 @@
 		<div>
 			<p class="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-dim">the short version</p>
 			<p class="mt-3 max-w-[56ch] text-[1.05rem] leading-relaxed text-steel">
-				I'm Liam - 21, a computer science sophomore at Cameron University in Lawton, Oklahoma.
+				I'm Liam - 21, a computer science sophomore at Cameron University.
 				I'm a backend developer using Python, FastAPI, Redis, and SQL. I prefer to use Sveltekit along side
 				TypeScript for my frontend (with some amazing help from AI). I have a strong passion for web development,
 				Geopolitics, and meteorology. My mind is always floating with ideas and I am always
@@ -122,8 +122,7 @@
 				{ k: 'callsign', v: 'Lightning (Lightningrod6)' },
 				{ k: 'age', v: '21' },
 				{ k: 'role', v: 'Full-stack dev, backend-leaning' },
-				{ k: 'education', v: 'CS · Cameron University' },
-				{ k: 'based', v: 'Oklahoma, USA' }
+				{ k: 'education', v: 'CS · Cameron University' }
 			]}
 		/>
 		<a

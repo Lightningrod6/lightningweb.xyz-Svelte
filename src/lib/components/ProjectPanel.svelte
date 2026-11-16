@@ -2,7 +2,7 @@
 	import Led from './Led.svelte';
 	import Bolt from './Bolt.svelte';
 
-	export type ProjectStatus = 'live' | 'dev' | 'other';
+	export type ProjectStatus = 'live' | 'dev' | 'other' | 'offline';
 
 	interface Props {
 		name: string;
@@ -15,10 +15,11 @@
 
 	let { name, blurb, tags, href, status, cta }: Props = $props();
 
-	const statusMeta: Record<ProjectStatus, { led: 'live' | 'warn' | 'volt'; label: string }> = {
+	const statusMeta: Record<ProjectStatus, { led: 'live' | 'warn' | 'volt' | 'dim'; label: string }> = {
 		live: { led: 'live', label: 'live' },
 		dev: { led: 'warn', label: 'in development' },
-		other: { led: 'volt', label: 'contribution' }
+		other: { led: 'volt', label: 'contribution' },
+		offline: { led: 'dim', label: 'offline' }
 	};
 </script>
 
