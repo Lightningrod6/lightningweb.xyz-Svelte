@@ -21,7 +21,7 @@
 				'Set a deadline, submit, and let it watch the clock. It emails you before the due date slips past — so you can focus on everything else.',
 			tags: ['SaaS', 'email alerts', '$9/mo'],
 			href: 'https://deadline.lightningweb.xyz',
-			status: 'offline' as const,
+			status: 'online' as const,
 			cta: 'open product'
 		},
 		{
